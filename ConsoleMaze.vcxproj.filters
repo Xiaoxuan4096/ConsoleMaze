@@ -13,24 +13,42 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="头文件\MyMatrix2D">
+    <Filter Include="头文件\Basic">
+      <UniqueIdentifier>{e9e98347-9ff7-4406-89c2-87b6440f4101}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Basic\MyMatrix2D">
       <UniqueIdentifier>{1ccf9e14-dba8-45df-8092-60cac1243b40}</UniqueIdentifier>
     </Filter>
-    <Filter Include="源文件\MyMatrix2D">
+    <Filter Include="源文件\Basic">
+      <UniqueIdentifier>{ed645f30-722a-433a-ade3-ec6466d37868}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Basic\MyMatrix2D">
       <UniqueIdentifier>{22c83578-c267-4fce-92f5-04d96d289cb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Basic\FileEditor">
+      <UniqueIdentifier>{c337f21e-a954-46fc-864e-5a718291eef1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Basic\FileEditor">
+      <UniqueIdentifier>{f8328de8-a61a-4837-a4fc-11b8da03a33e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleMaze.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="MyMatrix\MyMatrix2D.cpp">
-      <Filter>源文件\MyMatrix2D</Filter>
+    <ClCompile Include="Basic\MyMatrix\MyMatrix2D.cpp">
+      <Filter>源文件\Basic\MyMatrix2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Basic\FileEditor\FileEditor.cpp">
+      <Filter>源文件\Basic\FileEditor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MyMatrix\MyMatrix2D.h">
-      <Filter>头文件\MyMatrix2D</Filter>
+    <ClInclude Include="Basic\MyMatrix\MyMatrix2D.h">
+      <Filter>头文件\Basic\MyMatrix2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Basic\FileEditor\FileEditor.h">
+      <Filter>头文件\Basic\FileEditor</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

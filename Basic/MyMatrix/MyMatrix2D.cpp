@@ -9,30 +9,30 @@
 namespace Xiaoxuan4096 {
 	namespace Basic {
 		// Init Functions.
-		void MyMatrix2D::clear() {
+		void MyMatrix2D::clear() noexcept {
 			data.clear();
 			return;
 		}
 
 		// Edit Functions.
-		void MyMatrix2D::addRow(std::string str) {
+		void MyMatrix2D::addRow(std::string str) noexcept {
 			data.push_back(str);
 			return;
 		}
-		void MyMatrix2D::insertRow(std::string str, size_t pos) {
+		void MyMatrix2D::insertRow(std::string str, size_t pos) noexcept {
 			if (pos >= data.size())
 				return;
 			data.insert(std::next(data.begin(), pos), str);
 			return;
 		}
-		void MyMatrix2D::deleteRow(size_t pos) {
+		void MyMatrix2D::deleteRow(size_t pos) noexcept {
 			if (pos >= data.size())
 				return;
 			data.erase(std::next(data.begin(), pos));
 			return;
 		}
 
-		void MyMatrix2D::editSingleCharacter(size_t row, size_t col, char c) {
+		void MyMatrix2D::editSingleCharacter(size_t row, size_t col, char c) noexcept {
 			if (row >= data.size() || col >= data[row].size())
 				return;
 			data[row][col] = c;
@@ -40,7 +40,7 @@ namespace Xiaoxuan4096 {
 		}
 
 		// Get Data.
-		std::string MyMatrix2D::operator[](size_t row) {
+		std::string MyMatrix2D::operator[](size_t row) noexcept {
 			return row >= data.size() ? "" : data[row];
 		}
 	}
