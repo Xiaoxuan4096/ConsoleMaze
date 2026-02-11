@@ -25,6 +25,9 @@ namespace Xiaoxuan4096 {
 
 			// Get Data.
 			std::string& operator[](size_t row); // Get a line. Note that giving an invalid row is undefined.
+			size_t getRowCount();
+			size_t getMinColCount(); // If data is empty, this will return a 0.
+			size_t getMaxColCount(); // If data is empty, this will return a 0.
 		};
 	}
 }
