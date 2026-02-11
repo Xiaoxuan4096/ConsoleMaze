@@ -16,17 +16,15 @@ namespace Xiaoxuan4096 {
 			std::vector<std::string> data;
 		public:
 			// Init Functions.
-			void clear() noexcept;
+			void clear() ;
 
 			// Edit Functions.
-			void addRow(std::string str) noexcept;
-			void insertRow(std::string str, size_t pos) noexcept; // Note that an invalid position will make no change to the matrix.
-			void deleteRow(size_t pos) noexcept; // Note that an invalid position will make no change to the matrix.
-
-			void editSingleCharacter(size_t row, size_t col, char c = ' ') noexcept; // Note that an invalid position will make no change to the matrix.
+			void addRow(std::string str) ;
+			void insertRow(std::string str, size_t pos) ; // Note that an invalid position will make no change to the matrix.
+			void deleteRow(size_t pos) ; // Note that an invalid position will make no change to the matrix.
 
 			// Get Data.
-			std::string operator[](size_t row) noexcept; // Get a line. Note that an invalid row will get an empty string.
+			std::string& operator[](size_t row); // Get a line. Note that giving an invalid row is undefined.
 		};
 	}
 }
