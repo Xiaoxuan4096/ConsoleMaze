@@ -1,0 +1,10 @@
+Title = ConsoleMaze：簡單的控制臺走迷宮程式。\n-------------------------------------
+MainMenu = 輸入 1 開始遊戲。\n輸入 2 編輯關卡。\n輸入 3 變更語言。\n輸入 4 退出遊戲。\n>>> 
+RetryInt = 錯誤：請輸入從 {} 到 {} 內的一個整數。\s3
+SelectLevel = 當前處於第 {} 關。按下 Enter 以開始當前關卡，或者輸入從 {} 到 {} 的數字來選擇關卡。\n輸入 exit 以返回主選單。\n>>> 
+RetryMenu = 錯誤：請輸入從 {} 到 {} 內的一個整數，或者輸入 exit。\s3
+CurrentLevel = 當前處於第 {} 關。\n-------------------
+WinWithoutRecord = 恭喜完成第 {} 關！\n用時 {} 秒 {} 毫秒。\s3
+WinWithRecord = 恭喜完成第 {} 關！\n用時 {} 秒 {} 毫秒。\n新紀錄！\s3
+LanguageNotAvailable = 錯誤：您輸入的語言不可用。\s3
+Exit = 感謝遊玩 ConsoleMaze！\s3

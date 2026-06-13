@@ -1,0 +1,43 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/Configs/">
+    <File Path="Configs/CurrentLanguage.dat" />
+  </Folder>
+  <Folder Name="/Levels/">
+    <File Path="Levels/CurrentLevel.dat" />
+    <File Path="Levels/MaximumLevel.dat" />
+  </Folder>
+  <Folder Name="/Levels/1/">
+    <File Path="Levels/1/Maze.txt" />
+  </Folder>
+  <Folder Name="/Levels/2/">
+    <File Path="Levels/2/Maze.txt" />
+  </Folder>
+  <Folder Name="/Levels/3/">
+    <File Path="Levels/3/Maze.txt" />
+  </Folder>
+  <Folder Name="/Translations/">
+    <File Path="Translations/LanguageHints.dat" />
+    <File Path="Translations/SupportLanguageList.dat" />
+    <File Path="Translations/zh-cn.lang" />
+    <File Path="Translations/zh-tw.lang" />
+  </Folder>
+  <Project Path="ConsoleMazeSetup-x64/ConsoleMazeSetup-x64.vdproj" Type="Installer">
+    <Build />
+  </Project>
+  <Project Path="ConsoleMazeSetup-x86/ConsoleMazeSetup-x86.vdproj" Type="Installer">
+    <Build />
+  </Project>
+  <Project Path="GameLogic/GameLogic.vcxproj" Id="c9d4b44b-e545-4a82-a83f-8ac0c470a80e" />
+  <Project Path="MyBuffer/MyBuffer.vcxproj" Id="4cd4d867-af03-482f-995f-48f81905b2cc">
+    <BuildDependency Project="MyMatrix2D/MyMatrix2D.vcxproj" />
+  </Project>
+  <Project Path="MyFile/MyFile.vcxproj" Id="b18a2525-849e-4737-b839-9351e22b9fcf" />
+  <Project Path="MyMatrix2D/MyMatrix2D.vcxproj" Id="09c2d83b-d42e-44cb-970a-5b3ab94af88d" />
+  <Project Path="MyMatrix2DWithDepth/MyMatrix2DWithDepth.vcxproj" Id="1851e580-46da-4bb5-b792-c838e1f09da5" />
+  <Project Path="MyRenderer/MyRenderer.vcxproj" Id="9a7f0c70-373a-42fe-82ff-588e1b79cd27" />
+  <Project Path="MyTranslator/MyTranslator.vcxproj" Id="7e13073c-f5d2-4123-889a-ad60cf810b07" />
+</Solution>

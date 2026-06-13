@@ -15,17 +15,20 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GameLogic.cpp">
+    <ClCompile Include="MyTranslator.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MyTranslator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="GameLogic.rc">
+    <ResourceCompile Include="MyTranslator.rc">
       <Filter>资源文件</Filter>
     </ResourceCompile>
   </ItemGroup>

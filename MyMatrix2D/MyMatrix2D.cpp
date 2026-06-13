@@ -19,15 +19,24 @@ namespace Xiaoxuan4096 {
 		return;
 	}
 	void MyMatrix2D::insertRow(std::string str, size_t pos) {
-		if (pos >= data.size())
-			return;
-		data.insert(std::next(data.begin(), pos), str);
+		if (pos < data.size())
+			data.insert(std::next(data.begin(), pos), str);
 		return;
 	}
 	void MyMatrix2D::deleteRow(size_t pos) {
-		if (pos >= data.size())
-			return;
-		data.erase(std::next(data.begin(), pos));
+		if (pos < data.size())
+			data.erase(std::next(data.begin(), pos));
+		return;
+	}
+
+	void MyMatrix2D::setChar(char c, size_t row, size_t col) {
+		if (row < data.size() && col < data[row].size())
+			data[row][col] = c;
+		return;
+	}
+	void MyMatrix2D::setRow(std::string str, size_t pos) {
+		if (pos < data.size())
+			data[pos] = str;
 		return;
 	}
 
@@ -57,5 +66,8 @@ namespace Xiaoxuan4096 {
 			maxColCount = maxColCount < data[i].size() ? data[i].size() : maxColCount;
 
 		return maxColCount;
+	}
+	size_t MyMatrix2D::getColCount(size_t row) {
+		return (data.empty() || row >= data.size()) ? 0 : data[row].size();
 	}
 }
