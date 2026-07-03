@@ -18,11 +18,11 @@ namespace Xiaoxuan4096 {
 		addRowWithDepth(LineWithDepth(str, defaultDepth));
 		return;
 	}
-	void MyMatrix2DWithDepth::insertRow(std::string str, int defaultDepth, size_t pos) {
+	void MyMatrix2DWithDepth::insertRow(std::string str, size_t pos, int defaultDepth) {
 		insertRowWithDepth(LineWithDepth(str, defaultDepth), pos);
 		return;
 	}
-	void MyMatrix2DWithDepth::setRow(std::string str, int defaultDepth, size_t pos) {
+	void MyMatrix2DWithDepth::setRow(std::string str, size_t pos, int defaultDepth) {
 		setRowWithDepth(LineWithDepth(str, defaultDepth), pos);
 		return;
 	}

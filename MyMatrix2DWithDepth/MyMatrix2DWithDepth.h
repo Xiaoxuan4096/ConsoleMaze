@@ -34,8 +34,8 @@ namespace Xiaoxuan4096 {
 
 		// Edit Rows.
 		void addRow(std::string str, int defaultDepth = 0);
-		void insertRow(std::string str, int defaultDepth = 0, size_t pos); // Note that an invalid position will make no change to the matrix.
-		void setRow(std::string str, int defaultDepth = 0, size_t pos); // Note that an invalid position will make no change to the matrix.
+		void insertRow(std::string str, size_t pos, int defaultDepth = 0); // Note that an invalid position will make no change to the matrix.
+		void setRow(std::string str, size_t pos, int defaultDepth = 0); // Note that an invalid position will make no change to the matrix.
 
 		void addRowWithDepth(LineWithDepth line);
 		void addRowWithDepth(std::string str, std::vector<int> depths);
