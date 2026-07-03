@@ -6,17 +6,11 @@
 
 #pragma once
 
-#ifdef MYMATRIX2D_EXPORTS
-#define MYMATRIX2D_API __declspec(dllexport)
-#else
-#define MYMATRIX2D_API __declspec(dllimport)
-#endif
-
 #include <vector>
 #include <string>
 
 namespace Xiaoxuan4096 {
-	class MYMATRIX2D_API MyMatrix2D {
+	class MyMatrix2D {
 	private:
 		std::vector<std::string> data;
 	public:
