@@ -13,30 +13,54 @@ namespace Xiaoxuan4096 {
 		return;
 	}
 
-	// Edit Functions.
-	void MyMatrix2DWithDepth::addRow(std::string str) {
-		LineWithDepth tmp;
-		tmp.line = str;
-		tmp.depths.assign(str.size(), 0);
-
-		data.push_back(tmp);
+	// Edit Rows.
+	void MyMatrix2DWithDepth::addRow(std::string str, int defaultDepth) {
+		addRowWithDepth(LineWithDepth(str, defaultDepth));
 		return;
 	}
-	void MyMatrix2DWithDepth::insertRow(std::string str, size_t pos) {
-		LineWithDepth tmp;
-		tmp.line = str;
-		tmp.depths.assign(str.size(), 0);
+	void MyMatrix2DWithDepth::insertRow(std::string str, int defaultDepth, size_t pos) {
+		insertRowWithDepth(LineWithDepth(str, defaultDepth), pos);
+		return;
+	}
+	void MyMatrix2DWithDepth::setRow(std::string str, int defaultDepth, size_t pos) {
+		setRowWithDepth(LineWithDepth(str, defaultDepth), pos);
+		return;
+	}
 
+	void MyMatrix2DWithDepth::addRowWithDepth(LineWithDepth line) {
+		data.push_back(line);
+		return;
+	}
+	void MyMatrix2DWithDepth::addRowWithDepth(std::string str, std::vector<int> depths) {
+		addRowWithDepth(LineWithDepth(str, depths));
+		return;
+	}
+	void MyMatrix2DWithDepth::insertRowWithDepth(LineWithDepth line, size_t pos) {
 		if (pos < data.size())
-			data.insert(std::next(data.begin(), pos), tmp);
+			data.insert(std::next(data.begin(), pos), line);
 		return;
 	}
+	void MyMatrix2DWithDepth::insertRowWithDepth(std::string str, std::vector<int> depths, size_t pos) {
+		insertRowWithDepth(LineWithDepth(str, depths), pos);
+		return;
+	}
+	void MyMatrix2DWithDepth::setRowWithDepth(LineWithDepth line, size_t pos) {
+		if (pos < data.size())
+			data[pos] = line;
+		return;
+	}
+	void MyMatrix2DWithDepth::setRowWithDepth(std::string str, std::vector<int> depths, size_t pos) {
+		setRowWithDepth(LineWithDepth(str, depths), pos);
+		return;
+	}
+
 	void MyMatrix2DWithDepth::deleteRow(size_t pos) {
 		if (pos < data.size())
 			data.erase(std::next(data.begin(), pos));
 		return;
 	}
 
+	// Edit Single Cell.
 	void MyMatrix2DWithDepth::setCharOnly(char c, size_t row, size_t col) {
 		if (row < data.size() && col < data[row].line.size())
 			data[row].line[col] = c;
@@ -56,8 +80,11 @@ namespace Xiaoxuan4096 {
 	}
 
 	// Get Data.
-	std::string& MyMatrix2DWithDepth::operator[](size_t row) {
-		return data[row].line;
+	std::string MyMatrix2DWithDepth::getLineWithoutDepth(size_t row) {
+		return row < data.size() ? data[row].line : "";
+	}
+	LineWithDepth MyMatrix2DWithDepth::getLineWithDepth(size_t row) {
+		return row < data.size() ? data[row] : LineWithDepth();
 	}
 	size_t MyMatrix2DWithDepth::getRowCount() {
 		return data.size();

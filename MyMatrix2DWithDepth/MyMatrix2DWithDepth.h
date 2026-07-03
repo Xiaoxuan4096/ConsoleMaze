@@ -32,10 +32,18 @@ namespace Xiaoxuan4096 {
 		// Init Functions.
 		void clear();
 
-		// Edit Rows From std::string.
-		// Note that the default depth of these functions is 0.
-		void addRow(std::string str);
-		void insertRow(std::string str, size_t pos); // Note that an invalid position will make no change to the matrix.
+		// Edit Rows.
+		void addRow(std::string str, int defaultDepth = 0);
+		void insertRow(std::string str, int defaultDepth = 0, size_t pos); // Note that an invalid position will make no change to the matrix.
+		void setRow(std::string str, int defaultDepth = 0, size_t pos); // Note that an invalid position will make no change to the matrix.
+
+		void addRowWithDepth(LineWithDepth line);
+		void addRowWithDepth(std::string str, std::vector<int> depths);
+		void insertRowWithDepth(LineWithDepth line, size_t pos); // Note that an invalid position will make no change to the matrix.
+		void insertRowWithDepth(std::string str, std::vector<int> depths, size_t pos); // Note that an invalid position will make no change to the matrix.
+		void setRowWithDepth(LineWithDepth line, size_t pos); // Note that an invalid position will make no change to the matrix.
+		void setRowWithDepth(std::string str, std::vector<int> depths, size_t pos); // Note that an invalid position will make no change to the matrix.
+
 		void deleteRow(size_t pos); // Note that an invalid position will make no change to the matrix.
 
 		// Edit Single Cell.
@@ -44,7 +52,8 @@ namespace Xiaoxuan4096 {
 		void setCharAndDepth(char c, int depth, size_t row, size_t col); // Note that an invalid position will make no change to the matrix.
 
 		// Get Data.
-		std::string& operator[](size_t row); // Get a line and discard depth information. Note that giving an invalid row is undefined.
+		std::string getLineWithoutDepth(size_t row); // Get a line and discard depth information. Note that giving an invalid row is an undefined behavior.
+		LineWithDepth getLineWithDepth(size_t row); // Get a line with depth information. Note that giving an invalid row is an undefined behavior.
 		size_t getRowCount();
 		size_t getMinColCount(); // If data is empty, this will return a 0.
 		size_t getMaxColCount(); // If data is empty, this will return a 0.
