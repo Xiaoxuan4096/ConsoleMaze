@@ -57,5 +57,6 @@ namespace Xiaoxuan4096 {
 		size_t getRowCount();
 		size_t getMinColCount(); // If data is empty, this will return a 0.
 		size_t getMaxColCount(); // If data is empty, this will return a 0.
+		size_t getColCount(size_t row); // If data is empty or the position is invalid, this will return a 0.
 	};
 }

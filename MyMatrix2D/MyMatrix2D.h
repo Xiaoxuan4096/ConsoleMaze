@@ -23,11 +23,13 @@ namespace Xiaoxuan4096 {
 		void deleteRow(size_t pos); // Note that an invalid position will make no change to the matrix.
 
 		void setChar(char c, size_t row, size_t col); // Note that an invalid position will make no change to the matrix.
+		void setRow(std::string str, size_t pos); // Note that an invalid position will make no change to the matrix.
 
 		// Get Data.
 		std::string& operator[](size_t row); // Get a line. Note that giving an invalid row is undefined.
 		size_t getRowCount();
 		size_t getMinColCount(); // If data is empty, this will return a 0.
 		size_t getMaxColCount(); // If data is empty, this will return a 0.
+		size_t getColCount(size_t row); // If data is empty or the position is invalid, this will return a 0.
 	};
 }

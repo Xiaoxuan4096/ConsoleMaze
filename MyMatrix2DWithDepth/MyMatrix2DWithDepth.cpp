@@ -109,4 +109,7 @@ namespace Xiaoxuan4096 {
 
 		return maxColCount;
 	}
+	size_t MyMatrix2DWithDepth::getColCount(size_t row) {
+		return (data.empty() || row >= data.size()) ? 0 : data[row].line.size();
+	}
 }

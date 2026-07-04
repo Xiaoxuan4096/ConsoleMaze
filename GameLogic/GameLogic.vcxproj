@@ -133,9 +133,6 @@
     <ProjectReference Include="..\MyBuffer\MyBuffer.vcxproj">
       <Project>{4cd4d867-af03-482f-995f-48f81905b2cc}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\MyMatrix2D\MyMatrix2D.vcxproj">
-      <Project>{09c2d83b-d42e-44cb-970a-5b3ab94af88d}</Project>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

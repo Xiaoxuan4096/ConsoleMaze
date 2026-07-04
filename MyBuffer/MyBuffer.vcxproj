@@ -79,7 +79,7 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)/MyMatrix2D;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/MyMatrix2DWithDepth;$(SolutionDir)/MyMatrix2D;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -101,7 +101,7 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)/MyMatrix2D;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/MyMatrix2DWithDepth;$(SolutionDir)/MyMatrix2D;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -121,7 +121,7 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)/MyMatrix2D;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/MyMatrix2DWithDepth;$(SolutionDir)/MyMatrix2D;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -143,7 +143,7 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)/MyMatrix2D;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)/MyMatrix2DWithDepth;$(SolutionDir)/MyMatrix2D;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -161,6 +161,9 @@
     <ClInclude Include="MyBuffer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MyMatrix2DWithDepth\MyMatrix2DWithDepth.vcxproj">
+      <Project>{1851e580-46da-4bb5-b792-c838e1f09da5}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\MyMatrix2D\MyMatrix2D.vcxproj">
       <Project>{09c2d83b-d42e-44cb-970a-5b3ab94af88d}</Project>
     </ProjectReference>

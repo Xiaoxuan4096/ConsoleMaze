@@ -7,7 +7,15 @@
 #include "MyBuffer.h"
 
 namespace Xiaoxuan4096 {
+	void MyBuffer::fetchDrawRequest(DrawRequestData object) {
+		if (object.startRow >= buffer.getRowCount()) // Create new rows.
+			for (size_t i = buffer.getRowCount(); i < object.startRow; i++)
+				buffer.addRow("");
+	}
 	MyMatrix2D MyBuffer::sendBuffer() {
-		return buffer;
+		MyMatrix2D send;
+		for (size_t i = 0; i < buffer.getRowCount(); i++)
+			send.addRow(buffer.getLineWithoutDepth(i));
+		return send;
 	}
 }

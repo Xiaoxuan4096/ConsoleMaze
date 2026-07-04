@@ -34,6 +34,11 @@ namespace Xiaoxuan4096 {
 			data[row][col] = c;
 		return;
 	}
+	void MyMatrix2D::setRow(std::string str, size_t pos) {
+		if (pos < data.size())
+			data[pos] = str;
+		return;
+	}
 
 	// Get Data.
 	std::string& MyMatrix2D::operator[](size_t row) {
@@ -61,5 +66,8 @@ namespace Xiaoxuan4096 {
 			maxColCount = maxColCount < data[i].size() ? data[i].size() : maxColCount;
 
 		return maxColCount;
+	}
+	size_t MyMatrix2D::getColCount(size_t row) {
+		return (data.empty() || row >= data.size()) ? 0 : data[row].size();
 	}
 }
