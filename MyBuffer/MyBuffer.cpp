@@ -8,9 +8,7 @@
 
 namespace Xiaoxuan4096 {
 	void MyBuffer::fetchDrawRequest(DrawRequestData object) {
-		if (object.startRow >= buffer.getRowCount()) // Create new rows.
-			for (size_t i = buffer.getRowCount(); i < object.startRow; i++)
-				buffer.addRow("");
+		
 	}
 	MyMatrix2D MyBuffer::sendBuffer() {
 		MyMatrix2D send;
