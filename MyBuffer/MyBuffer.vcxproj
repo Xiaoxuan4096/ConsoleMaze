@@ -159,6 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyBuffer.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyMatrix2DWithDepth\MyMatrix2DWithDepth.vcxproj">
@@ -167,6 +168,9 @@
     <ProjectReference Include="..\MyMatrix2D\MyMatrix2D.vcxproj">
       <Project>{09c2d83b-d42e-44cb-970a-5b3ab94af88d}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MyBuffer.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

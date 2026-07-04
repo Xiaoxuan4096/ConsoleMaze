@@ -49,7 +49,7 @@ namespace Xiaoxuan4096 {
 		// Edit Single Cell.
 		void setCharOnly(char c, size_t row, size_t col); // Note that an invalid position will make no change to the matrix.
 		void setDepthOnly(int depth, size_t row, size_t col); // Note that an invalid position will make no change to the matrix.
-		void setCharAndDepth(char c, int depth, size_t row, size_t col); // Note that an invalid position will make no change to the matrix.
+		void setCharAndDepth(char c, int depth, size_t row, size_t col, bool discardOldCharAndDepth = false); // Note that an invalid position will make no change to the matrix.
 
 		// Get Data.
 		std::string getLineWithoutDepth(size_t row); // Get a line and discard depth information. Note that giving an invalid row is an undefined behavior.

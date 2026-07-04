@@ -71,8 +71,8 @@ namespace Xiaoxuan4096 {
 			data[row].depths[col] = depth;
 		return;
 	}
-	void MyMatrix2DWithDepth::setCharAndDepth(char c, int depth, size_t row, size_t col) {
-		if (row < data.size() && col < data[row].depths.size()) {
+	void MyMatrix2DWithDepth::setCharAndDepth(char c, int depth, size_t row, size_t col, bool discardOldCharAndDepth) {
+		if (row < data.size() && col < data[row].depths.size() && (discardOldCharAndDepth || (!discardOldCharAndDepth && data[row].depths[col] <= depth))) {
 			data[row].line[col] = c;
 			data[row].depths[col] = depth;
 		}
