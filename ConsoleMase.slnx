@@ -7,6 +7,7 @@
   <Project Path="MyBuffer/MyBuffer.vcxproj" Id="4cd4d867-af03-482f-995f-48f81905b2cc">
     <BuildDependency Project="MyMatrix2D/MyMatrix2D.vcxproj" />
   </Project>
+  <Project Path="MyFile/MyFile.vcxproj" Id="b18a2525-849e-4737-b839-9351e22b9fcf" />
   <Project Path="MyMatrix2D/MyMatrix2D.vcxproj" Id="09c2d83b-d42e-44cb-970a-5b3ab94af88d" />
   <Project Path="MyMatrix2DWithDepth/MyMatrix2DWithDepth.vcxproj" Id="1851e580-46da-4bb5-b792-c838e1f09da5" />
   <Project Path="MyRenderer/MyRenderer.vcxproj" Id="9a7f0c70-373a-42fe-82ff-588e1b79cd27" />
