@@ -77,6 +77,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)MyFile;$(SolutionDir)MyBuffer;$(SolutionDir)MyRenderer;$(SolutionDir)MyMatrix2D;$(SolutionDir)MyMatrix2DWithDepth;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -92,6 +93,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)MyFile;$(SolutionDir)MyBuffer;$(SolutionDir)MyRenderer;$(SolutionDir)MyMatrix2D;$(SolutionDir)MyMatrix2DWithDepth;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -105,6 +107,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)MyFile;$(SolutionDir)MyBuffer;$(SolutionDir)MyRenderer;$(SolutionDir)MyMatrix2D;$(SolutionDir)MyMatrix2DWithDepth;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -120,6 +123,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)MyFile;$(SolutionDir)MyBuffer;$(SolutionDir)MyRenderer;$(SolutionDir)MyMatrix2D;$(SolutionDir)MyMatrix2DWithDepth;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,6 +132,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="GameLogic.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MyBuffer\MyBuffer.vcxproj">
+      <Project>{4cd4d867-af03-482f-995f-48f81905b2cc}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\MyFile\MyFile.vcxproj">
+      <Project>{b18a2525-849e-4737-b839-9351e22b9fcf}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\MyMatrix2D\MyMatrix2D.vcxproj">
+      <Project>{09c2d83b-d42e-44cb-970a-5b3ab94af88d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\MyRenderer\MyRenderer.vcxproj">
+      <Project>{9a7f0c70-373a-42fe-82ff-588e1b79cd27}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

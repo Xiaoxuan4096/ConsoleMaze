@@ -8,6 +8,7 @@
 
 #include <vector>
 #include <string>
+#include <algorithm>
 
 namespace Xiaoxuan4096 {
 	struct LineWithDepth {
