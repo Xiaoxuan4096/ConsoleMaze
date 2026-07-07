@@ -1,1 +1,1 @@
-# ConsoleMase
+# ConsoleMaze
