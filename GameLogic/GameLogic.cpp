@@ -6,11 +6,12 @@
 
 #define NOMINMAX // LineWithDepth in "MyMatrix2DWithDepth.h" uses std::copy, which is incompatible with <Windows.h> without this line.
 
+#include <iostream>
 #include <vector>
 #include <string>
 #include <algorithm>
 
-#include <Windows.h>
+#include <conio.h>
 
 #include "MyBuffer.h"
 #include "MyFile.h"
@@ -35,6 +36,7 @@ namespace Xiaoxuan4096 {
             }
             tmpLine += x;
         }
+        result.content.addRow(tmpLine, defaultDepth); // Add the last line and avoid content missing.
 
         return result;
     }
@@ -87,16 +89,32 @@ namespace Xiaoxuan4096 {
         reader.unlinkFile();
         return;
     }
+    bool readInt(int& number, int minimal, int maximal, std::istream& in = std::cin) {
+        int tmp;
+        in >> tmp;
+        if (tmp >= minimal && tmp <= maximal) {
+            number = tmp;
+            return true;
+        }
+        return false;
+    }
 
-    void startHint(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer) {
+    void mainMenu(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer) {
+        int mode;
+
         buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("MainMenu"), 2, 0));
         renderer.receiveBuffer(buffer.sendBuffer());
         renderer.output();
+
+        if (!readInt(mode, 0, 2)) {
+
+        }
+
         return;
     }
 
     void mainLogic() {
-        // Definitions.
+        // Generic Definitions.
         MyTranslator translator;
         MyMatrix2D maze;
         MyFile genericFileRW;
@@ -106,7 +124,9 @@ namespace Xiaoxuan4096 {
         // Init.
         std::string currentLanguage = readCurrentLanguage(genericFileRW);
         readTranslation(currentLanguage, translator, genericFileRW);
-        startHint(translator, genericBuffer, genericRenderer);
+        mainMenu(translator, genericBuffer, genericRenderer);
+
+        // 
 
         return;
     }
