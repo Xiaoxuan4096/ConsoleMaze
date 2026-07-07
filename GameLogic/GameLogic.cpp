@@ -6,7 +6,9 @@
 
 #define NOMINMAX // LineWithDepth in "MyMatrix2DWithDepth.h" uses std::copy, which is incompatible with <Windows.h> without this line.
 
+#include <vector>
 #include <string>
+#include <algorithm>
 
 #include <Windows.h>
 
@@ -54,24 +56,52 @@ namespace Xiaoxuan4096 {
         return result;
     }
 
-    std::string readCurrentLanguage() {
-        MyFile currentLanguageRW;
-        currentLanguageRW.linkToFile("../../Configs/CurrentLanguage.dat");
+    std::string readCurrentLanguage(MyFile& reader) {
+        std::string currentLanguage, supportLanguage;
+        std::vector<std::string> supportLanguageList;
+
+        reader.linkToFile("../../Configs/CurrentLanguage.dat"); // Need to be modified in release.
+        currentLanguage = reader.read();
+        reader.unlinkFile();
+
+        reader.linkToFile("../../Translations/SupportLanguageList.dat"); // Need to be modified in release.
+        supportLanguage = reader.read();
+        reader.unlinkFile();
+
+        std::string tmpLanguage = "";
+        for (char x : supportLanguage) {
+            if (x == '\n') {
+                supportLanguageList.push_back(tmpLanguage);
+                tmpLanguage.clear();
+                continue;
+            }
+            tmpLanguage += x;
+        }
+
+        return std::find(supportLanguageList.begin(), supportLanguageList.end(), currentLanguage) != supportLanguageList.end() ? currentLanguage : "en-us";
+    }
+    void readTranslation(const std::string& currentLanguage, MyTranslator& translator, MyFile& reader) {
+        reader.linkToFile("../../Translations" + currentLanguage + ".lang");
+        translator.setTranslationFromFile(reader.read());
+        reader.unlinkFile();
+        return;
     }
 
-
     void startHint(MyTranslator& translator) {
-        generateDrawRequestDataFromString("ConsoleMaze\n", 0, 0);
+        generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0);
         return;
     }
 
     void mainLogic() {
+        // Definitions.
         MyTranslator translator;
         MyMatrix2D maze;
-        MyFile mazeRW, translatorRW;
-        std::string currentLanguage = "en-us";
+        MyFile genericReader;
 
-
+        // Init.
+        std::string currentLanguage = readCurrentLanguage(genericReader);
+        readTranslation(currentLanguage, translator, genericReader);
+        startHint(translator);
 
         return;
     }

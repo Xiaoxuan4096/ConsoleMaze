@@ -7,6 +7,7 @@
     <File Path="Configs/CurrentLanguage.dat" />
   </Folder>
   <Folder Name="/Translations/">
+    <File Path="Translations/SupportLanguageList.dat" />
     <File Path="Translations/zh-cn.lang" />
   </Folder>
   <Project Path="GameLogic/GameLogic.vcxproj" Id="c9d4b44b-e545-4a82-a83f-8ac0c470a80e" />
