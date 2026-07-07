@@ -4,8 +4,6 @@
 // This program is distributed under MIT License.
 // See LICENSE.txt for details.
 
-#define NOMINMAX // LineWithDepth in "MyMatrix2DWithDepth.h" uses std::copy, which is incompatible with <Windows.h> without this line.
-
 #include <iostream>
 #include <vector>
 #include <string>
