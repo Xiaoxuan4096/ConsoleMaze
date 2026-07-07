@@ -97,15 +97,15 @@ namespace Xiaoxuan4096 {
         return false;
     }
 
-    void mainMenu(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer) {
+    int mainMenu(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer) {
         int mode;
 
         buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("MainMenu"), 2, 0));
         renderer.receiveBuffer(buffer.sendBuffer());
         renderer.output();
 
-        while (!readInt(mode, 0, 2)) {
-            buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Retry", 0, 2), 5, 0, 0));
+        while (!readInt(mode, 0, 3)) {
+            buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Retry", 0, 3), 5, 0));
             renderer.receiveBuffer(buffer.sendBuffer());
             renderer.output();
             buffer.clear();
@@ -114,23 +114,56 @@ namespace Xiaoxuan4096 {
             renderer.output();
         }
 
+        return mode;
+    }
+
+    void game(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer) {
+        return;
+    }
+
+    void editMenu(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW) {
+        return;
+    }
+
+    void selectLanguage(MyBuffer& buffer, MyRenderer& renderer, MyFile& reader) {
+        return;
+    }
+
+    void exitGame(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer) {
         return;
     }
 
     void mainLogic() {
         // Generic Definitions.
         MyTranslator translator;
-        MyMatrix2D maze;
         MyFile genericFileRW;
         MyRenderer genericRenderer;
         MyBuffer genericBuffer;
+        bool exit = false;
 
         // Init.
         std::string currentLanguage = readCurrentLanguage(genericFileRW);
         readTranslation(currentLanguage, translator, genericFileRW);
-        mainMenu(translator, genericBuffer, genericRenderer);
-
-        // 
+        
+        // Game Logic.
+        while (!exit)
+            switch (mainMenu(translator, genericBuffer, genericRenderer)) {
+                case 0:
+                    game(translator, genericBuffer, genericRenderer);
+                    break;
+                case 1:
+                    editMenu(translator, genericBuffer, genericRenderer, genericFileRW);
+                    break;
+                case 2:
+                    selectLanguage(genericBuffer, genericRenderer, genericFileRW);
+                    break;
+                case 3:
+                    exitGame(translator, genericBuffer, genericRenderer);
+                    exit = true;
+                    break;
+                default:
+                    break;
+            }
 
         return;
     }

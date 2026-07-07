@@ -6,6 +6,21 @@
   <Folder Name="/Configs/">
     <File Path="Configs/CurrentLanguage.dat" />
   </Folder>
+  <Folder Name="/Levels/">
+    <File Path="Levels/CurrentLevel.dat" />
+  </Folder>
+  <Folder Name="/Levels/1/">
+    <File Path="Levels/1/Maze.txt" />
+    <File Path="Levels/1/record.dat" />
+  </Folder>
+  <Folder Name="/Levels/2/">
+    <File Path="Levels/2/Maze.txt" />
+    <File Path="Levels/2/record.dat" />
+  </Folder>
+  <Folder Name="/Levels/3/">
+    <File Path="Levels/3/Maze.txt" />
+    <File Path="Levels/3/record.dat" />
+  </Folder>
   <Folder Name="/Translations/">
     <File Path="Translations/SupportLanguageList.dat" />
     <File Path="Translations/zh-cn.lang" />
