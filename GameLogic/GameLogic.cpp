@@ -81,7 +81,7 @@ namespace Xiaoxuan4096 {
             tmpLanguage += x;
         }
 
-        return std::find(supportLanguageList.begin(), supportLanguageList.end(), currentLanguage) != supportLanguageList.end() ? currentLanguage : "en-us";
+        return std::find(supportLanguageList.begin(), supportLanguageList.end(), currentLanguage) != supportLanguageList.end() ? currentLanguage : "zh-cn";
     }
     void readTranslation(const std::string& currentLanguage, MyTranslator& translator, MyFile& reader) {
         reader.linkToFile("../Translations/" + currentLanguage + ".lang");
@@ -106,8 +106,14 @@ namespace Xiaoxuan4096 {
         renderer.receiveBuffer(buffer.sendBuffer());
         renderer.output();
 
-        if (!readInt(mode, 0, 2)) {
-
+        while (!readInt(mode, 0, 2)) {
+            buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Retry", 0, 2), 6, 0));
+            renderer.receiveBuffer(buffer.sendBuffer());
+            renderer.output();
+            buffer.clear();
+            buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("MainMenu"), 2, 0));
+            renderer.receiveBuffer(buffer.sendBuffer());
+            renderer.output();
         }
 
         return;
