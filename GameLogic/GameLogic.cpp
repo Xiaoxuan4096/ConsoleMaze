@@ -17,7 +17,7 @@
 #include "MyRenderer.h"
 
 namespace Xiaoxuan4096 {
-    DrawRequestData generateDrawRequestFromString(std::string str, size_t startRow, size_t startCol, int defaultDepth = 0) { // Supports \n for a new line.
+    DrawRequestData generateDrawRequestDataFromString(std::string str, size_t startRow, size_t startCol, int defaultDepth = 0) { // Supports \n for a new line.
         DrawRequestData result;
         result.startRow = startRow;
         result.startCol = startCol;
@@ -36,10 +36,32 @@ namespace Xiaoxuan4096 {
 
         return result;
     }
+    MyMatrix2D generateMyMatrix2DFromString(std::string str) { // Supports \n for a new line.
+        MyMatrix2D result;
+        if (str.empty())
+            return result;
+
+        std::string tmpLine = "";
+        for (char x : str) {
+            if (x == '\n') {
+                result.addRow(tmpLine); // Create a new line.
+                tmpLine = "";
+                continue;
+            }
+            tmpLine += x;
+        }
+
+        return result;
+    }
+
+
+    void startHint() {
+        generateDrawRequestDataFromString("ConsoleMase\n", 0, 0);
+        return;
+    }
 
     void mainLogic() {
         MyMatrix2D mase;
-        DrawRequestData globalText;
         MyFile maseRW;
 
         return;

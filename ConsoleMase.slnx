@@ -11,4 +11,5 @@
   <Project Path="MyMatrix2D/MyMatrix2D.vcxproj" Id="09c2d83b-d42e-44cb-970a-5b3ab94af88d" />
   <Project Path="MyMatrix2DWithDepth/MyMatrix2DWithDepth.vcxproj" Id="1851e580-46da-4bb5-b792-c838e1f09da5" />
   <Project Path="MyRenderer/MyRenderer.vcxproj" Id="9a7f0c70-373a-42fe-82ff-588e1b79cd27" />
+  <Project Path="MyTranslator/MyTranslator.vcxproj" Id="7e13073c-f5d2-4123-889a-ad60cf810b07" />
 </Solution>
