@@ -3,6 +3,12 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
+  <Folder Name="/Configs/">
+    <File Path="Configs/CurrentLanguage.dat" />
+  </Folder>
+  <Folder Name="/Translations/">
+    <File Path="Translations/zh-cn.lang" />
+  </Folder>
   <Project Path="GameLogic/GameLogic.vcxproj" Id="c9d4b44b-e545-4a82-a83f-8ac0c470a80e" />
   <Project Path="MyBuffer/MyBuffer.vcxproj" Id="4cd4d867-af03-482f-995f-48f81905b2cc">
     <BuildDependency Project="MyMatrix2D/MyMatrix2D.vcxproj" />

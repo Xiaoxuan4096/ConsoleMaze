@@ -13,8 +13,8 @@
 #include "MyBuffer.h"
 #include "MyFile.h"
 #include "MyMatrix2D.h"
-#include "MyMatrix2DWithDepth.h"
 #include "MyRenderer.h"
+#include "MyTranslator.h"
 
 namespace Xiaoxuan4096 {
     DrawRequestData generateDrawRequestDataFromString(std::string str, size_t startRow, size_t startCol, int defaultDepth = 0) { // Supports \n for a new line.
@@ -54,15 +54,24 @@ namespace Xiaoxuan4096 {
         return result;
     }
 
+    std::string readCurrentLanguage() {
+        MyFile currentLanguageRW;
+        currentLanguageRW.linkToFile("../../Configs/CurrentLanguage.dat");
+    }
 
-    void startHint() {
-        generateDrawRequestDataFromString("ConsoleMase\n", 0, 0);
+
+    void startHint(MyTranslator& translator) {
+        generateDrawRequestDataFromString("ConsoleMaze\n", 0, 0);
         return;
     }
 
     void mainLogic() {
-        MyMatrix2D mase;
-        MyFile maseRW;
+        MyTranslator translator;
+        MyMatrix2D maze;
+        MyFile mazeRW, translatorRW;
+        std::string currentLanguage = "en-us";
+
+
 
         return;
     }

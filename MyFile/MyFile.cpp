@@ -7,10 +7,6 @@
 #include "MyFile.h"
 
 namespace Xiaoxuan4096 {
-	void MyFile::linkToFile(std::string path) {
-		linkToFile(std::filesystem::path(path));
-		return;
-	}
 	void MyFile::linkToFile(std::filesystem::path path) {
 		filePath = path;
 		content.clear();

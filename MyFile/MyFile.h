@@ -19,7 +19,6 @@ namespace Xiaoxuan4096 {
 		bool newestContent = false;
 	public:
 		// Link And Unlink File.
-		void linkToFile(std::string path);
 		void linkToFile(std::filesystem::path path);
 		void unlinkFile();
 
