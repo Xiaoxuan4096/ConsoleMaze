@@ -88,7 +88,7 @@ namespace Xiaoxuan4096 {
     }
 
     void startHint(MyTranslator& translator) {
-        generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0);
+        generateDrawRequestDataFromString(translator["Title"], 0, 0);
         return;
     }
 

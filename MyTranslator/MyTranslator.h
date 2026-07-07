@@ -8,6 +8,7 @@
 
 #include <map>
 #include <string>
+#include <format>
 
 namespace Xiaoxuan4096 {
 	class MyTranslator {
@@ -24,5 +25,10 @@ namespace Xiaoxuan4096 {
 
 		// Get Translation.
 		std::string getTranslation(std::string original);
+		template<typename... Args> std::string getTranslation(std::string original, Args&&... args);
 	};
+
+	template<typename ...Args> inline std::string MyTranslator::getTranslation(std::string original, Args && ...args) {
+		return std::vformat(dictionary.contains(original) ? dictionary[original] : "", std::make_format_args(args...)));
+	}
 }
