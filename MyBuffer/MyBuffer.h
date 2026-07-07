@@ -21,8 +21,14 @@ namespace Xiaoxuan4096 {
 	private:
 		MyMatrix2DWithDepth buffer;
 	public:
+		// Init.
+		void clear();
+
+		// Fetch Draw Request.
 		template<std::convertible_to<DrawRequestData>... Args> void fetchDrawRequest(Args... objects); // Fetch the draw requests from objects.
 		void fetchDrawRequest(DrawRequestData object); // Fetch the draw requests from one object.
+
+		// Convert to a MyMatrix2D and send it.
 		MyMatrix2D sendBuffer(); // Send the buffer to the renderer.
 	};
 

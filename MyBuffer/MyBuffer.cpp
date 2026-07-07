@@ -7,6 +7,11 @@
 #include "MyBuffer.h"
 
 namespace Xiaoxuan4096 {
+	void MyBuffer::clear() {
+		buffer.clear();
+		return;
+	}
+
 	void MyBuffer::fetchDrawRequest(DrawRequestData object) {
 		if (object.startRow >= buffer.getRowCount()) // Create blank rows if necessary.
 			for (size_t i = buffer.getRowCount(); i < object.startRow + object.content.getRowCount(); i++)
@@ -21,6 +26,7 @@ namespace Xiaoxuan4096 {
 
 		return;
 	}
+
 	MyMatrix2D MyBuffer::sendBuffer() {
 		MyMatrix2D send;
 		for (size_t i = 0; i < buffer.getRowCount(); i++)

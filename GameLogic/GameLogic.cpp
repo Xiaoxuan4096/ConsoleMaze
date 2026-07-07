@@ -60,11 +60,12 @@ namespace Xiaoxuan4096 {
         std::string currentLanguage, supportLanguage;
         std::vector<std::string> supportLanguageList;
 
-        reader.linkToFile("../../Configs/CurrentLanguage.dat"); // Need to be modified in release.
+        reader.linkToFile("../Configs/CurrentLanguage.dat"); // Need to be modified in release.
         currentLanguage = reader.read();
+        currentLanguage.erase(currentLanguage.end() - 1); // Remove '\n'.
         reader.unlinkFile();
 
-        reader.linkToFile("../../Translations/SupportLanguageList.dat"); // Need to be modified in release.
+        reader.linkToFile("../Translations/SupportLanguageList.dat"); // Need to be modified in release.
         supportLanguage = reader.read();
         reader.unlinkFile();
 
@@ -81,7 +82,7 @@ namespace Xiaoxuan4096 {
         return std::find(supportLanguageList.begin(), supportLanguageList.end(), currentLanguage) != supportLanguageList.end() ? currentLanguage : "en-us";
     }
     void readTranslation(const std::string& currentLanguage, MyTranslator& translator, MyFile& reader) {
-        reader.linkToFile("../../Translations" + currentLanguage + ".lang");
+        reader.linkToFile("../Translations/" + currentLanguage + ".lang");
         translator.setTranslationFromFile(reader.read());
         reader.unlinkFile();
         return;
@@ -98,13 +99,13 @@ namespace Xiaoxuan4096 {
         // Definitions.
         MyTranslator translator;
         MyMatrix2D maze;
-        MyFile genericReader;
+        MyFile genericFileRW;
         MyRenderer genericRenderer;
         MyBuffer genericBuffer;
 
         // Init.
-        std::string currentLanguage = readCurrentLanguage(genericReader);
-        readTranslation(currentLanguage, translator, genericReader);
+        std::string currentLanguage = readCurrentLanguage(genericFileRW);
+        readTranslation(currentLanguage, translator, genericFileRW);
         startHint(translator, genericBuffer, genericRenderer);
 
         return;
