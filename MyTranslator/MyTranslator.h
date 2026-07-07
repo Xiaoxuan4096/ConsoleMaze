@@ -29,6 +29,6 @@ namespace Xiaoxuan4096 {
 	};
 
 	template<typename ...Args> inline std::string MyTranslator::getTranslation(std::string original, Args && ...args) {
-		return std::vformat(dictionary.contains(original) ? dictionary[original] : "", std::make_format_args(args...)));
+		return std::vformat(dictionary.contains(original) ? dictionary[original] : "", std::make_format_args(args...));
 	}
 }

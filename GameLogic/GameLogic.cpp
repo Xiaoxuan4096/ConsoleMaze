@@ -87,8 +87,10 @@ namespace Xiaoxuan4096 {
         return;
     }
 
-    void startHint(MyTranslator& translator) {
-        generateDrawRequestDataFromString(translator["Title"], 0, 0);
+    void startHint(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer) {
+        buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("MainMenu"), 2, 0));
+        renderer.receiveBuffer(buffer.sendBuffer());
+        renderer.output();
         return;
     }
 
@@ -97,11 +99,13 @@ namespace Xiaoxuan4096 {
         MyTranslator translator;
         MyMatrix2D maze;
         MyFile genericReader;
+        MyRenderer genericRenderer;
+        MyBuffer genericBuffer;
 
         // Init.
         std::string currentLanguage = readCurrentLanguage(genericReader);
         readTranslation(currentLanguage, translator, genericReader);
-        startHint(translator);
+        startHint(translator, genericBuffer, genericRenderer);
 
         return;
     }

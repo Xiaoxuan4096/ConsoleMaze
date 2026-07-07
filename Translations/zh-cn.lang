@@ -1,1 +1,2 @@
-Title = ConsoleMaze：简单的控制台走迷宫程序。
+Title = ConsoleMaze：简单的控制台走迷宫程序。\n------------------------------------
+MainMenu = 输入 start 来开始游戏。\n输入 edit 来编辑关卡。\n输入 language 来更改语言。\n>>> 
