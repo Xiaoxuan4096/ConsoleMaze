@@ -18,8 +18,12 @@ namespace Xiaoxuan4096 {
 				buffer.addRow("");
 
 		for (size_t i = object.startRow; i < object.content.getRowCount() + object.startRow; i++) {
-			if (object.startCol >= buffer.getColCount(i)) // Create blank cols if necessary.
-				buffer.setRow(std::string(object.startCol + object.content.getLineWithoutDepth(i - object.startRow).size(), ' '), i);
+			if (object.startCol + object.content.getLineWithoutDepth(i - object.startRow).size() > buffer.getColCount(i)) { // Create blank cols if necessary.
+				std::vector<int> tmpDepths = buffer.getLineWithDepth(i).depths; // Save original depths data.
+				buffer.setRow(buffer.getLineWithoutDepth(i) + std::string(object.content.getLineWithoutDepth(i - object.startRow).size(), ' '), i);
+				for (size_t j = 0; j < tmpDepths.size(); j++) // Recovery original depths data.
+					buffer.setDepthOnly(tmpDepths[j], i, j);
+			}
 			for (size_t j = 0; j < object.content.getLineWithDepth(i - object.startRow).line.size(); j++) // Iterate the line.
 				buffer.setCharAndDepth(object.content.getLineWithDepth(i - object.startRow).line[j], object.content.getLineWithDepth(i - object.startRow).depths[j], i, object.startCol + j);
 		}

@@ -107,7 +107,7 @@ namespace Xiaoxuan4096 {
         renderer.output();
 
         while (!readInt(mode, 0, 2)) {
-            buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Retry", 0, 2), 6, 0));
+            buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Retry", 0, 2), 5, 0, 0));
             renderer.receiveBuffer(buffer.sendBuffer());
             renderer.output();
             buffer.clear();

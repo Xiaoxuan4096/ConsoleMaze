@@ -39,7 +39,9 @@ namespace Xiaoxuan4096 {
 				}
 				out << renderBuffer[i][j];
 			}
-			out << std::endl;
+			
+			if (i != renderBuffer.getRowCount() - 1) // Delete the \n at the end of the buffer.
+				out << std::endl;
 		}
 		return;
 	}
