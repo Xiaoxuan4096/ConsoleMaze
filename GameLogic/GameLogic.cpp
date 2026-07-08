@@ -67,12 +67,12 @@ namespace Xiaoxuan4096 {
         std::string currentLanguage, supportLanguage;
         std::vector<std::string> supportLanguageList;
 
-        reader.linkToFile("../Configs/CurrentLanguage.dat"); // Need to be modified in release.
+        reader.linkToFile("../Configs/CurrentLanguage.dat");
         currentLanguage = reader.read();
         currentLanguage.erase(currentLanguage.end() - 1); // Remove '\n'.
         reader.unlinkFile();
 
-        reader.linkToFile("../Translations/SupportLanguageList.dat"); // Need to be modified in release.
+        reader.linkToFile("../Translations/SupportLanguageList.dat");
         supportLanguage = reader.read();
         reader.unlinkFile();
 
@@ -97,7 +97,7 @@ namespace Xiaoxuan4096 {
     bool readIntInput(int& number, int minimal, int maximal, bool enterToSkip = false, std::istream& in = std::cin) {
         std::stringstream ss;
         std::string input;
-        int tmp; // Make sure that even a string is readed, the function can operate correctly.
+        int tmp;
 
         std::getline(in, input);
         if (input == "" && enterToSkip)
@@ -122,7 +122,7 @@ namespace Xiaoxuan4096 {
         renderer.output();
 
         while (!readIntInput(mode, 1, 4)) {
-            buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Retry", 1, 4), 6, 0));
+            buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("RetryInt", 1, 4), 6, 0));
             renderer.receiveBuffer(buffer.sendBuffer());
             renderer.output();
             buffer.clear();
@@ -154,6 +154,31 @@ namespace Xiaoxuan4096 {
         ss >> tmp;
 
         writer.linkToFile("../Levels/CurrentLevel.dat");
+        writer.rewrite(tmp);
+        writer.unlinkFile();
+
+        return;
+    }
+    int readMaximumLevel(MyFile& reader) {
+        int maximumLevel = 1;
+        std::stringstream ss;
+
+        reader.linkToFile("../Levels/MaximumLevel.dat");
+        ss << reader.read();
+        reader.unlinkFile();
+
+        if (ss.str() != "")
+            ss >> maximumLevel;
+        return maximumLevel;
+    }
+    void saveMaximumLevel(int maximumLevel, MyFile& writer) {
+        std::stringstream ss;
+        std::string tmp;
+
+        ss << maximumLevel;
+        ss >> tmp;
+
+        writer.linkToFile("../Levels/MaximumLevel.dat");
         writer.rewrite(tmp);
         writer.unlinkFile();
 
@@ -212,29 +237,98 @@ namespace Xiaoxuan4096 {
 
         return;
     }
+    std::string readIntInputWithExit(int& number, int minimal, int maximal, bool enterToSkip = false, std::istream& in = std::cin) {
+        std::stringstream ss;
+        std::string input;
+        int tmp;
+
+        std::getline(in, input);
+        if (input == "" && enterToSkip)
+            return "Progress";
+        if (input == "exit")
+            return "Exit";
+
+        ss << input;
+        ss >> tmp;
+
+        if (tmp >= minimal && tmp <= maximal) {
+            number = tmp;
+            return "Progress";
+        }
+        return "Fail";
+    }
 
     void game(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW) {
-        int currentLevel = readCurrentLevel(fileRW);
-        int level;
+        int currentLevel = readCurrentLevel(fileRW), maximumLevel = readMaximumLevel(fileRW), level;
+        MyMatrix2D maze;
+        double record;
+        size_t endx, endy, currentx, currenty;
         
         buffer.clear();
         buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("SelectLevel", currentLevel, 1, currentLevel), 2, 0));
         renderer.receiveBuffer(buffer.sendBuffer());
         renderer.output();
 
-        while (!readIntInput(level, 1, currentLevel, true)) {
-            buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Retry", 1, currentLevel), 3, 0));
+        std::string command = readIntInputWithExit(level, 1, currentLevel, true);
+        while (command == "Fail") {
+            buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("RetryMenu", 1, currentLevel), 4, 0));
             renderer.receiveBuffer(buffer.sendBuffer());
             renderer.output();
             buffer.clear();
             buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("SelectLevel", currentLevel, 1, currentLevel), 2, 0));
             renderer.receiveBuffer(buffer.sendBuffer());
             renderer.output();
+            command = readIntInputWithExit(level, 1, currentLevel, true);
         }
-        // Debug starts.
-        std::cout << "AMD yes!" << std::endl;
-        Sleep(3000);
-        // Debug ends.
+        if (command == "Exit")
+            return;
+
+        maze = readLevelMaze(level, fileRW);
+        record = readLevelRecord(level, fileRW);
+        for (size_t i = 0; i < maze.getRowCount(); i++)
+            for (size_t j = 0; j < maze.getColCount(i); j++) {
+                if (maze[i][j] == 'O') {
+                    currentx = i;
+                    currenty = j;
+                }
+                if (maze[i][j] == 'E') {
+                    endx = i;
+                    endy = j;
+                }
+            }
+        
+        while (currentx != endx && currenty != endy) {
+            char ch = _getch();
+            switch (ch) {
+                case 'w':
+                    if (maze[currentx][currenty - 1] != '#') {
+                        maze[currentx][currenty--] = ' ';
+                        maze[currentx][currenty] = 'O';
+                    }
+                    break;
+                case 'a':
+                    if (maze[currentx - 1][currenty] != '#') {
+                        maze[currentx--][currenty] = ' ';
+                        maze[currentx][currenty] = 'O';
+                    }
+                    break;
+                case 's':
+                    if (maze[currentx][currenty + 1] != '#') {
+                        maze[currentx][currenty++] = ' ';
+                        maze[currentx][currenty] = 'O';
+                    }
+                    break;
+                case 'd':
+                    if (maze[currentx + 1][currenty] != '#') {
+                        maze[currentx++][currenty] = ' ';
+                        maze[currentx][currenty] = 'O';
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+
         return;
     }
 
