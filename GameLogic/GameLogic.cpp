@@ -5,9 +5,11 @@
 // See LICENSE.txt for details.
 
 #include <iostream>
+#include <sstream>
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <limits>
 
 #include <conio.h>
 
@@ -87,7 +89,7 @@ namespace Xiaoxuan4096 {
         reader.unlinkFile();
         return;
     }
-    bool readInt(int& number, int minimal, int maximal, std::istream& in = std::cin) {
+    bool readIntInput(int& number, int minimal, int maximal, std::istream& in = std::cin) {
         int tmp;
         in >> tmp;
         if (tmp >= minimal && tmp <= maximal) {
@@ -104,7 +106,7 @@ namespace Xiaoxuan4096 {
         renderer.receiveBuffer(buffer.sendBuffer());
         renderer.output();
 
-        while (!readInt(mode, 0, 3)) {
+        while (!readIntInput(mode, 0, 3)) {
             buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Retry", 0, 3), 5, 0));
             renderer.receiveBuffer(buffer.sendBuffer());
             renderer.output();
@@ -117,7 +119,87 @@ namespace Xiaoxuan4096 {
         return mode;
     }
 
-    void game(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer) {
+    int readCurrentLevel(MyFile& reader) {
+        int currentLevel = 1;
+        std::stringstream ss;
+
+        reader.linkToFile("../Levels/CurrentLevel.dat");
+        ss << reader.read();
+        reader.unlinkFile();
+
+        if (ss.str() != "")
+            ss >> currentLevel;
+        return currentLevel;
+    }
+    void saveCurrentLevel(int currentLevel, MyFile& writer) {
+        std::stringstream ss;
+        std::string tmp;
+
+        ss << currentLevel;
+        ss >> tmp;
+
+        writer.linkToFile("../Levels/CurrentLevel.dat");
+        writer.rewrite(tmp);
+        writer.unlinkFile();
+
+        return;
+    }
+    
+    MyMatrix2D readLevelMaze(int level, MyFile& reader) {
+        std::stringstream ss;
+        std::string levelString;
+        MyMatrix2D maze;
+
+        ss << level;
+        ss >> levelString;
+
+        reader.linkToFile("../Levels/" + levelString + "/Maze.txt");
+        maze = generateMyMatrix2DFromString(reader.read());
+        reader.unlinkFile();
+
+        return maze;
+    }
+    double readLevelRecord(int level, MyFile& reader) {
+        std::stringstream ss;
+        std::string levelString, recordString;
+        double record;
+
+        ss << level;
+        ss >> levelString;
+
+        reader.linkToFile("../Levels/" + levelString + "/Record.dat");
+        recordString = reader.read();
+        reader.unlinkFile();
+
+        if (recordString == "")
+            record = std::numeric_limits<double>::max();
+        else {
+            ss.clear();
+            ss << recordString;
+            ss >> record;
+        }
+
+        return record;
+    }
+    void saveLevelRecord(int level, double record, MyFile& writer) {
+        std::stringstream ss;
+        std::string levelString, recordString;
+
+        ss << level;
+        ss >> levelString;
+        ss.clear();
+        ss << record;
+        ss >> recordString;
+
+        writer.linkToFile("../Levels/" + levelString + "/Record.dat");
+        writer.rewrite(recordString);
+        writer.unlinkFile();
+
+        return;
+    }
+
+    void game(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW) {
+        int currentLevel = readCurrentLevel(fileRW);
         return;
     }
 
@@ -149,7 +231,7 @@ namespace Xiaoxuan4096 {
         while (!exit)
             switch (mainMenu(translator, genericBuffer, genericRenderer)) {
                 case 0:
-                    game(translator, genericBuffer, genericRenderer);
+                    game(translator, genericBuffer, genericRenderer, genericFileRW);
                     break;
                 case 1:
                     editMenu(translator, genericBuffer, genericRenderer, genericFileRW);
