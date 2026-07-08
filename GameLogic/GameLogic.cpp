@@ -13,6 +13,11 @@
 
 #include <conio.h>
 
+// Debug starts.
+#define NOMINMAX
+#include <Windows.h>
+// Debug ends.
+
 #include "MyBuffer.h"
 #include "MyFile.h"
 #include "MyMatrix2D.h"
@@ -89,9 +94,18 @@ namespace Xiaoxuan4096 {
         reader.unlinkFile();
         return;
     }
-    bool readIntInput(int& number, int minimal, int maximal, std::istream& in = std::cin) {
-        int tmp;
-        in >> tmp;
+    bool readIntInput(int& number, int minimal, int maximal, bool enterToSkip = false, std::istream& in = std::cin) {
+        std::stringstream ss;
+        std::string input;
+        int tmp; // Make sure that even a string is readed, the function can operate correctly.
+
+        std::getline(in, input);
+        if (input == "" && enterToSkip)
+            return true;
+
+        ss << input;
+        ss >> tmp;
+        
         if (tmp >= minimal && tmp <= maximal) {
             number = tmp;
             return true;
@@ -102,12 +116,13 @@ namespace Xiaoxuan4096 {
     int mainMenu(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer) {
         int mode;
 
+        buffer.clear();
         buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("MainMenu"), 2, 0));
         renderer.receiveBuffer(buffer.sendBuffer());
         renderer.output();
 
-        while (!readIntInput(mode, 0, 3)) {
-            buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Retry", 0, 3), 5, 0));
+        while (!readIntInput(mode, 1, 4)) {
+            buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Retry", 1, 4), 6, 0));
             renderer.receiveBuffer(buffer.sendBuffer());
             renderer.output();
             buffer.clear();
@@ -200,18 +215,50 @@ namespace Xiaoxuan4096 {
 
     void game(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW) {
         int currentLevel = readCurrentLevel(fileRW);
+        int level;
+        
+        buffer.clear();
+        buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("SelectLevel", currentLevel, 1, currentLevel), 2, 0));
+        renderer.receiveBuffer(buffer.sendBuffer());
+        renderer.output();
+
+        while (!readIntInput(level, 1, currentLevel, true)) {
+            buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Retry", 1, currentLevel), 3, 0));
+            renderer.receiveBuffer(buffer.sendBuffer());
+            renderer.output();
+            buffer.clear();
+            buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("SelectLevel", currentLevel, 1, currentLevel), 2, 0));
+            renderer.receiveBuffer(buffer.sendBuffer());
+            renderer.output();
+        }
+        // Debug starts.
+        std::cout << "AMD yes!" << std::endl;
+        Sleep(3000);
+        // Debug ends.
         return;
     }
 
     void editMenu(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW) {
+        // Debug starts.
+        std::cout << "Edit!" << std::endl;
+        Sleep(3000);
+        // Debug ends.
         return;
     }
 
     void selectLanguage(MyBuffer& buffer, MyRenderer& renderer, MyFile& reader) {
+        // Debug starts.
+        std::cout << "Language!" << std::endl;
+        Sleep(3000);
+        // Debug ends.
         return;
     }
 
     void exitGame(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer) {
+        // Debug starts.
+        std::cout << "Exit!" << std::endl;
+        Sleep(3000);
+        // Debug ends.
         return;
     }
 
@@ -230,16 +277,16 @@ namespace Xiaoxuan4096 {
         // Game Logic.
         while (!exit)
             switch (mainMenu(translator, genericBuffer, genericRenderer)) {
-                case 0:
+                case 1:
                     game(translator, genericBuffer, genericRenderer, genericFileRW);
                     break;
-                case 1:
+                case 2:
                     editMenu(translator, genericBuffer, genericRenderer, genericFileRW);
                     break;
-                case 2:
+                case 3:
                     selectLanguage(genericBuffer, genericRenderer, genericFileRW);
                     break;
-                case 3:
+                case 4:
                     exitGame(translator, genericBuffer, genericRenderer);
                     exit = true;
                     break;
