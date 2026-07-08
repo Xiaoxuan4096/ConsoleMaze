@@ -42,7 +42,8 @@ namespace Xiaoxuan4096 {
 			}
 			tmpLine += x;
 		}
-		result.content.addRow(tmpLine, defaultDepth); // Add the last line and avoid content missing.
+		if (str[str.size() - 1] != '\n')
+			result.content.addRow(tmpLine, defaultDepth); // Add the last line and avoid content missing.
 
 		return result;
 	}
@@ -76,14 +77,9 @@ namespace Xiaoxuan4096 {
 		return result;
 	}
 
-	std::string readCurrentLanguage(MyFile& reader) {
-		std::string currentLanguage, supportLanguage;
+	std::vector<std::string> readSupportLanguageList(MyFile& reader) {
+		std::string supportLanguage;
 		std::vector<std::string> supportLanguageList;
-
-		reader.linkToFile("../Configs/CurrentLanguage.dat");
-		currentLanguage = reader.read();
-		currentLanguage.erase(currentLanguage.end() - 1); // Remove '\n'.
-		reader.unlinkFile();
 
 		reader.linkToFile("../Translations/SupportLanguageList.dat");
 		supportLanguage = reader.read();
@@ -99,9 +95,26 @@ namespace Xiaoxuan4096 {
 			tmpLanguage += x;
 		}
 
+		return supportLanguageList;
+	}
+	std::string readCurrentLanguage(MyFile& reader) {
+		std::string currentLanguage;
+		std::vector<std::string> supportLanguageList = readSupportLanguageList(reader);
+
+		reader.linkToFile("../Configs/CurrentLanguage.dat");
+		currentLanguage = reader.read();
+		currentLanguage.erase(currentLanguage.end() - 1); // Remove '\n'.
+		reader.unlinkFile();
+
 		return std::find(supportLanguageList.begin(), supportLanguageList.end(), currentLanguage) != supportLanguageList.end() ? currentLanguage : "zh-cn";
 	}
-	void readTranslation(const std::string& currentLanguage, MyTranslator& translator, MyFile& reader) {
+	void saveCurrentLanguage(std::string currentLanguage, MyFile& writer) {
+		writer.linkToFile("../Configs/CurrentLanguage.dat");
+		writer.rewrite(currentLanguage);
+		writer.unlinkFile();
+		return;
+	}
+	void readTranslation(std::string currentLanguage, MyTranslator& translator, MyFile& reader) {
 		reader.linkToFile("../Translations/" + currentLanguage + ".lang");
 		translator.setTranslationFromFile(reader.read());
 		reader.unlinkFile();
@@ -127,13 +140,16 @@ namespace Xiaoxuan4096 {
 	}
 	std::string readIntInputWithExit(int& number, int minimal, int maximal, bool enterToSkip = false, std::istream& in = std::cin) {
 		std::stringstream ss;
-		std::string input;
+		std::string input, inputToLower = "";
 		int tmp;
 
 		std::getline(in, input);
 		if (input == "" && enterToSkip)
 			return "Progress";
-		if (input == "exit")
+
+		for (char x : input)
+			inputToLower += isalpha(x) ? tolower(x) : x;
+		if (inputToLower == "exit")
 			return "Exit";
 
 		ss << input;
@@ -372,19 +388,48 @@ namespace Xiaoxuan4096 {
 	}
 
 	bool editMenu(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW) {
-		// Debug starts.
-		std::cout << "Edit!" << std::endl;
-		Sleep(3000);
-		// Debug ends.
 		return false;
 	}
 
-	bool selectLanguage(MyBuffer& buffer, MyRenderer& renderer, MyFile& reader) {
-		// Debug starts.
-		std::cout << "Language!" << std::endl;
-		Sleep(3000);
-		// Debug ends.
-		return false;
+	void selectLanguage(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW) {
+		std::string hint, tmp, inputLanguageToLower = "";
+		std::vector<std::string> supportLanguageList = readSupportLanguageList(fileRW);
+
+		fileRW.linkToFile("../Translations/LanguageHints.dat");
+		hint = fileRW.read();
+		fileRW.unlinkFile();
+
+		if (hint[hint.size() - 1] == '\n')
+			hint.erase(hint.end() - 1);
+
+		buffer.clear();
+		buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(hint, 2, 0));
+		renderer.receiveBuffer(buffer.sendBuffer());
+		renderer.output();
+
+		std::getline(std::cin, tmp);
+		for (char x : tmp)
+			inputLanguageToLower += isalpha(x) ? tolower(x) : x;
+
+		while (std::find(supportLanguageList.begin(), supportLanguageList.end(), inputLanguageToLower) == supportLanguageList.end()) {
+			buffer.clear();
+			buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("LanguageNotAvailable"), 2, 0));
+			renderer.receiveBuffer(buffer.sendBuffer());
+			renderer.output();
+			buffer.clear();
+			buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(hint, 2, 0));
+			renderer.receiveBuffer(buffer.sendBuffer());
+			renderer.output();
+
+			inputLanguageToLower = "";
+			std::getline(std::cin, tmp);
+			for (char x : tmp)
+				inputLanguageToLower += isalpha(x) ? tolower(x) : x;
+		}
+
+		saveCurrentLanguage(inputLanguageToLower, fileRW);
+		readTranslation(inputLanguageToLower, translator, fileRW);
+		return;
 	}
 
 	void exitGame(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer) {
@@ -403,8 +448,7 @@ namespace Xiaoxuan4096 {
 		bool exit = false;
 
 		// Init.
-		std::string currentLanguage = readCurrentLanguage(genericFileRW);
-		readTranslation(currentLanguage, translator, genericFileRW);
+		readTranslation(readCurrentLanguage(genericFileRW), translator, genericFileRW);
 
 		// Game Logic.
 		while (!exit)
@@ -416,7 +460,7 @@ namespace Xiaoxuan4096 {
 					while (editMenu(translator, genericBuffer, genericRenderer, genericFileRW));
 					break;
 				case 3:
-					while (selectLanguage(genericBuffer, genericRenderer, genericFileRW));
+					selectLanguage(translator, genericBuffer, genericRenderer, genericFileRW);
 					break;
 				case 4:
 					exitGame(translator, genericBuffer, genericRenderer);
