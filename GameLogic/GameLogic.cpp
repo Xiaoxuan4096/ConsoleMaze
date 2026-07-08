@@ -125,26 +125,25 @@ namespace Xiaoxuan4096 {
 		}
 		return false;
 	}
+	std::string readIntInputWithExit(int& number, int minimal, int maximal, bool enterToSkip = false, std::istream& in = std::cin) {
+		std::stringstream ss;
+		std::string input;
+		int tmp;
 
-	int mainMenu(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer) {
-		int mode;
+		std::getline(in, input);
+		if (input == "" && enterToSkip)
+			return "Progress";
+		if (input == "exit")
+			return "Exit";
 
-		buffer.clear();
-		buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("MainMenu"), 2, 0));
-		renderer.receiveBuffer(buffer.sendBuffer());
-		renderer.output();
+		ss << input;
+		ss >> tmp;
 
-		while (!readIntInput(mode, 1, 4)) {
-			buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("RetryInt", 1, 4), 6, 0));
-			renderer.receiveBuffer(buffer.sendBuffer());
-			renderer.output();
-			buffer.clear();
-			buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("MainMenu"), 2, 0));
-			renderer.receiveBuffer(buffer.sendBuffer());
-			renderer.output();
+		if (tmp >= minimal && tmp <= maximal) {
+			number = tmp;
+			return "Progress";
 		}
-
-		return mode;
+		return "Fail";
 	}
 
 	int readCurrentLevel(MyFile& reader) {
@@ -225,7 +224,7 @@ namespace Xiaoxuan4096 {
 		reader.unlinkFile();
 
 		if (recordString == "")
-			record = std::numeric_limits<unsigned long long>::max();
+			record = std::numeric_limits<long long>::max();
 		else {
 			ss.clear();
 			ss << recordString;
@@ -234,7 +233,7 @@ namespace Xiaoxuan4096 {
 
 		return record;
 	}
-	void saveLevelRecord(int level, unsigned long long record, MyFile& writer) {
+	void saveLevelRecord(int level, long long record, MyFile& writer) {
 		std::stringstream ss;
 		std::string levelString, recordString;
 
@@ -251,25 +250,25 @@ namespace Xiaoxuan4096 {
 		return;
 	}
 
-	std::string readIntInputWithExit(int& number, int minimal, int maximal, bool enterToSkip = false, std::istream& in = std::cin) {
-		std::stringstream ss;
-		std::string input;
-		int tmp;
+	int mainMenu(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer) {
+		int mode;
 
-		std::getline(in, input);
-		if (input == "" && enterToSkip)
-			return "Progress";
-		if (input == "exit")
-			return "Exit";
+		buffer.clear();
+		buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("MainMenu"), 2, 0));
+		renderer.receiveBuffer(buffer.sendBuffer());
+		renderer.output();
 
-		ss << input;
-		ss >> tmp;
-
-		if (tmp >= minimal && tmp <= maximal) {
-			number = tmp;
-			return "Progress";
+		while (!readIntInput(mode, 1, 4)) {
+			buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("RetryInt", 1, 4), 6, 0));
+			renderer.receiveBuffer(buffer.sendBuffer());
+			renderer.output();
+			buffer.clear();
+			buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("MainMenu"), 2, 0));
+			renderer.receiveBuffer(buffer.sendBuffer());
+			renderer.output();
 		}
-		return "Fail";
+
+		return mode;
 	}
 
 	bool game(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW) {
@@ -368,24 +367,24 @@ namespace Xiaoxuan4096 {
 			currentLevel++;
 			saveCurrentLevel(currentLevel, fileRW);
 		}
-		
+
 		return true;
 	}
 
-	void editMenu(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW) {
+	bool editMenu(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW) {
 		// Debug starts.
 		std::cout << "Edit!" << std::endl;
 		Sleep(3000);
 		// Debug ends.
-		return;
+		return false;
 	}
 
-	void selectLanguage(MyBuffer& buffer, MyRenderer& renderer, MyFile& reader) {
+	bool selectLanguage(MyBuffer& buffer, MyRenderer& renderer, MyFile& reader) {
 		// Debug starts.
 		std::cout << "Language!" << std::endl;
 		Sleep(3000);
 		// Debug ends.
-		return;
+		return false;
 	}
 
 	void exitGame(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer) {
@@ -412,13 +411,13 @@ namespace Xiaoxuan4096 {
 		while (!exit)
 			switch (mainMenu(translator, genericBuffer, genericRenderer)) {
 				case 1:
-					while(game(translator, genericBuffer, genericRenderer, genericFileRW));
+					while (game(translator, genericBuffer, genericRenderer, genericFileRW));
 					break;
 				case 2:
-					editMenu(translator, genericBuffer, genericRenderer, genericFileRW);
+					while (editMenu(translator, genericBuffer, genericRenderer, genericFileRW));
 					break;
 				case 3:
-					selectLanguage(genericBuffer, genericRenderer, genericFileRW);
+					while (selectLanguage(genericBuffer, genericRenderer, genericFileRW));
 					break;
 				case 4:
 					exitGame(translator, genericBuffer, genericRenderer);

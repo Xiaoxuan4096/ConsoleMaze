@@ -7,3 +7,4 @@ RetryMenu = 错误：请输入从 {} 到 {} 内的一个整数，或者输入 exit。\s3
 CurrentLevel = 当前处于第 {} 关。\n-------------------
 WinWithoutRecord = 恭喜完成第 {} 关！\n用时 {} 秒 {} 毫秒。\s3
 WinWithRecord = 恭喜完成第 {} 关！\n用时 {} 秒 {} 毫秒。\n新纪录！\s3
+Exit = 感谢游玩 ConsoleMase！\s3
