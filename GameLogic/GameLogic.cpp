@@ -388,10 +388,9 @@ namespace Xiaoxuan4096 {
 	}
 
 	void exitGame(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer) {
-		// Debug starts.
-		std::cout << "Exit!" << std::endl;
-		Sleep(3000);
-		// Debug ends.
+		buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Exit"), 6, 0));
+		renderer.receiveBuffer(buffer.sendBuffer());
+		renderer.output();
 		return;
 	}
 
