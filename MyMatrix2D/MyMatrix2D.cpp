@@ -4,6 +4,9 @@
 // This program is distributed under MIT License.
 // See LICENSE.txt for details.
 
+#include <string>
+#include <iterator>
+
 #include "MyMatrix2D.h"
 
 namespace Xiaoxuan4096 {

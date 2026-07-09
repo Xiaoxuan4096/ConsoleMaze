@@ -4,6 +4,8 @@
 // This program is distributed under MIT License.
 // See LICENSE.txt for details.
 
+#include <string>
+
 #include "MyTranslator.h"
 
 namespace Xiaoxuan4096 {

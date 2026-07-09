@@ -4,6 +4,10 @@
 // This program is distributed under MIT License.
 // See LICENSE.txt for details.
 
+#include <filesystem>
+#include <system_error>
+#include <string>
+
 #include "MyFile.h"
 
 namespace Xiaoxuan4096 {

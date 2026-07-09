@@ -4,6 +4,10 @@
 // This program is distributed under MIT License.
 // See LICENSE.txt for details.
 
+#include <vector>
+#include <string>
+
+#include "MyMatrix2D.h"
 #include "MyBuffer.h"
 
 namespace Xiaoxuan4096 {
