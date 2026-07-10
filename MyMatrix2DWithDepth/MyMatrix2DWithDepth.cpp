@@ -4,6 +4,10 @@
 // This program is distributed under MIT License.
 // See LICENSE.txt for details.
 
+#include <string>
+#include <vector>
+#include <iterator>
+
 #include "MyMatrix2DWithDepth.h"
 
 namespace Xiaoxuan4096 {

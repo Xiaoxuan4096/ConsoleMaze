@@ -4,6 +4,7 @@
 // This program is distributed under MIT License.
 // See LICENSE.txt for details.
 
+#include <ostream>
 #include <sstream>
 
 #include <cstdlib>
@@ -11,6 +12,7 @@
 #include <Windows.h>
 
 #include "MyRenderer.h"
+#include "MyMatrix2D.h"
 
 namespace Xiaoxuan4096 {
 	void MyRenderer::clear() {

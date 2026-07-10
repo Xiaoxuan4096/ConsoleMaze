@@ -5,19 +5,16 @@
 // See LICENSE.txt for details.
 
 #include <iostream>
+#include <istream>
 #include <sstream>
 #include <vector>
 #include <string>
 #include <algorithm>
 #include <limits>
 #include <chrono>
+#include <cctype>
 
 #include <conio.h>
-
-// Debug starts.
-#define NOMINMAX
-#include <Windows.h>
-// Debug ends.
 
 #include "MyBuffer.h"
 #include "MyFile.h"
@@ -26,7 +23,7 @@
 #include "MyTranslator.h"
 
 namespace Xiaoxuan4096 {
-	DrawRequestData generateDrawRequestDataFromString(std::string str, size_t startRow, size_t startCol, int defaultDepth = 0) { // Supports \n for a new line.
+	static DrawRequestData generateDrawRequestDataFromString(std::string str, size_t startRow, size_t startCol, int defaultDepth = 0) { // Supports \n for a new line.
 		DrawRequestData result;
 		result.startRow = startRow;
 		result.startCol = startCol;
@@ -47,7 +44,7 @@ namespace Xiaoxuan4096 {
 
 		return result;
 	}
-	DrawRequestData generateDrawRequestDataFromMyMatrix2D(MyMatrix2D matrix, size_t startRow, size_t startCol, int defaultDepth = 0) {
+	static DrawRequestData generateDrawRequestDataFromMyMatrix2D(MyMatrix2D matrix, size_t startRow, size_t startCol, int defaultDepth = 0) {
 		DrawRequestData result;
 		result.startRow = startRow;
 		result.startCol = startCol;
@@ -59,7 +56,7 @@ namespace Xiaoxuan4096 {
 
 		return result;
 	}
-	MyMatrix2D generateMyMatrix2DFromString(std::string str) { // Supports \n for a new line.
+	static MyMatrix2D generateMyMatrix2DFromString(std::string str) { // Supports \n for a new line.
 		MyMatrix2D result;
 		if (str.empty())
 			return result;
@@ -77,7 +74,7 @@ namespace Xiaoxuan4096 {
 		return result;
 	}
 
-	std::vector<std::string> readSupportLanguageList(MyFile& reader) {
+	static std::vector<std::string> readSupportLanguageList(MyFile& reader) {
 		std::string supportLanguage;
 		std::vector<std::string> supportLanguageList;
 
@@ -97,7 +94,7 @@ namespace Xiaoxuan4096 {
 
 		return supportLanguageList;
 	}
-	std::string readCurrentLanguage(MyFile& reader) {
+	static std::string readCurrentLanguage(MyFile& reader) {
 		std::string currentLanguage;
 		std::vector<std::string> supportLanguageList = readSupportLanguageList(reader);
 
@@ -108,19 +105,19 @@ namespace Xiaoxuan4096 {
 
 		return std::find(supportLanguageList.begin(), supportLanguageList.end(), currentLanguage) != supportLanguageList.end() ? currentLanguage : "zh-cn";
 	}
-	void saveCurrentLanguage(std::string currentLanguage, MyFile& writer) {
+	static void saveCurrentLanguage(std::string currentLanguage, MyFile& writer) {
 		writer.linkToFile("../Configs/CurrentLanguage.dat");
 		writer.rewrite(currentLanguage);
 		writer.unlinkFile();
 		return;
 	}
-	void readTranslation(std::string currentLanguage, MyTranslator& translator, MyFile& reader) {
+	static void readTranslation(std::string currentLanguage, MyTranslator& translator, MyFile& reader) {
 		reader.linkToFile("../Translations/" + currentLanguage + ".lang");
 		translator.setTranslationFromFile(reader.read());
 		reader.unlinkFile();
 		return;
 	}
-	bool readIntInput(int& number, int minimal, int maximal, bool enterToSkip = false, std::istream& in = std::cin) {
+	static bool readIntInput(int& number, int minimal, int maximal, bool enterToSkip = false, std::istream& in = std::cin) {
 		std::stringstream ss;
 		std::string input;
 		int tmp;
@@ -138,7 +135,7 @@ namespace Xiaoxuan4096 {
 		}
 		return false;
 	}
-	std::string readIntInputWithExit(int& number, int minimal, int maximal, bool enterToSkip = false, std::istream& in = std::cin) {
+	static std::string readIntInputWithExit(int& number, int minimal, int maximal, bool enterToSkip = false, std::istream& in = std::cin) {
 		std::stringstream ss;
 		std::string input, inputToLower = "";
 		int tmp;
@@ -162,7 +159,7 @@ namespace Xiaoxuan4096 {
 		return "Fail";
 	}
 
-	int readCurrentLevel(MyFile& reader) {
+	static int readCurrentLevel(MyFile& reader) {
 		int currentLevel = 1;
 		std::stringstream ss;
 
@@ -174,7 +171,7 @@ namespace Xiaoxuan4096 {
 			ss >> currentLevel;
 		return currentLevel;
 	}
-	void saveCurrentLevel(int currentLevel, MyFile& writer) {
+	static void saveCurrentLevel(int currentLevel, MyFile& writer) {
 		std::stringstream ss;
 		std::string tmp;
 
@@ -187,7 +184,7 @@ namespace Xiaoxuan4096 {
 
 		return;
 	}
-	int readMaximumLevel(MyFile& reader) {
+	static int readMaximumLevel(MyFile& reader) {
 		int maximumLevel = 1;
 		std::stringstream ss;
 
@@ -199,7 +196,7 @@ namespace Xiaoxuan4096 {
 			ss >> maximumLevel;
 		return maximumLevel;
 	}
-	void saveMaximumLevel(int maximumLevel, MyFile& writer) {
+	static void saveMaximumLevel(int maximumLevel, MyFile& writer) {
 		std::stringstream ss;
 		std::string tmp;
 
@@ -213,7 +210,7 @@ namespace Xiaoxuan4096 {
 		return;
 	}
 
-	MyMatrix2D readLevelMaze(int level, MyFile& reader) {
+	static MyMatrix2D readLevelMaze(int level, MyFile& reader) {
 		std::stringstream ss;
 		std::string levelString;
 		MyMatrix2D maze;
@@ -227,7 +224,7 @@ namespace Xiaoxuan4096 {
 
 		return maze;
 	}
-	long long readLevelRecord(int level, MyFile& reader) {
+	static long long readLevelRecord(int level, MyFile& reader) {
 		std::stringstream ss;
 		std::string levelString, recordString;
 		long long record;
@@ -249,7 +246,7 @@ namespace Xiaoxuan4096 {
 
 		return record;
 	}
-	void saveLevelRecord(int level, long long record, MyFile& writer) {
+	static void saveLevelRecord(int level, long long record, MyFile& writer) {
 		std::stringstream ss;
 		std::string levelString, recordString;
 
@@ -266,7 +263,7 @@ namespace Xiaoxuan4096 {
 		return;
 	}
 
-	int mainMenu(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer) {
+	static int mainMenu(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer) {
 		int mode;
 
 		buffer.clear();
@@ -287,7 +284,7 @@ namespace Xiaoxuan4096 {
 		return mode;
 	}
 
-	bool game(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW) {
+	static bool game(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW) {
 		int currentLevel = readCurrentLevel(fileRW), maximumLevel = readMaximumLevel(fileRW);
 		int level = currentLevel;
 		MyMatrix2D maze;
@@ -387,11 +384,11 @@ namespace Xiaoxuan4096 {
 		return true;
 	}
 
-	bool editMenu(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW) {
+	static bool editMenu(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW) {
 		return false;
 	}
 
-	void selectLanguage(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW) {
+	static void selectLanguage(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW) {
 		std::string hint, tmp, inputLanguageToLower = "";
 		std::vector<std::string> supportLanguageList = readSupportLanguageList(fileRW);
 
@@ -432,14 +429,14 @@ namespace Xiaoxuan4096 {
 		return;
 	}
 
-	void exitGame(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer) {
+	static void exitGame(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer) {
 		buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Exit"), 6, 0));
 		renderer.receiveBuffer(buffer.sendBuffer());
 		renderer.output();
 		return;
 	}
 
-	void mainLogic() {
+	static void mainLogic() {
 		// Generic Definitions.
 		MyTranslator translator;
 		MyFile genericFileRW;
