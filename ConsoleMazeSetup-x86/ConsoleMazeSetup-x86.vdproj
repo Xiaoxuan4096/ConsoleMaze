@@ -690,7 +690,7 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:ConsoleMazeSetup-x86"
+        "ProductName" = "8:ConsoleMaze"
         "ProductCode" = "8:{7EF9D5C9-0798-4031-97E3-D2248F6F3ECB}"
         "PackageCode" = "8:{E23EBE4C-897D-4504-A290-DF59711F7141}"
         "UpgradeCode" = "8:{26A4EA27-F7DA-4428-86BB-6FAD3C56DB2D}"
@@ -703,7 +703,7 @@
         "Manufacturer" = "8:Xiaoxuan4096"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:ConsoleMazeSetup-x86"
+        "Title" = "8:ConsoleMaze"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Xiaoxuan4096"
         "Keywords" = "8:"
