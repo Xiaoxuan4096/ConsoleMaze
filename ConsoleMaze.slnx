@@ -25,6 +25,10 @@
     <File Path="Translations/zh-cn.lang" />
     <File Path="Translations/zh-tw.lang" />
   </Folder>
+  <Folder Name="/解决方案项/">
+    <File Path="LICENSE.txt" />
+    <File Path="README.md" />
+  </Folder>
   <Project Path="ConsoleMazeSetup-x64/ConsoleMazeSetup-x64.vdproj" Type="Installer">
     <Build />
   </Project>

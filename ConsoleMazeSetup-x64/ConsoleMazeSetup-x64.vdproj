@@ -45,6 +45,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_3ACB1F572D27415E989183B999444200"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_3D3FB097E7DDD28A62CC73EDB5F823A2"
         "OwnerKey" = "8:_7FD82D4570D14419B0BF90BEACE6BAAB"
         "MsmSig" = "8:_UNDEFINED"
@@ -325,6 +331,26 @@
             "TargetName" = "8:LanguageHints.dat"
             "Tag" = "8:"
             "Folder" = "8:_81C06446699A4C61B1126D73DAFD4C03"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3ACB1F572D27415E989183B999444200"
+            {
+            "SourcePath" = "8:..\\GameLogic\\GameLogic.ico"
+            "TargetName" = "8:GameLogic.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_D2D6223F1A974B1AB5A59CFB68A92ABB"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -832,15 +858,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ConsoleMaze"
-        "ProductCode" = "8:{4073BEAE-6901-464F-B14A-A1FC8B4B6CE3}"
-        "PackageCode" = "8:{79990E3F-CC97-48E8-B367-651F7ADB05A4}"
+        "ProductCode" = "8:{904A7106-14B5-431E-91E1-8F33E3DF5247}"
+        "PackageCode" = "8:{E24A57C6-E287-471A-A68B-7598494F7C63}"
         "UpgradeCode" = "8:{7271A572-F140-4EAC-8C5D-166B2C652704}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:0.0.1"
+        "ProductVersion" = "8:0.0.3"
         "Manufacturer" = "8:Xiaoxuan4096"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -964,7 +990,7 @@
             "Target" = "8:_7FD82D4570D14419B0BF90BEACE6BAAB"
             "Folder" = "8:_D5D37A1B92A34CC5BAAED658C90EE073"
             "WorkingFolder" = "8:_D2D6223F1A974B1AB5A59CFB68A92ABB"
-            "Icon" = "8:"
+            "Icon" = "8:_3ACB1F572D27415E989183B999444200"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_FADA901541C64641A506C1AC879B8B2B"
@@ -978,7 +1004,7 @@
             "Target" = "8:_7FD82D4570D14419B0BF90BEACE6BAAB"
             "Folder" = "8:_8B347933D6374E14A32F4CB6E598C7DE"
             "WorkingFolder" = "8:_D2D6223F1A974B1AB5A59CFB68A92ABB"
-            "Icon" = "8:"
+            "Icon" = "8:_3ACB1F572D27415E989183B999444200"
             "Feature" = "8:"
             }
         }
