@@ -360,6 +360,8 @@ namespace Xiaoxuan4096 {
 						maze[currentx][currenty] = 'O';
 					}
 					break;
+				case 'q':
+					return true;
 				default:
 					break;
 			}
@@ -385,6 +387,10 @@ namespace Xiaoxuan4096 {
 	}
 
 	static bool editMenu(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW) {
+		buffer.clear();
+		buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("EditMenu"), 2, 0));
+		renderer.receiveBuffer(buffer.sendBuffer());
+		renderer.output();
 		return false;
 	}
 
