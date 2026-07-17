@@ -4,6 +4,8 @@
 // This program is distributed under MIT License.
 // See LICENSE.txt for details.
 
+#define NOMINMAX // Refer to: Line 21. 
+
 #include <iostream>
 #include <istream>
 #include <sstream>
@@ -12,9 +14,11 @@
 #include <algorithm>
 #include <limits>
 #include <chrono>
+
 #include <cctype>
 
 #include <conio.h>
+#include <Windows.h>
 
 #include "MyBuffer.h"
 #include "MyFile.h"
@@ -387,10 +391,31 @@ namespace Xiaoxuan4096 {
 	}
 
 	static bool editMenu(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW) {
+		int level, maximumLevel = readMaximumLevel(fileRW);
+
 		buffer.clear();
-		buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("EditMenu"), 2, 0));
+		buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("EditMenu", maximumLevel, 1, maximumLevel), 2, 0));
 		renderer.receiveBuffer(buffer.sendBuffer());
 		renderer.output();
+
+		std::string command = readIntInputWithExit(level, 1, maximumLevel);
+		while (command == "Fail") {
+			buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("RetryMenu", 1, maximumLevel), 4, 0));
+			renderer.receiveBuffer(buffer.sendBuffer());
+			renderer.output();
+			buffer.clear();
+			buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("EditMenu", maximumLevel, 1, maximumLevel), 2, 0));
+			renderer.receiveBuffer(buffer.sendBuffer());
+			renderer.output();
+			command = readIntInputWithExit(level, 1, maximumLevel);
+		}
+		if (command == "Exit")
+			return false;
+
+		buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("EditHint"), 2, 0));
+		renderer.receiveBuffer(buffer.sendBuffer());
+		renderer.output();
+
 		return false;
 	}
 
