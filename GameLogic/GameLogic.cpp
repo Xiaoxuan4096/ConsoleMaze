@@ -4,6 +4,8 @@
 // This program is distributed under MIT License.
 // See LICENSE.txt for details.
 
+#define NOMINMAX // Refer to: Line 23. 
+
 #include <iostream>
 #include <istream>
 #include <sstream>
@@ -12,9 +14,13 @@
 #include <algorithm>
 #include <limits>
 #include <chrono>
+#include <filesystem>
+#include <system_error>
+
 #include <cctype>
 
 #include <conio.h>
+#include <Windows.h>
 
 #include "MyBuffer.h"
 #include "MyFile.h"
@@ -137,16 +143,17 @@ namespace Xiaoxuan4096 {
 	}
 	static std::string readIntInputWithExit(int& number, int minimal, int maximal, bool enterToSkip = false, std::istream& in = std::cin) {
 		std::stringstream ss;
-		std::string input, inputToLower = "";
-		int tmp;
+		std::string input;
+		int tmp = std::numeric_limits<int>::min();
 
 		std::getline(in, input);
 		if (input == "" && enterToSkip)
 			return "Progress";
 
-		for (char x : input)
-			inputToLower += isalpha(x) ? tolower(x) : x;
-		if (inputToLower == "exit")
+		for (size_t i = 0; i < input.size(); i++)
+			if (isalpha(input[i]))
+				input[i] = tolower(input[i]);
+		if (input == "exit")
 			return "Exit";
 
 		ss << input;
@@ -157,6 +164,20 @@ namespace Xiaoxuan4096 {
 			return "Progress";
 		}
 		return "Fail";
+	}
+	static std::string readStringInput(bool enterToSkip = false, const std::string defaultReturn = "Exit", std::istream& in = std::cin) {
+		std::string input;
+
+		std::getline(in, input);
+		if (input == "" && enterToSkip)
+			return defaultReturn;
+
+		if (isalpha(input[0]))
+			input[0] = toupper(input[0]);
+		for (size_t i = 1; i < input.size(); i++)
+			if (isalpha(input[i]))
+				input[i] = tolower(input[i]);
+		return input;
 	}
 
 	static int readCurrentLevel(MyFile& reader) {
@@ -379,19 +400,162 @@ namespace Xiaoxuan4096 {
 		renderer.output();
 
 		if (level == currentLevel && currentLevel < maximumLevel) {
-			currentLevel++;
-			saveCurrentLevel(currentLevel, fileRW);
+			saveCurrentLevel(++currentLevel, fileRW);
 		}
 
 		return true;
 	}
 
 	static bool editMenu(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW) {
+		int level, maximumLevel = readMaximumLevel(fileRW);
+		std::stringstream ss;
+		std::wstringstream ssW;
+		std::string levelString, command;
+		std::wstring levelStringW;
+
 		buffer.clear();
-		buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("EditMenu"), 2, 0));
+		buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("EditMenu", maximumLevel, 1, maximumLevel + 1), 2, 0));
 		renderer.receiveBuffer(buffer.sendBuffer());
 		renderer.output();
-		return false;
+
+		command = readIntInputWithExit(level, 1, maximumLevel + 1);
+		while (command == "Fail") {
+			buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("RetryMenu", 1, maximumLevel + 1), 4, 0));
+			renderer.receiveBuffer(buffer.sendBuffer());
+			renderer.output();
+			buffer.clear();
+			buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("EditMenu", maximumLevel, 1, maximumLevel + 1), 2, 0));
+			renderer.receiveBuffer(buffer.sendBuffer());
+			renderer.output();
+			command = readIntInputWithExit(level, 1, maximumLevel + 1);
+		}
+		if (command == "Exit")
+			return false;
+
+		ss << level;
+		ss >> levelString;
+		ssW << level;
+		ssW >> levelStringW;
+
+		fileRW.linkToFile("../Levels/" + levelString + "/Maze.txt");
+		if (fileRW.exist()) {
+			buffer.clear();
+			buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("EditOrDeleteHint", level), 2, 0));
+			renderer.receiveBuffer(buffer.sendBuffer());
+			renderer.output();
+
+			command = readStringInput(true, "Edit");
+			while (command != "Exit" && command != "Delete" && command != "Edit") {
+				buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("RetryEditOrDeleteHint"), 6, 0));
+				renderer.receiveBuffer(buffer.sendBuffer());
+				renderer.output();
+				buffer.clear();
+				buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("EditOrDeleteHint", level), 2, 0));
+				renderer.receiveBuffer(buffer.sendBuffer());
+				renderer.output();
+				command = readStringInput(true);
+			}
+			if (command == "Delete") {
+				if (level == maximumLevel) {
+					fileRW.deleteFile();
+					std::error_code ec;
+					std::filesystem::remove("../Levels/" + levelString, ec);
+				}
+				buffer.clear();
+				buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(level == maximumLevel ? translator.getTranslation("DeleteAcception", level) : translator.getTranslation("DeleteRejection"), 2, 0));
+				renderer.receiveBuffer(buffer.sendBuffer());
+				renderer.output();
+
+				saveMaximumLevel(--maximumLevel, fileRW);
+			}
+			else
+				if (command == "Edit") {
+					buffer.clear();
+					buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("EditHint", level), 2, 0));
+					renderer.receiveBuffer(buffer.sendBuffer());
+					renderer.output();
+
+					std::wstring path = L"../Levels/" + levelStringW + L"/Maze.txt";
+
+					SHELLEXECUTEINFOW sei = {};
+					sei.cbSize = sizeof(sei);
+					sei.fMask = SEE_MASK_NOCLOSEPROCESS;
+					sei.lpVerb = L"open";
+					sei.lpFile = L"notepad.exe";
+					sei.lpParameters = path.c_str();
+					sei.nShow = SW_SHOWNORMAL;
+
+					if (!ShellExecuteExW(&sei))
+						return false;
+					if (sei.hProcess != NULL && sei.hProcess != INVALID_HANDLE_VALUE) {
+						WaitForSingleObject(sei.hProcess, INFINITE);
+
+						DWORD exitCode;
+						GetExitCodeProcess(sei.hProcess, &exitCode);
+						CloseHandle(sei.hProcess);
+					}
+				}
+		}
+		else {
+			buffer.clear();
+			buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("CreateHint", level), 2, 0));
+			renderer.receiveBuffer(buffer.sendBuffer());
+			renderer.output();
+
+			command = readStringInput(true, "Create");
+			while (command != "Exit" && command != "Create") {
+				buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("RetryCreateHint"), 6, 0));
+				renderer.receiveBuffer(buffer.sendBuffer());
+				renderer.output();
+				buffer.clear();
+				buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("CreateHint", level), 2, 0));
+				renderer.receiveBuffer(buffer.sendBuffer());
+				renderer.output();
+				command = readStringInput(true, "Create");
+			}
+			if (command == "Create") {
+				if (level == maximumLevel + 1) {
+					std::error_code ec;
+					std::filesystem::create_directory("../Levels/" + levelString, ec);
+					fileRW.rewrite("");
+					fileRW.unlinkFile();
+
+					buffer.clear();
+					buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("CreateAcception", level), 2, 0), generateDrawRequestDataFromString(translator.getTranslation("EditHint", level), 3, 0));
+					renderer.receiveBuffer(buffer.sendBuffer());
+					renderer.output();
+
+					std::wstring path = L"../Levels/" + levelStringW + L"/Maze.txt";
+
+					SHELLEXECUTEINFOW sei = {};
+					sei.cbSize = sizeof(sei);
+					sei.fMask = SEE_MASK_NOCLOSEPROCESS;
+					sei.lpVerb = L"open";
+					sei.lpFile = L"notepad.exe";
+					sei.lpParameters = path.c_str();
+					sei.nShow = SW_SHOWNORMAL;
+
+					if (!ShellExecuteExW(&sei))
+						return false;
+					if (sei.hProcess != NULL && sei.hProcess != INVALID_HANDLE_VALUE) {
+						WaitForSingleObject(sei.hProcess, INFINITE);
+
+						DWORD exitCode;
+						GetExitCodeProcess(sei.hProcess, &exitCode);
+						CloseHandle(sei.hProcess);
+					}
+					saveMaximumLevel(++maximumLevel, fileRW);
+				}
+				else {
+					buffer.clear();
+					buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("CreateRejection"), 6, 0));
+					renderer.receiveBuffer(buffer.sendBuffer());
+					renderer.output();
+				}
+			}
+		}
+
+		return true;
 	}
 
 	static void selectLanguage(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW) {

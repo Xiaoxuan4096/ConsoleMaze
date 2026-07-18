@@ -104,4 +104,8 @@ namespace Xiaoxuan4096 {
 		newestContent = true;
 		return content;
 	}
+
+	bool MyFile::exist() {
+		return std::filesystem::exists(filePath);
+	}
 }

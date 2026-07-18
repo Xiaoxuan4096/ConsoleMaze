@@ -29,5 +29,8 @@ namespace Xiaoxuan4096 {
 
 		// Read From File.
 		std::string read();
+
+		// Check Status.
+		bool exist();
 	};
 }

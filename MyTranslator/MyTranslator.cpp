@@ -84,6 +84,6 @@ namespace Xiaoxuan4096 {
 	}
 
 	std::string MyTranslator::getTranslation(std::string original) {
-		return dictionary.contains(original) ? dictionary[original] : "";
+		return dictionary.contains(original) ? dictionary[original] : original;
 	}
 }
