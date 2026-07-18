@@ -15,12 +15,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MyMatrix2D.cpp">
+    <ClCompile Include="MyRenderer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MyMatrix2D.h">
+    <ClInclude Include="MyRenderer.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
@@ -28,7 +28,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="MyMatrix2D.rc">
+    <ResourceCompile Include="MyRenderer.rc">
       <Filter>资源文件</Filter>
     </ResourceCompile>
   </ItemGroup>
