@@ -1,5 +1,5 @@
 # ConsoleMaze
-[简体中文版](#zh-cn) | [繁体中文版](#zh-tw)
+[简体中文版](#zh-cn) | [繁体中文版](#zh-tw) | [English Version](#en-us)
 
 ---
 <a id="zh-cn"></a>
@@ -26,3 +26,16 @@
 ### 使用方法
 請依照選單上的提示操作。  
 如果您需要切換語言，請輸入 `3`，然後根據選單提示操作。
+
+---
+<a id="en-us"></a>
+## English Version
+Current version: v1.0.0 (Build 1.0.9695.13046).
+
+This is a simple console maze game.  
+Use the `W`, `A`, `S`, `D` keys to control the ball `O` and guide it to the exit `E` to complete each level.  
+Try to beat your best time on every level!
+
+### How to Use
+Please follow the on-screen menu prompts.  
+To switch languages, enter `3` and follow the menu instructions.
