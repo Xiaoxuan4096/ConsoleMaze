@@ -20,6 +20,7 @@
     <File Path="Levels/3/Maze.txt" />
   </Folder>
   <Folder Name="/Translations/">
+    <File Path="Translations/en-us.lang" />
     <File Path="Translations/LanguageHints.dat" />
     <File Path="Translations/SupportLanguageList.dat" />
     <File Path="Translations/zh-cn.lang" />

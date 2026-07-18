@@ -458,6 +458,11 @@ namespace Xiaoxuan4096 {
 			if (command == "Delete") {
 				if (level == maximumLevel) {
 					fileRW.deleteFile();
+					fileRW.linkToFile("../Levels/" + levelString + "/Record.dat");;
+					if (fileRW.exist())
+						fileRW.deleteFile();
+					else
+						fileRW.unlinkFile();
 					std::error_code ec;
 					std::filesystem::remove("../Levels/" + levelString, ec);
 				}
@@ -474,6 +479,13 @@ namespace Xiaoxuan4096 {
 					buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("EditHint", level), 2, 0));
 					renderer.receiveBuffer(buffer.sendBuffer());
 					renderer.output();
+
+					fileRW.unlinkFile();
+					fileRW.linkToFile("../Levels/" + levelString + "/Record.dat");;
+					if (fileRW.exist())
+						fileRW.deleteFile();
+					else
+						fileRW.unlinkFile();
 
 					std::wstring path = L"../Levels/" + levelStringW + L"/Maze.txt";
 
