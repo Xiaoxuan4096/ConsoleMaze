@@ -69,6 +69,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_4D3C6EC301EB4146BA86EF26BB36513B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_519D21EAD1CF4F159D461FD4E004F5AB"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -409,6 +415,26 @@
             {
             "SourcePath" = "8:..\\Translations\\SupportLanguageList.dat"
             "TargetName" = "8:SupportLanguageList.dat"
+            "Tag" = "8:"
+            "Folder" = "8:_81C06446699A4C61B1126D73DAFD4C03"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4D3C6EC301EB4146BA86EF26BB36513B"
+            {
+            "SourcePath" = "8:..\\Translations\\en-us.lang"
+            "TargetName" = "8:en-us.lang"
             "Tag" = "8:"
             "Folder" = "8:_81C06446699A4C61B1126D73DAFD4C03"
             "Condition" = "8:"
