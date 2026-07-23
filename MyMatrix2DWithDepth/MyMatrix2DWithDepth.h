@@ -53,8 +53,8 @@ namespace Xiaoxuan4096 {
 		void setCharAndDepth(char c, int depth, size_t row, size_t col, bool discardOldCharAndDepth = false); // Note that an invalid position will make no change to the matrix.
 
 		// Get Data.
-		std::string getLineWithoutDepth(size_t row); // Get a line and discard depth information. Note that giving an invalid row is an undefined behavior.
-		LineWithDepth getLineWithDepth(size_t row); // Get a line with depth information. Note that giving an invalid row is an undefined behavior.
+		std::string getLineWithoutDepth(size_t row); // Get a line and discard depth information. Note that giving an invalid row will get an empty object.
+		LineWithDepth getLineWithDepth(size_t row); // Get a line with depth information. Note that giving an invalid row will get an empty object.
 		size_t getRowCount();
 		size_t getMinColCount(); // If data is empty, this will return a 0.
 		size_t getMaxColCount(); // If data is empty, this will return a 0.

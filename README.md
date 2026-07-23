@@ -4,7 +4,7 @@
 ---
 <a id="zh-cn"></a>
 ## 简体中文版
-当前版本：v1.0.0(Build 1.0.9695.19880)。
+当前版本：v1.0.1(Build 1.0.9700.30938)。
 
 这是一个简单的控制台走迷宫程序。  
 您需要通过 `W`、`A`、`S`、`D` 四个键控制小球 `O` 的移动，让小球 `O` 走到出口 `E` 处来完成关卡。  
@@ -17,7 +17,7 @@
 ---
 <a id="zh-tw"></a>
 ## 繁體中文版
-當前版本：v1.0.0(Build 1.0.9695.19880)。
+當前版本：v1.0.1(Build 1.0.9700.30938)。
 
 這是一個簡單的主控台走迷宮程式。  
 您需要透過 `W`、`A`、`S`、`D` 四個鍵控制小球 `O` 的移動，讓小球 `O` 走到出口 `E` 處來完成關卡。  
@@ -30,7 +30,7 @@
 ---
 <a id="en-us"></a>
 ## English Version
-Current version: v1.0.0 (Build 1.0.9695.13046).
+Current version: v1.0.1 (Build 1.0.9700.30938).
 
 This is a simple console maze game.  
 Use the `W`, `A`, `S`, `D` keys to control the ball `O` and guide it to the exit `E` to complete each level.  
