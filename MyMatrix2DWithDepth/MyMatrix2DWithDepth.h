@@ -21,7 +21,7 @@ namespace Xiaoxuan4096 {
 		LineWithDepth(std::string str, int defaultDepth) : line(str), depths(str.size(), defaultDepth) {}; // Set line and default depth.
 		LineWithDepth(std::string str, std::vector<int> depth) : line(str) { // Manually set depth information.
 			depths.resize(line.size(), 0);
-			std::copy(depth.begin(), depth.begin() + std::min(depth.size(), line.size()), depths.begin());
+			std::copy(depth.begin(), depth.begin() + (std::min)(depth.size(), line.size()), depths.begin());
 			return;
 		};
 	};
