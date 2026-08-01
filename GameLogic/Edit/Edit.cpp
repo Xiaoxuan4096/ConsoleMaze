@@ -78,7 +78,7 @@ namespace Xiaoxuan4096 {
 		renderer.output();
 
 		fileRW.unlinkFile();
-		fileRW.linkToFile("../Levels/" + levelString + "/Record.dat");;
+		fileRW.linkToFile("../Levels/" + levelString + "/Record.dat");
 		if (fileRW.exist())
 			fileRW.deleteFile();
 		else
@@ -89,7 +89,7 @@ namespace Xiaoxuan4096 {
 	static void deleteLevel(int level, int maximumLevel, std::string levelString, MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW) {
 		if (level == maximumLevel) {
 			fileRW.deleteFile();
-			fileRW.linkToFile("../Levels/" + levelString + "/Record.dat");;
+			fileRW.linkToFile("../Levels/" + levelString + "/Record.dat");
 			if (fileRW.exist())
 				fileRW.deleteFile();
 			else
@@ -102,7 +102,7 @@ namespace Xiaoxuan4096 {
 		renderer.receiveBuffer(buffer.sendBuffer());
 		renderer.output();
 
-		saveMaximumLevel(--maximumLevel, fileRW);
+		saveMaximumLevel(level == maximumLevel ? --maximumLevel : maximumLevel, fileRW);
 	}
 
 	bool editMenu(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW) {
