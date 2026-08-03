@@ -7,8 +7,6 @@
 #include <ostream>
 #include <sstream>
 
-#include <cstdlib>
-
 #include <Windows.h>
 
 #include "MyRenderer.h"
@@ -26,7 +24,7 @@ namespace Xiaoxuan4096 {
 	}
 
 	void MyRenderer::output(std::ostream& out) {
-		system("cls");
+		out << "\033[2J\033[H" << std::flush;
 		for (size_t i = 0; i < renderBuffer.getRowCount(); i++) {
 			for (size_t j = 0; j < renderBuffer.getColCount(i); j++) {
 				if (renderBuffer[i][j] == '\\' && renderBuffer[i][j + 1] == 's') { // Support for \sd sleeping. d is a decimal number range from 0 to 9.
