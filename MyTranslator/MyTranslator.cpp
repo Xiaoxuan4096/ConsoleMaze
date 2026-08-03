@@ -58,6 +58,12 @@ namespace Xiaoxuan4096 {
 						case '\?':
 							tmpValue += '\?';
 							break;
+						case '0':
+							if (fileContent[i + 1] == '3' && fileContent[i + 2] == '3')
+								tmpValue += '\033';
+							else
+								tmpValue += '\0';
+							break;
 						default:
 							tmpValue += '\\';
 							tmpValue += fileContent[i];
