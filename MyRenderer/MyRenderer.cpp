@@ -7,6 +7,8 @@
 #include <ostream>
 #include <sstream>
 
+#include <cctype>
+
 #include <Windows.h>
 
 #include "MyRenderer.h"
@@ -27,7 +29,7 @@ namespace Xiaoxuan4096 {
 		out << "\033[2J\033[H" << std::flush;
 		for (size_t i = 0; i < renderBuffer.getRowCount(); i++) {
 			for (size_t j = 0; j < renderBuffer.getColCount(i); j++) {
-				if (renderBuffer[i][j] == '\\' && renderBuffer[i][j + 1] == 's') { // Support for \sd sleeping. d is a decimal number range from 0 to 9.
+				if (renderBuffer[i][j] == '\\' && j + 2 < renderBuffer.getColCount(i) && renderBuffer[i][j + 1] == 's' && isdigit(renderBuffer[i][j + 2])) { // Support for \sd sleeping. d is a decimal number range from 0 to 9.
 					int sleepSecond;
 					std::stringstream ss;
 
@@ -39,7 +41,7 @@ namespace Xiaoxuan4096 {
 				}
 				out << renderBuffer[i][j];
 			}
-			
+
 			if (i != renderBuffer.getRowCount() - 1) // Delete the \n at the end of the buffer.
 				out << std::endl;
 		}
