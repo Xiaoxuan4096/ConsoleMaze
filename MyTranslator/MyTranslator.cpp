@@ -23,7 +23,7 @@ namespace Xiaoxuan4096 {
 			if (fileContent[i] != ' ' || fileContent[i + 1] != '=' || fileContent[i + 2] != ' ') // Check format.
 				return;
 			for (i += 3; fileContent[i] != '\n'; i++) {
-				if (fileContent[i] == '\\') {
+				if (fileContent[i] == '\\' && i+1 < fileContent.size()) {
 					switch (fileContent[++i]) {
 						case 'n':
 							tmpValue += '\n';
@@ -59,8 +59,10 @@ namespace Xiaoxuan4096 {
 							tmpValue += '\?';
 							break;
 						case '0':
-							if (fileContent[i + 1] == '3' && fileContent[i + 2] == '3')
+							if (fileContent[i + 1] == '3' && fileContent[i + 2] == '3') {
 								tmpValue += '\033';
+								i += 2; 
+							}
 							else
 								tmpValue += '\0';
 							break;
