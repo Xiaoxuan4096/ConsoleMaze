@@ -69,6 +69,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_4D3C6EC301EB4146BA86EF26BB36513B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_519D21EAD1CF4F159D461FD4E004F5AB"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -409,6 +415,26 @@
             {
             "SourcePath" = "8:..\\Translations\\SupportLanguageList.dat"
             "TargetName" = "8:SupportLanguageList.dat"
+            "Tag" = "8:"
+            "Folder" = "8:_81C06446699A4C61B1126D73DAFD4C03"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4D3C6EC301EB4146BA86EF26BB36513B"
+            {
+            "SourcePath" = "8:..\\Translations\\en-us.lang"
+            "TargetName" = "8:en-us.lang"
             "Tag" = "8:"
             "Folder" = "8:_81C06446699A4C61B1126D73DAFD4C03"
             "Condition" = "8:"
@@ -858,15 +884,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:ConsoleMaze"
-        "ProductCode" = "8:{014B60F9-14EB-4DA8-9ECF-D08869B75B09}"
-        "PackageCode" = "8:{3A603C4F-5F8C-4D28-BBDC-FAA1460DA1CE}"
+        "ProductCode" = "8:{C63E6DD8-3D5F-4B8B-87E9-6922E7209910}"
+        "PackageCode" = "8:{4A4CC2BB-875B-466B-801F-0019390B0AF0}"
         "UpgradeCode" = "8:{7271A572-F140-4EAC-8C5D-166B2C652704}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:0.1.0"
+        "ProductVersion" = "8:1.1.0"
         "Manufacturer" = "8:Xiaoxuan4096"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

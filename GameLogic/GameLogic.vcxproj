@@ -131,7 +131,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DataRW\DataRW.cpp" />
+    <ClCompile Include="Edit\Edit.cpp" />
     <ClCompile Include="GameLogic.cpp" />
+    <ClCompile Include="Game\Game.cpp" />
+    <ClCompile Include="GenerateDrawRequestData\GenerateDrawRequestData.cpp" />
+    <ClCompile Include="Language\Language.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyBuffer\MyBuffer.vcxproj">
@@ -151,6 +156,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DataRW\DataRW.h" />
+    <ClInclude Include="Edit\Edit.h" />
+    <ClInclude Include="Game\Game.h" />
+    <ClInclude Include="GenerateDrawRequestData\GenerateDrawRequestData.h" />
+    <ClInclude Include="Language\Language.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>

@@ -13,15 +13,75 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="头文件\GenerateDrawRequestData">
+      <UniqueIdentifier>{fa70cd09-6207-4935-86fe-97ffb50f57f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\GenerateDrawRequestData">
+      <UniqueIdentifier>{2c7dfd56-9a8c-4c65-99d0-8572c7c09b90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\DataRW">
+      <UniqueIdentifier>{fec18ee7-11b8-4220-a394-8dd6dbfdc6d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\DataRW">
+      <UniqueIdentifier>{27ba2652-6d6d-4766-8a0b-f969ef41741b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Game">
+      <UniqueIdentifier>{b7086aec-d9b4-4ae5-b7a2-98784ad5414b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Game">
+      <UniqueIdentifier>{8cfa571d-cee1-441e-abf9-f11f5bc3c3b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Edit">
+      <UniqueIdentifier>{36224201-c005-4d18-a8f6-e57de34f4977}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Edit">
+      <UniqueIdentifier>{d1e8bdfa-12d9-4582-9348-61309aad761d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Language">
+      <UniqueIdentifier>{4a030d00-6bd7-4aa3-b7d4-d2c0af8ab3af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Language">
+      <UniqueIdentifier>{0c6fa93b-4de1-434c-8b36-5f8ac8becb47}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameLogic.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="GenerateDrawRequestData\GenerateDrawRequestData.cpp">
+      <Filter>源文件\GenerateDrawRequestData</Filter>
+    </ClCompile>
+    <ClCompile Include="DataRW\DataRW.cpp">
+      <Filter>源文件\DataRW</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Game.cpp">
+      <Filter>源文件\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Edit\Edit.cpp">
+      <Filter>源文件\Edit</Filter>
+    </ClCompile>
+    <ClCompile Include="Language\Language.cpp">
+      <Filter>源文件\Language</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="GenerateDrawRequestData\GenerateDrawRequestData.h">
+      <Filter>头文件\GenerateDrawRequestData</Filter>
+    </ClInclude>
+    <ClInclude Include="DataRW\DataRW.h">
+      <Filter>头文件\DataRW</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Game.h">
+      <Filter>头文件\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Edit\Edit.h">
+      <Filter>头文件\Edit</Filter>
+    </ClInclude>
+    <ClInclude Include="Language\Language.h">
+      <Filter>头文件\Language</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

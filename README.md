@@ -1,15 +1,11 @@
 # ConsoleMaze
-[简体中文版](#zh-cn) | [繁体中文版](#zh-tw)
+[简体中文版](#zh-cn) | [繁体中文版](#zh-tw) | [English Version](#en-us)
 
 ---
 <a id="zh-cn"></a>
 ## 简体中文版
-当前版本：v0.1.0-PreRelease(Build 0.1.9695.5379)。
-> [!CAUTION]
-> 预发布版本并不稳定，可能出现各种问题，包括但不限于无法运行、没有输出等。  
-> 同时，预发布版本可能缺少功能。  
-> **对因使用预发布版本造成的损失，在中华人民共和国适用法律法规许可的最大限度内，作者不承担任何责任。**  
-> 请您三思而行，谨慎安装。  
+最新正式发行版：v1.0.3(Build 1.0.9709.23508)。  
+最新预发行版：v1.1.0-PreRelease(Build 1.1.9711.29948)。
 
 这是一个简单的控制台走迷宫程序。  
 您需要通过 `W`、`A`、`S`、`D` 四个键控制小球 `O` 的移动，让小球 `O` 走到出口 `E` 处来完成关卡。  
@@ -22,12 +18,8 @@
 ---
 <a id="zh-tw"></a>
 ## 繁體中文版
-當前版本：v0.1.0-PreRelease(Build 0.1.9695.5379)。
-> [!CAUTION]
-> 預發行版本並不穩定，可能出現各種問題，包括但不限於無法執行、沒有輸出等。  
-> 同時，預發行版本可能缺少功能。  
-> **對因使用預發行版本造成的損失，在中華人民共和國適用法律法規許可的最大限度內，作者不承擔任何責任。**  
-> 請您三思而行，謹慎安裝。  
+最新正式發行版：v1.0.3(Build 1.0.9709.23508)。  
+最新預發行版：v1.1.0-PreRelease(Build 1.1.9711.29948)。
 
 這是一個簡單的主控台走迷宮程式。  
 您需要透過 `W`、`A`、`S`、`D` 四個鍵控制小球 `O` 的移動，讓小球 `O` 走到出口 `E` 處來完成關卡。  
@@ -36,3 +28,17 @@
 ### 使用方法
 請依照選單上的提示操作。  
 如果您需要切換語言，請輸入 `3`，然後根據選單提示操作。
+
+---
+<a id="en-us"></a>
+## English Version
+Current release version: v1.0.3 (Build 1.0.9709.23508).  
+Current pre-release version: v1.1.0-PreRelease(Build 1.1.9711.29948).
+
+This is a simple console maze game.  
+Use the `W`, `A`, `S`, `D` keys to control the ball `O` and guide it to the exit `E` to complete each level.  
+Try to beat your best time on every level!
+
+### How to Use
+Please follow the on-screen menu prompts.  
+To switch languages, enter `3` and follow the menu instructions.
