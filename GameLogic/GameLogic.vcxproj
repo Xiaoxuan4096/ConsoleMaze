@@ -94,6 +94,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)MyFile;$(SolutionDir)MyBuffer;$(SolutionDir)MyRenderer;$(SolutionDir)MyMatrix2D;$(SolutionDir)MyMatrix2DWithDepth;$(SolutionDir)MyTranslator;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
