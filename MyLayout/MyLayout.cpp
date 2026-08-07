@@ -7,6 +7,7 @@
 #include <vector>
 #include <string>
 #include <sstream>
+#include <utility>
 
 #include <cctype>
 
@@ -29,12 +30,32 @@ namespace Xiaoxuan4096 {
 		ss >> result;
 		return result;
 	}
-
-	static std::pair<std::string, DrawRequestData> splitSingleLine(std::string singleLine) { // Use: key = {startRow}, {startCol}, {depth}, "value".
-		size_t pos;
-		int depth;
-		std::string tmp, key, value;
+	DrawRequestData MyLayout::LayoutDataToDrawRequestData(LayoutData layout) {
 		DrawRequestData result;
+		result.startRow = layout.startRow;
+		result.startCol = layout.startCol;
+		if (layout.value.empty())
+			return result;
+
+		std::string tmpLine;
+		for (char x : layout.value) {
+			if (x == '\n') {
+				result.content.addRow(tmpLine, layout.depth); // Create a new line.
+				tmpLine.clear();
+				continue;
+			}
+			tmpLine += x;
+		}
+		if (!layout.value.empty() && layout.value[layout.value.size() - 1] != '\n')
+			result.content.addRow(tmpLine, layout.depth); // Add the last line and avoid content missing.
+
+		return result;
+	}
+
+	std::pair<std::string, LayoutData> MyLayout::splitSingleLine(std::string singleLine) { // Use: key = {startRow}, {startCol}, {depth}, "value".
+		size_t pos;
+		std::string tmp, key, value;
+		LayoutData result;
 
 		for (pos = 0; pos < singleLine.size() && singleLine[pos] != '='; pos++)
 			if (singleLine[pos] != ' ')
@@ -57,7 +78,7 @@ namespace Xiaoxuan4096 {
 		for (pos++; pos < singleLine.size() && singleLine[pos] != ','; pos++)
 			if (isdigit(singleLine[pos]) || singleLine[pos] == '-')
 				tmp += singleLine[pos];
-		depth = stringToInt(tmp);
+		result.depth = stringToInt(tmp);
 
 		tmp.clear();
 		for (pos++; pos < singleLine.size() && singleLine[pos] != '\"'; pos++); // Move to the start of value.
@@ -124,19 +145,7 @@ namespace Xiaoxuan4096 {
 			}
 			tmp += singleLine[pos];
 		}
-		value = tmp;
-
-		tmp.clear();
-		for (char x : value) {
-			if (x == '\n') {
-				result.content.addRow(tmp, depth); // Create a new line.
-				tmp.clear();
-				continue;
-			}
-			tmp += x;
-		}
-		if (!value.empty() && value[value.size() - 1] != '\n')
-			result.content.addRow(tmp, depth); // Add the last line and avoid content missing.
+		result.value = tmp;
 
 		return std::make_pair(key, result);
 	}
@@ -163,5 +172,11 @@ namespace Xiaoxuan4096 {
 		for (std::string str : layoutList)
 			dictionary.insert(splitSingleLine(str));
 		return;
+	}
+
+	DrawRequestData MyLayout::getLayout(std::string original) {
+		if (dictionary.contains(original))
+			return LayoutDataToDrawRequestData(dictionary[original]);
+		return LayoutDataToDrawRequestData(splitSingleLine(std::string("tmp = 0, 0, 0, ") + original).second);
 	}
 }
