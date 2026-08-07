@@ -1,0 +1,31 @@
+# 这是 "简体中文"(zh-cn) 的 "深色"(Dark) 布局文件。
+# 由 Xiaoxuan4096 编写。
+
+# 本文件支持注释功能。
+# 如果需要添加注释，请将 '#' 符号添加到行首。
+
+# 本文件遵循 MIT License 分发。
+# 详细信息请参阅 LICENSE.txt。
+
+Title = 0, 0, 0, "ConsoleMaze：简单的控制台走迷宫程序。\n-------------------------------------"
+MainMenu = 2, 0, 0, "输入 1 开始游戏。\n输入 2 编辑关卡。\n输入 3 更改语言。\n输入 4 退出游戏。\n>>> "
+RetryIntForMainMenu = 7, 0, 1, "\x1b[91m错误：请输入从 {} 到 {} 内的一个整数。\x1b[37m\s3"
+SelectLevel = 2, 0, 0, "当前处于第 {} 关。按下 Enter 以开始当前关卡，或者输入从 {} 到 {} 的数字来选择关卡。\n输入 exit 以返回主菜单。\n>>> "
+RetryMenuForSelectLevel = 4, 0, 1, "\x1b[91m错误：请输入从 {} 到 {} 内的一个整数，或者输入 exit。\x1b[37m\s3"
+CurrentLevel = 0, 0, 0, "当前处于第 {} 关。按下 q 可以退出当前关卡。\n------------------------------------------"
+WinWithoutRecord = 2, 0, 0, "恭喜完成第 {} 关！\n用时 {} 秒 {} 毫秒。\s3"
+WinWithRecord = 2, 0, 0, "恭喜完成第 {} 关！\n用时 {} 秒 {} 毫秒。\n\x1b[96m新纪录！\x1b[37m\s3"
+EditMenu = 2, 0, 0, "当前可用关卡共 {} 关。输入从 {} 到 {} 的数字来选择编辑的关卡。\n输入 exit 以返回主菜单。\n>>> "
+RetryMenuForEditMenu = 4, 0, 1, "\x1b[91m错误：请输入从 {} 到 {} 内的一个整数，或者输入 exit。\x1b[37m\s3"
+RetryCreateHint = 6, 0, 0, "\x1b[91m错误：请输入 create，按下 Enter，或者输入 exit。\x1b[37m\s3"
+CreateHint = 2, 0, 0, "当前选择的关卡是第 {} 关，该关卡目前并不存在。\n按下 Enter 键或者输入 create 以创建并编辑关卡。\n输入 exit 以返回主菜单。\n>>> "
+CreateAcception = 2, 0, 0, "已创建第 {} 关。"
+CreateRejection = 6, 0, 0, "\x1b[91m错误：您只能创建最大关卡后面的 1 个关卡。\x1b[37m\s3"
+EditHintForCreate = 3, 0, 0, "当前选择的关卡是第 {} 关。\n程序即将打开一个文本编辑器窗口。\x1b[93m继续操作前，请关闭文本编辑器窗口。\x1b[37m\n强烈建议您使用等宽字体进行编辑。\s3"
+RetryEditOrDeleteHint = 6, 0, 0, "\x1b[91m错误：请输入 delete，输入 edit，按下 Enter，或者输入 exit。\x1b[37m\s3"
+EditOrDeleteHint = 2, 0, 0, "当前选择的关卡是第 {} 关。\n按下 Enter 键或者输入 edit 以编辑关卡。\n输入 delete 以删除关卡。注意：此操作不可撤销！\n输入 exit 以返回主菜单。\n>>> "
+DeleteRejection = 2, 0, 0, "\x1b[91m错误：您只能删除关卡列表中的最后一关。\x1b[37m\s3"
+DeleteAcception = 2, 0, 0, "已删除第 {} 关。\s2"
+EditHint = 2, 0, 0, "当前选择的关卡是第 {} 关。\n程序即将打开一个文本编辑器窗口。\x1b[93m继续操作前，请关闭文本编辑器窗口。\x1b[37m\n强烈建议您使用等宽字体进行编辑。\s3"
+LanguageNotAvailable = 2, 0, 0, "\x1b[91m错误：您输入的语言不可用。\x1b[37m\s3"
+Exit = 6, 0, 0, "感谢游玩 ConsoleMaze！\s3"

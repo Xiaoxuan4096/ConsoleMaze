@@ -6,6 +6,11 @@
   <Folder Name="/Configs/">
     <File Path="Configs/CurrentLanguage.dat" />
   </Folder>
+  <Folder Name="/Layouts/" />
+  <Folder Name="/Layouts/zh-cn/">
+    <File Path="Layouts/zh-cn/Dark.layout" />
+    <File Path="Layouts/zh-cn/ThemeLists.dat" />
+  </Folder>
   <Folder Name="/Levels/">
     <File Path="Levels/CurrentLevel.dat" />
     <File Path="Levels/MaximumLevel.dat" />
@@ -41,6 +46,7 @@
     <BuildDependency Project="MyMatrix2D/MyMatrix2D.vcxproj" />
   </Project>
   <Project Path="MyFile/MyFile.vcxproj" Id="b18a2525-849e-4737-b839-9351e22b9fcf" />
+  <Project Path="MyLayout/MyLayout.vcxproj" Id="ee346b16-2e06-4bce-b9f9-ee24dbe49ba1" />
   <Project Path="MyMatrix2D/MyMatrix2D.vcxproj" Id="09c2d83b-d42e-44cb-970a-5b3ab94af88d" />
   <Project Path="MyMatrix2DWithDepth/MyMatrix2DWithDepth.vcxproj" Id="1851e580-46da-4bb5-b792-c838e1f09da5" />
   <Project Path="MyRenderer/MyRenderer.vcxproj" Id="9a7f0c70-373a-42fe-82ff-588e1b79cd27" />
