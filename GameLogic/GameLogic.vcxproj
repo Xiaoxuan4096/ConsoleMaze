@@ -77,7 +77,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)MyFile;$(SolutionDir)MyBuffer;$(SolutionDir)MyRenderer;$(SolutionDir)MyMatrix2D;$(SolutionDir)MyMatrix2DWithDepth;$(SolutionDir)MyTranslator;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)MyLayout;$(SolutionDir)MyFile;$(SolutionDir)MyBuffer;$(SolutionDir)MyRenderer;$(SolutionDir)MyMatrix2D;$(SolutionDir)MyMatrix2DWithDepth;$(SolutionDir)MyTranslator;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -93,7 +93,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)MyFile;$(SolutionDir)MyBuffer;$(SolutionDir)MyRenderer;$(SolutionDir)MyMatrix2D;$(SolutionDir)MyMatrix2DWithDepth;$(SolutionDir)MyTranslator;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)MyLayout;$(SolutionDir)MyFile;$(SolutionDir)MyBuffer;$(SolutionDir)MyRenderer;$(SolutionDir)MyMatrix2D;$(SolutionDir)MyMatrix2DWithDepth;$(SolutionDir)MyTranslator;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -108,7 +108,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)MyFile;$(SolutionDir)MyBuffer;$(SolutionDir)MyRenderer;$(SolutionDir)MyMatrix2D;$(SolutionDir)MyMatrix2DWithDepth;$(SolutionDir)MyTranslator;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)MyLayout;$(SolutionDir)MyFile;$(SolutionDir)MyBuffer;$(SolutionDir)MyRenderer;$(SolutionDir)MyMatrix2D;$(SolutionDir)MyMatrix2DWithDepth;$(SolutionDir)MyTranslator;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -124,7 +124,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)MyFile;$(SolutionDir)MyBuffer;$(SolutionDir)MyRenderer;$(SolutionDir)MyMatrix2D;$(SolutionDir)MyMatrix2DWithDepth;$(SolutionDir)MyTranslator;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)MyLayout;$(SolutionDir)MyFile;$(SolutionDir)MyBuffer;$(SolutionDir)MyRenderer;$(SolutionDir)MyMatrix2D;$(SolutionDir)MyMatrix2DWithDepth;$(SolutionDir)MyTranslator;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,6 +145,9 @@
     </ProjectReference>
     <ProjectReference Include="..\MyFile\MyFile.vcxproj">
       <Project>{b18a2525-849e-4737-b839-9351e22b9fcf}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\MyLayout\MyLayout.vcxproj">
+      <Project>{ee346b16-2e06-4bce-b9f9-ee24dbe49ba1}</Project>
     </ProjectReference>
     <ProjectReference Include="..\MyMatrix2D\MyMatrix2D.vcxproj">
       <Project>{09c2d83b-d42e-44cb-970a-5b3ab94af88d}</Project>
