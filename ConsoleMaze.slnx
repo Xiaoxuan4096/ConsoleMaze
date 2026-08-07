@@ -5,10 +5,17 @@
   </Configurations>
   <Folder Name="/Configs/">
     <File Path="Configs/CurrentLanguage.dat" />
+    <File Path="Configs/CurrentTheme.dat" />
   </Folder>
-  <Folder Name="/Layouts/" />
+  <Folder Name="/Layouts/">
+    <File Path="Layouts/DefaultLanguage.dat" />
+    <File Path="Layouts/LanguageHints.dat" />
+    <File Path="Layouts/SupportLanguageList.dat" />
+  </Folder>
   <Folder Name="/Layouts/zh-cn/">
     <File Path="Layouts/zh-cn/Dark.layout" />
+    <File Path="Layouts/zh-cn/DefaultTheme.dat" />
+    <File Path="Layouts/zh-cn/ThemeHints.dat" />
     <File Path="Layouts/zh-cn/ThemeLists.dat" />
   </Folder>
   <Folder Name="/Levels/">

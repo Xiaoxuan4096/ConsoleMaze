@@ -7,13 +7,13 @@
 #include "MyBuffer.h"
 #include "MyFile.h"
 #include "MyRenderer.h"
-#include "MyTranslator.h"
+#include "MyLayout.h"
 
 #include "GenerateDrawRequestData/GenerateDrawRequestData.h"
 #include "DataRW/DataRW.h"
 #include "Game/Game.h"
 #include "Edit/Edit.h"
-#include "Language/Language.h"
+#include "Layout/Layout.h"
 
 namespace Xiaoxuan4096 {
 	static int mainMenu(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer) {

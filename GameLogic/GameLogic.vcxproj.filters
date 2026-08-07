@@ -43,6 +43,12 @@
     <Filter Include="头文件\Language">
       <UniqueIdentifier>{0c6fa93b-4de1-434c-8b36-5f8ac8becb47}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\Layout">
+      <UniqueIdentifier>{890bf751-6f49-446a-8d65-7026e7d88b63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Layout">
+      <UniqueIdentifier>{fe30ea89-1a2d-462e-8a62-59ff980fc8f2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameLogic.cpp">
@@ -63,6 +69,9 @@
     <ClCompile Include="Language\Language.cpp">
       <Filter>源文件\Language</Filter>
     </ClCompile>
+    <ClCompile Include="Layout\Layout.cpp">
+      <Filter>源文件\Layout</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -82,6 +91,9 @@
     </ClInclude>
     <ClInclude Include="Language\Language.h">
       <Filter>头文件\Language</Filter>
+    </ClInclude>
+    <ClInclude Include="Layout\Layout.h">
+      <Filter>头文件\Layout</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
