@@ -12,11 +12,26 @@
     <File Path="Layouts/LanguageHints.dat" />
     <File Path="Layouts/SupportLanguageList.dat" />
   </Folder>
+  <Folder Name="/Layouts/en-us/">
+    <File Path="Layouts/en-us/Dark.layout" />
+    <File Path="Layouts/en-us/DefaultTheme.dat" />
+    <File Path="Layouts/en-us/Light.layout" />
+    <File Path="Layouts/en-us/ThemeHints.dat" />
+    <File Path="Layouts/en-us/ThemeLists.dat" />
+  </Folder>
   <Folder Name="/Layouts/zh-cn/">
     <File Path="Layouts/zh-cn/Dark.layout" />
     <File Path="Layouts/zh-cn/DefaultTheme.dat" />
+    <File Path="Layouts/zh-cn/Light.layout" />
     <File Path="Layouts/zh-cn/ThemeHints.dat" />
     <File Path="Layouts/zh-cn/ThemeLists.dat" />
+  </Folder>
+  <Folder Name="/Layouts/zh-tw/">
+    <File Path="Layouts/zh-tw/Dark.layout" />
+    <File Path="Layouts/zh-tw/DefaultTheme.dat" />
+    <File Path="Layouts/zh-tw/Light.layout" />
+    <File Path="Layouts/zh-tw/ThemeHints.dat" />
+    <File Path="Layouts/zh-tw/ThemeLists.dat" />
   </Folder>
   <Folder Name="/Levels/">
     <File Path="Levels/CurrentLevel.dat" />

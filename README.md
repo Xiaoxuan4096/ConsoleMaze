@@ -4,7 +4,7 @@
 ---
 <a id="zh-cn"></a>
 ## 简体中文版
-最新正式发行版：v1.1.0(Build 1.1.9712.12040)。  
+最新正式发行版：v1.2.1(Build 1.2.9716.20850)。  
 最新预发行版：v1.2.0-PreRelease(Build 1.2.9716.12034)。
 
 这是一个简单的控制台走迷宫程序。  
@@ -18,7 +18,7 @@
 ---
 <a id="zh-tw"></a>
 ## 繁體中文版
-最新正式發行版：v1.1.0(Build 1.1.9712.12040)。  
+最新正式發行版：v1.2.1(Build 1.2.9716.20850)。  
 最新預發行版：v1.2.0-PreRelease(Build 1.2.9716.12034)。
 
 這是一個簡單的主控台走迷宮程式。  
@@ -32,7 +32,7 @@
 ---
 <a id="en-us"></a>
 ## English Version
-Current release version: v1.1.0(Build 1.1.9712.12040).  
+Current release version: v1.2.1(Build 1.2.9716.20850).  
 Current pre-release version: v1.2.0-PreRelease(Build 1.2.9716.12034).
 
 This is a simple console maze game.  

@@ -4,10 +4,7 @@
 // This program is distributed under MIT License.
 // See LICENSE.txt for details.
 
-#include <iostream>
 #include <string>
-
-#include <Windows.h>
 
 #include "MyBuffer.h"
 #include "MyFile.h"
@@ -72,36 +69,20 @@ namespace Xiaoxuan4096 {
 		return;
 	}
 
-	static void mainLogic() {
+	static void mainLogic(bool exp) {
 		// Generic Definitions.
 		MyTranslator translator;
 		MyFile genericFileRW;
 		MyRenderer genericRenderer;
 		MyBuffer genericBuffer;
 		MyLayout layout;
-		bool exit = false, exp = false;
-
-		if (readCurrentLanguage1(genericFileRW) == "zh-cn") {
-			std::string confirm;
-			std::cout << "本程序正在迁移到一套全新的布局系统。简体中文用户可优先尝鲜！" << std::endl
-				<< "\x1b[33m启用实验性布局系统可能使程序出现错误。\x1b[37m" << std::endl
-				<< "如果您不希望启用实验性布局系统，请直接按下回车。" << std::endl
-				<< "如果您执意启用实验性布局系统，请仔细阅读并输入以下内容，注意不需要输入双引号：" << std::endl
-				<< "\"我理解实验性布局系统存在稳定性风险。我自愿启用，并在此明确放弃就使用该系统所引发的任何损失，向开发者主张赔偿或追索的权利。\"" << std::endl
-				<< ">>> ";
-			getline(std::cin, confirm);
-			exp = confirm == "我理解实验性布局系统存在稳定性风险。我自愿启用，并在此明确放弃就使用该系统所引发的任何损失，向开发者主张赔偿或追索的权利。";
-			if (exp)
-				std::cout << "已经启用实验性布局系统。" << std::endl;
-			else
-				std::cout << "将使用传统布局系统。" << std::endl;
-			Sleep(3000);
-		}
+		bool exit = false;
 
 		// Init.
 		if (exp)
 			readLayout(readCurrentLanguage(genericFileRW), readCurrentTheme(readCurrentLanguage(genericFileRW), genericFileRW), layout, genericFileRW);
-		readTranslation1(readCurrentLanguage1(genericFileRW), translator, genericFileRW);
+		else
+			readTranslation1(readCurrentLanguage1(genericFileRW), translator, genericFileRW);
 
 		// Game Logic.
 		while (!exit)
@@ -130,7 +111,7 @@ namespace Xiaoxuan4096 {
 	}
 }
 
-int main() {
-	Xiaoxuan4096::mainLogic();
+int main(int argc, char* argv[]) {
+	Xiaoxuan4096::mainLogic(argc != 2 || std::string(argv[1]) != "--Legacy");
 	return 0;
 }
