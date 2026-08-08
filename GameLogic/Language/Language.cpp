@@ -49,13 +49,13 @@ namespace Xiaoxuan4096 {
 		return;
 	}
 
-	void readTranslation(std::string currentLanguage, MyTranslator& translator, MyFile& reader) {
+	void readTranslation1(std::string currentLanguage, MyTranslator& translator, MyFile& reader) {
 		reader.linkToFile("../Translations/" + currentLanguage + ".lang");
 		translator.setTranslationFromFile(reader.read());
 		reader.unlinkFile();
 		return;
 	}
-	std::string readCurrentLanguage(MyFile& reader) {
+	std::string readCurrentLanguage1(MyFile& reader) {
 		std::string currentLanguage;
 		std::vector<std::string> supportLanguageList = readSupportLanguageList(reader);
 
@@ -67,7 +67,7 @@ namespace Xiaoxuan4096 {
 		return std::find(supportLanguageList.begin(), supportLanguageList.end(), currentLanguage) != supportLanguageList.end() ? currentLanguage : "zh-cn";
 	}
 
-	void selectLanguage(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW) {
+	void selectLanguage1(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW) {
 		std::string hint, tmp, inputLanguageToLower = "";
 		std::vector<std::string> supportLanguageList = readSupportLanguageList(fileRW);
 
@@ -104,7 +104,7 @@ namespace Xiaoxuan4096 {
 		}
 
 		saveCurrentLanguage(inputLanguageToLower, fileRW);
-		readTranslation(inputLanguageToLower, translator, fileRW);
+		readTranslation1(inputLanguageToLower, translator, fileRW);
 		return;
 	}
 }

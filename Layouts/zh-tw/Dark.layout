@@ -1,0 +1,47 @@
+# 這是 "繁體中文"(zh-tw) 的 "深色"(Dark) 佈局檔案。
+# 由 Xiaoxuan4096 編寫。
+
+# 本檔案遵循 MIT License 散佈。
+# 詳細資訊請參閱 LICENSE.txt。
+
+# 本檔案支援註解功能。
+# 如果需要加入註解，請將 '#' 符號加入到行首。
+
+# 每一行代表一個獨立的條目。
+# 條目遵循如下格式：Key = {StartRow}, {StartCol}, {Depth}, "Value"
+# Key 與程式內相關呼叫綁定，不建議修改。
+# {StartRow} 是一個類型為 size_t 的數，指定起始行。
+# {StartCol} 是一個類型為 size_t 的數，指定起始列。
+# {Depth} 是一個類型為 int 的數，指定本元件的深度。
+# "Value" 表示元件顯示的內容，其中兩邊的雙引號並不會被包含在值中。
+# 如果需要在 Value 中插入雙引號，請使用跳脫字元 \"。
+# 同理，Value 中支援常見的跳脫字元，也支援使用 \033 和 \x1b 進行 ANSI 跳脫。
+
+# Value 中出現的 "{}" 在輸出的時候，程式會將其替換為實際的變數值。
+
+# 下面 Title 欄位中的 \033[2J\033[H 是利用清屏來更新主題。
+Title = 0, 0, 0, "\x1b[40m\x1b[37m\033[2J\033[HConsoleMaze：簡單的控制臺走迷宮程式。\n-------------------------------------"
+MainMenu = 2, 0, 0, "輸入 1 開始遊戲。\n輸入 2 編輯關卡。\n輸入 3 變更語言和主題。\n輸入 4 退出遊戲。\n>>> "
+RetryIntForMainMenu = 6, 0, 1, "\x1b[91m錯誤：請輸入從 {} 到 {} 內的一個整數。\x1b[37m\s3"
+SelectLevel = 2, 0, 0, "目前處於第 {} 關。按下 Enter 以開始目前關卡，或者輸入從 {} 到 {} 的數字來選擇關卡。\n輸入 exit 以返回主選單。\n>>> "
+RetryMenuForSelectLevel = 4, 0, 1, "\x1b[91m錯誤：請輸入從 {} 到 {} 內的一個整數，或者輸入 exit。\x1b[37m\s3"
+CurrentLevel = 0, 0, 0, "目前處於第 {} 關。按下 q 可以退出目前關卡。\n------------------------------------------"
+WinWithoutRecord = 2, 0, 0, "恭喜完成第 {} 關！\n用時 {} 秒 {} 毫秒。\s3"
+WinWithRecord = 2, 0, 0, "恭喜完成第 {} 關！\n用時 {} 秒 {} 毫秒。\n\x1b[96m新紀錄！\x1b[37m\s3"
+EditMenu = 2, 0, 0, "目前可用關卡共 {} 關。輸入從 {} 到 {} 的數字來選擇編輯的關卡。\n輸入 exit 以返回主選單。\n>>> "
+RetryMenuForEditMenu = 4, 0, 1, "\x1b[91m錯誤：請輸入從 {} 到 {} 內的一個整數，或者輸入 exit。\x1b[37m\s3"
+RetryCreateHint = 6, 0, 0, "\x1b[91m錯誤：請輸入 create，按下 Enter，或者輸入 exit。\x1b[37m\s3"
+CreateHint = 2, 0, 0, "目前選擇的關卡是第 {} 關，該關卡目前並不存在。\n按下 Enter 鍵或者輸入 create 以建立並編輯關卡。\n輸入 exit 以返回主選單。\n>>> "
+CreateAcception = 2, 0, 0, "已建立第 {} 關。"
+CreateRejection = 6, 0, 0, "\x1b[91m錯誤：您只能建立最大關卡後面的 1 個關卡。\x1b[37m\s3"
+EditHintForCreate = 3, 0, 0, "目前選擇的關卡是第 {} 關。\n程式即將開啟一個文字編輯器視窗。\x1b[93m繼續操作前，請關閉文字編輯器視窗。\x1b[37m\n強烈建議您使用等寬字體進行編輯。\s3"
+RetryEditOrDeleteHint = 6, 0, 0, "\x1b[91m錯誤：請輸入 delete，輸入 edit，按下 Enter，或者輸入 exit。\x1b[37m\s3"
+EditOrDeleteHint = 2, 0, 0, "目前選擇的關卡是第 {} 關。\n按下 Enter 鍵或者輸入 edit 以編輯關卡。\n\x1b[91m輸入 delete 以刪除關卡。注意：此操作不可復原！\x1b[37m\n輸入 exit 以返回主選單。\n>>> "
+DeleteRejection = 2, 0, 0, "\x1b[91m錯誤：您只能刪除關卡列表中的最後一關。\x1b[37m\s3"
+DeleteAcception = 2, 0, 0, "已刪除第 {} 關。\s2"
+EditHintForEdit = 2, 0, 0, "目前選擇的關卡是第 {} 關。\n程式即將開啟一個文字編輯器視窗。\x1b[93m繼續操作前，請關閉文字編輯器視窗。\x1b[37m\n強烈建議您使用等寬字體進行編輯。\s3"
+LanguageNotAvailable = 2, 0, 0, "\x1b[91m錯誤：您輸入的語言不可用。\x1b[37m\s3"
+ThemeNotAvailable = 2, 0, 0, "\x1b[91m錯誤：您輸入的主題不可用。請檢查大小寫和全半形字元等。\x1b[37m\s3"
+LanguageOrThemeMenu = 2, 0, 0, "輸入 1 更換語言。\n輸入 2 更換主題。\n輸入 exit 以返回主選單。\n>>> "
+RetryMenuForLanguageOrTheme = 6, 0, 1, "\x1b[91m錯誤：請輸入從 {} 到 {} 內的一個整數，或者輸入 exit。\x1b[37m\s3"
+Exit = 6, 0, 0, "感謝遊玩 ConsoleMaze！\s3"

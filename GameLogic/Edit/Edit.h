@@ -10,7 +10,8 @@
 #include "MyBuffer.h"
 #include "MyRenderer.h"
 #include "MyFile.h"
+#include "MyLayout.h"
 
 namespace Xiaoxuan4096 {
-	bool editMenu(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW);
+	bool editMenu(MyLayout& layout, MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW, bool exp);
 }
