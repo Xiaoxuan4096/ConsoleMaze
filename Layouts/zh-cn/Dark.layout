@@ -20,7 +20,7 @@
 # Value 中出现的 "{}" 在输出的时候，程序会将其替换为实际的变量值。
 
 Title = 0, 0, 0, "ConsoleMaze：简单的控制台走迷宫程序。\n-------------------------------------"
-MainMenu = 2, 0, 0, "输入 1 开始游戏。\n输入 2 编辑关卡。\n输入 3 更改语言。\n输入 4 退出游戏。\n>>> "
+MainMenu = 2, 0, 0, "输入 1 开始游戏。\n输入 2 编辑关卡。\n输入 3 更改语言和主题。\n输入 4 退出游戏。\n>>> "
 RetryIntForMainMenu = 7, 0, 1, "\x1b[91m错误：请输入从 {} 到 {} 内的一个整数。\x1b[37m\s3"
 SelectLevel = 2, 0, 0, "当前处于第 {} 关。按下 Enter 以开始当前关卡，或者输入从 {} 到 {} 的数字来选择关卡。\n输入 exit 以返回主菜单。\n>>> "
 RetryMenuForSelectLevel = 4, 0, 1, "\x1b[91m错误：请输入从 {} 到 {} 内的一个整数，或者输入 exit。\x1b[37m\s3"
@@ -40,4 +40,7 @@ DeleteRejection = 2, 0, 0, "\x1b[91m错误：您只能删除关卡列表中的最后一关。\x1b[3
 DeleteAcception = 2, 0, 0, "已删除第 {} 关。\s2"
 EditHintForEdit = 2, 0, 0, "当前选择的关卡是第 {} 关。\n程序即将打开一个文本编辑器窗口。\x1b[93m继续操作前，请关闭文本编辑器窗口。\x1b[37m\n强烈建议您使用等宽字体进行编辑。\s3"
 LanguageNotAvailable = 2, 0, 0, "\x1b[91m错误：您输入的语言不可用。\x1b[37m\s3"
+ThemeNotAvailable = 2, 0, 0, "\x1b[91m错误：您输入的主题不可用。请检查大小写和全半角字符等。\x1b[37m\s3"
+LanguageOrThemeMenu = 2, 0, 0, "输入 1 更换语言。\n输入 2 更换主题。\n输入 exit 以返回主菜单。\n>>> "
+RetryMenuForLanguageOrTheme = 6, 0, 1, "\x1b[91m错误：请输入从 {} 到 {} 内的一个整数，或者输入 exit。\x1b[37m\s3"
 Exit = 6, 0, 0, "感谢游玩 ConsoleMaze！\s3"
