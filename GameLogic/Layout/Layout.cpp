@@ -9,7 +9,7 @@
 #include <algorithm>
 
 #include "Layout.h"
-
+ 
 namespace Xiaoxuan4096 {
 	static std::vector<std::string> readSupportLanguageList(MyFile& reader) {
 		std::string supportLanguage;
@@ -36,6 +36,7 @@ namespace Xiaoxuan4096 {
 
 		reader.linkToFile("../Layouts/DefaultLanguage.dat");
 		defaultLanguage = reader.read();
+		defaultLanguage.erase(defaultLanguage.end() - 1); // Remove '\n'.
 		reader.unlinkFile();
 
 		return defaultLanguage;
@@ -65,6 +66,7 @@ namespace Xiaoxuan4096 {
 
 		reader.linkToFile("../Layouts/" + currentLanguage + "/DefaultTheme.dat");
 		defaultTheme = reader.read();
+		defaultTheme.erase(defaultTheme.end() - 1); // Remove '\n'.
 		reader.unlinkFile();
 
 		return defaultTheme;
@@ -72,7 +74,10 @@ namespace Xiaoxuan4096 {
 
 
 	void readLayout(std::string currentLanguage, std::string currentTheme, MyLayout& layout, MyFile& reader) {
-
+		reader.linkToFile("../Layouts/" + currentLanguage + "/" + currentTheme + ".layout");
+		layout.setLayoutFromFile(reader.read());
+		reader.unlinkFile();
+		return;
 	}
 	std::string readCurrentLanguage(MyFile& reader) {
 		std::string currentLanguage, defaultLanguage = readDefaultLanguage(reader);
@@ -91,7 +96,7 @@ namespace Xiaoxuan4096 {
 
 		reader.linkToFile("../Configs/CurrentTheme.dat");
 		currentTheme = reader.read();
-		currentTheme.erase(currentLanguage.end() - 1); // Remove '\n'.
+		currentTheme.erase(currentTheme.end() - 1); // Remove '\n'.
 		reader.unlinkFile();
 
 		return std::find(supportThemeList.begin(), supportThemeList.end(), currentTheme) != supportThemeList.end() ? currentTheme : defaultTheme;

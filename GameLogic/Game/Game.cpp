@@ -92,7 +92,7 @@ namespace Xiaoxuan4096 {
 		return;
 	}
 
-	bool game(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW) {
+	bool game(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW, bool exp) {
 		int currentLevel = readCurrentLevel(fileRW), maximumLevel = readMaximumLevel(fileRW);
 		int level = currentLevel;
 		MyMatrix2D maze;

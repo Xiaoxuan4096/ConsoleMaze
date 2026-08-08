@@ -105,7 +105,7 @@ namespace Xiaoxuan4096 {
 		saveMaximumLevel(level == maximumLevel ? --maximumLevel : maximumLevel, fileRW);
 	}
 
-	bool editMenu(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW) {
+	bool editMenu(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW, bool exp) {
 		int level, maximumLevel = readMaximumLevel(fileRW);
 		std::stringstream ss;
 		std::wstringstream ssW;

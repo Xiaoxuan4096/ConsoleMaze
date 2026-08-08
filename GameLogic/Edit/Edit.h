@@ -12,5 +12,5 @@
 #include "MyFile.h"
 
 namespace Xiaoxuan4096 {
-	bool editMenu(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW);
+	bool editMenu(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW, bool exp);
 }

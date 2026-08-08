@@ -16,7 +16,7 @@
 namespace Xiaoxuan4096 {
 	void readLayout(std::string currentLanguage, std::string currentTheme, MyLayout& layout, MyFile& reader);
 	std::string readCurrentLanguage(MyFile& reader);
-	std::string readCurrentTheme(MyFile& reader);
+	std::string readCurrentTheme(std::string currentLanguage, MyFile& reader);
 
 	void selectLanguage(MyLayout& layout, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW);
 	void selectTheme(MyLayout& layout, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW);

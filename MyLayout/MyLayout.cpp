@@ -177,6 +177,6 @@ namespace Xiaoxuan4096 {
 	DrawRequestData MyLayout::getLayout(std::string original) {
 		if (dictionary.contains(original))
 			return LayoutDataToDrawRequestData(dictionary[original]);
-		return LayoutDataToDrawRequestData(splitSingleLine(std::string("tmp = 0, 0, 0, ") + original).second);
+		return LayoutDataToDrawRequestData(splitSingleLine("tmp = 0, 0, 0, \"" + original + "\"").second);
 	}
 }

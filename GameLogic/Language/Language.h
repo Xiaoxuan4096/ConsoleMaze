@@ -14,8 +14,8 @@
 #include "MyFile.h"
 
 namespace Xiaoxuan4096 {
-	void readTranslation(std::string currentLanguage, MyTranslator& translator, MyFile& reader);
-	std::string readCurrentLanguage(MyFile& reader);
+	void readTranslation1(std::string currentLanguage, MyTranslator& translator, MyFile& reader);
+	std::string readCurrentLanguage1(MyFile& reader);
 
-	void selectLanguage(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW);
+	void selectLanguage1(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW);
 }
