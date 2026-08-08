@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{4cd4d867-af03-482f-995f-48f81905b2cc}</ProjectGuid>
-    <RootNamespace>MyBuffer</RootNamespace>
+    <ProjectGuid>{ee346b16-2e06-4bce-b9f9-ee24dbe49ba1}</ProjectGuid>
+    <RootNamespace>MyLayout</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -79,7 +79,7 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)MyMatrix2DWithDepth;$(SolutionDir)MyMatrix2D;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)MyMatrix2DWithDepth;$(SolutionDir)MyMatrix2D;$(SolutionDir)MyBuffer;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -101,8 +101,8 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)MyMatrix2DWithDepth;$(SolutionDir)MyMatrix2D;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(SolutionDir)MyMatrix2DWithDepth;$(SolutionDir)MyMatrix2D;$(SolutionDir)MyBuffer;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -122,7 +122,7 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)MyMatrix2DWithDepth;$(SolutionDir)MyMatrix2D;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)MyMatrix2DWithDepth;$(SolutionDir)MyMatrix2D;$(SolutionDir)MyBuffer;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -144,7 +144,7 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)MyMatrix2DWithDepth;$(SolutionDir)MyMatrix2D;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)MyMatrix2DWithDepth;$(SolutionDir)MyMatrix2D;$(SolutionDir)MyBuffer;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -156,22 +156,19 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="MyBuffer.cpp" />
+    <ClCompile Include="MyLayout.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MyBuffer.h" />
+    <ClInclude Include="MyLayout.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MyMatrix2DWithDepth\MyMatrix2DWithDepth.vcxproj">
-      <Project>{1851e580-46da-4bb5-b792-c838e1f09da5}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\MyMatrix2D\MyMatrix2D.vcxproj">
-      <Project>{09c2d83b-d42e-44cb-970a-5b3ab94af88d}</Project>
-    </ProjectReference>
+    <ResourceCompile Include="MyLayout.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="MyBuffer.rc" />
+    <ProjectReference Include="..\MyBuffer\MyBuffer.vcxproj">
+      <Project>{4cd4d867-af03-482f-995f-48f81905b2cc}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -15,6 +15,7 @@
 #include "MyBuffer.h"
 #include "MyRenderer.h"
 #include "MyFile.h"
+#include "MyLayout.h"
 
 #include "Edit.h"
 
@@ -45,7 +46,7 @@ namespace Xiaoxuan4096 {
 		return true;
 	}
 
-	static bool createLevel(int level, int maximumLevel, std::string levelString, std::wstring levelStringW, MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW) {
+	static bool createLevel(int level, int maximumLevel, std::string levelString, std::wstring levelStringW, MyLayout& layout, MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW, bool exp) {
 		if (level == maximumLevel + 1) {
 			std::error_code ec;
 			std::filesystem::create_directory("../Levels/" + levelString, ec);
@@ -53,7 +54,10 @@ namespace Xiaoxuan4096 {
 			fileRW.unlinkFile();
 
 			buffer.clear();
-			buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("CreateAcception", level), 2, 0), generateDrawRequestDataFromString(translator.getTranslation("EditHint", level), 3, 0));
+			if (!exp)
+				buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("CreateAcception", level), 2, 0), generateDrawRequestDataFromString(translator.getTranslation("EditHint", level), 3, 0));
+			else
+				buffer.fetchDrawRequest(layout.getLayout("Title"), layout.getLayout("CreateAcception", level), layout.getLayout("EditHintForCreate", level));
 			renderer.receiveBuffer(buffer.sendBuffer());
 			renderer.output();
 
@@ -64,16 +68,22 @@ namespace Xiaoxuan4096 {
 		}
 		else {
 			buffer.clear();
-			buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("CreateRejection"), 6, 0));
+			if (!exp)
+				buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("CreateRejection"), 6, 0));
+			else
+				buffer.fetchDrawRequest(layout.getLayout("Title"), layout.getLayout("CreateRejection"));
 			renderer.receiveBuffer(buffer.sendBuffer());
 			renderer.output();
 		}
 
 		return true;
 	}
-	static bool editLevel(int level, std::string levelString, std::wstring levelStringW, MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW) {
+	static bool editLevel(int level, std::string levelString, std::wstring levelStringW, MyLayout& layout, MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW, bool exp) {
 		buffer.clear();
-		buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("EditHint", level), 2, 0));
+		if (!exp)
+			buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("EditHint", level), 2, 0));
+		else
+			buffer.fetchDrawRequest(layout.getLayout("Title"), layout.getLayout("EditHintForEdit", level));
 		renderer.receiveBuffer(buffer.sendBuffer());
 		renderer.output();
 
@@ -86,7 +96,7 @@ namespace Xiaoxuan4096 {
 
 		return openNotepad(levelStringW);
 	}
-	static void deleteLevel(int level, int maximumLevel, std::string levelString, MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW) {
+	static void deleteLevel(int level, int maximumLevel, std::string levelString, MyLayout& layout, MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW, bool exp) {
 		if (level == maximumLevel) {
 			fileRW.deleteFile();
 			fileRW.linkToFile("../Levels/" + levelString + "/Record.dat");
@@ -98,89 +108,172 @@ namespace Xiaoxuan4096 {
 			std::filesystem::remove("../Levels/" + levelString, ec);
 		}
 		buffer.clear();
-		buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(level == maximumLevel ? translator.getTranslation("DeleteAcception", level) : translator.getTranslation("DeleteRejection"), 2, 0));
+		if (!exp)
+			buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(level == maximumLevel ? translator.getTranslation("DeleteAcception", level) : translator.getTranslation("DeleteRejection"), 2, 0));
+		else
+			buffer.fetchDrawRequest(layout.getLayout("Title"), level == maximumLevel ? layout.getLayout("DeleteAcception", level) : layout.getLayout("DeleteRejection"));
 		renderer.receiveBuffer(buffer.sendBuffer());
 		renderer.output();
 
 		saveMaximumLevel(level == maximumLevel ? --maximumLevel : maximumLevel, fileRW);
 	}
 
-	bool editMenu(MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW) {
-		int level, maximumLevel = readMaximumLevel(fileRW);
-		std::stringstream ss;
-		std::wstringstream ssW;
-		std::string levelString, command;
-		std::wstring levelStringW;
+	bool editMenu(MyLayout& layout, MyTranslator& translator, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW, bool exp) {
+		if (!exp) {
+			int level, maximumLevel = readMaximumLevel(fileRW);
+			std::stringstream ss;
+			std::wstringstream ssW;
+			std::string levelString, command;
+			std::wstring levelStringW;
 
-		buffer.clear();
-		buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("EditMenu", maximumLevel, 1, maximumLevel + 1), 2, 0));
-		renderer.receiveBuffer(buffer.sendBuffer());
-		renderer.output();
-
-		command = readIntInputWithExit(level, 1, maximumLevel + 1);
-		while (command == "Fail") {
-			buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("RetryMenu", 1, maximumLevel + 1), 4, 0));
-			renderer.receiveBuffer(buffer.sendBuffer());
-			renderer.output();
 			buffer.clear();
 			buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("EditMenu", maximumLevel, 1, maximumLevel + 1), 2, 0));
 			renderer.receiveBuffer(buffer.sendBuffer());
 			renderer.output();
+
 			command = readIntInputWithExit(level, 1, maximumLevel + 1);
-		}
-		if (command == "Exit")
-			return false;
-
-		ss << level;
-		ss >> levelString;
-		ssW << level;
-		ssW >> levelStringW;
-
-		fileRW.linkToFile("../Levels/" + levelString + "/Maze.txt");
-		if (fileRW.exist()) {
-			buffer.clear();
-			buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("EditOrDeleteHint", level), 2, 0));
-			renderer.receiveBuffer(buffer.sendBuffer());
-			renderer.output();
-
-			command = readStringInput(true, "Edit");
-			while (command != "Exit" && command != "Delete" && command != "Edit") {
-				buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("RetryEditOrDeleteHint"), 6, 0));
+			while (command == "Fail") {
+				buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("RetryMenu", 1, maximumLevel + 1), 4, 0));
 				renderer.receiveBuffer(buffer.sendBuffer());
 				renderer.output();
+				buffer.clear();
+				buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("EditMenu", maximumLevel, 1, maximumLevel + 1), 2, 0));
+				renderer.receiveBuffer(buffer.sendBuffer());
+				renderer.output();
+				command = readIntInputWithExit(level, 1, maximumLevel + 1);
+			}
+			if (command == "Exit")
+				return false;
+
+			ss << level;
+			ss >> levelString;
+			ssW << level;
+			ssW >> levelStringW;
+
+			fileRW.linkToFile("../Levels/" + levelString + "/Maze.txt");
+			if (fileRW.exist()) {
 				buffer.clear();
 				buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("EditOrDeleteHint", level), 2, 0));
 				renderer.receiveBuffer(buffer.sendBuffer());
 				renderer.output();
-				command = readStringInput(true);
-			}
-			if (command == "Delete")
-				deleteLevel(level, maximumLevel, levelString, translator, buffer, renderer, fileRW);
-			else
-				if (command == "Edit")
-					if (!editLevel(level, levelString, levelStringW, translator, buffer, renderer, fileRW))
-						return false;
-		}
-		else {
-			buffer.clear();
-			buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("CreateHint", level), 2, 0));
-			renderer.receiveBuffer(buffer.sendBuffer());
-			renderer.output();
 
-			command = readStringInput(true, "Create");
-			while (command != "Exit" && command != "Create") {
-				buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("RetryCreateHint"), 6, 0));
-				renderer.receiveBuffer(buffer.sendBuffer());
-				renderer.output();
+				command = readStringInput(true, "Edit");
+				while (command != "Exit" && command != "Delete" && command != "Edit") {
+					buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("RetryEditOrDeleteHint"), 6, 0));
+					renderer.receiveBuffer(buffer.sendBuffer());
+					renderer.output();
+					buffer.clear();
+					buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("EditOrDeleteHint", level), 2, 0));
+					renderer.receiveBuffer(buffer.sendBuffer());
+					renderer.output();
+					command = readStringInput(true);
+				}
+				if (command == "Delete")
+					deleteLevel(level, maximumLevel, levelString, layout, translator, buffer, renderer, fileRW, exp);
+				else
+					if (command == "Edit")
+						if (!editLevel(level, levelString, levelStringW, layout, translator, buffer, renderer, fileRW, exp))
+							return false;
+			}
+			else {
 				buffer.clear();
 				buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("CreateHint", level), 2, 0));
 				renderer.receiveBuffer(buffer.sendBuffer());
 				renderer.output();
+
 				command = readStringInput(true, "Create");
+				while (command != "Exit" && command != "Create") {
+					buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("RetryCreateHint"), 6, 0));
+					renderer.receiveBuffer(buffer.sendBuffer());
+					renderer.output();
+					buffer.clear();
+					buffer.fetchDrawRequest(generateDrawRequestDataFromString(translator.getTranslation("Title"), 0, 0), generateDrawRequestDataFromString(translator.getTranslation("CreateHint", level), 2, 0));
+					renderer.receiveBuffer(buffer.sendBuffer());
+					renderer.output();
+					command = readStringInput(true, "Create");
+				}
+				if (command == "Create")
+					if (!createLevel(level, maximumLevel, levelString, levelStringW, layout, translator, buffer, renderer, fileRW, exp))
+						return false;
 			}
-			if (command == "Create")
-				if (!createLevel(level, maximumLevel, levelString, levelStringW, translator, buffer, renderer, fileRW))
-					return false;
+		}
+		else {
+			int level, maximumLevel = readMaximumLevel(fileRW);
+			std::stringstream ss;
+			std::wstringstream ssW;
+			std::string levelString, command;
+			std::wstring levelStringW;
+
+			buffer.clear();
+			buffer.fetchDrawRequest(layout.getLayout("Title"), layout.getLayout("EditMenu", maximumLevel, 1, maximumLevel + 1));
+			renderer.receiveBuffer(buffer.sendBuffer());
+			renderer.output();
+
+			command = readIntInputWithExit(level, 1, maximumLevel + 1);
+			while (command == "Fail") {
+				buffer.fetchDrawRequest(layout.getLayout("RetryMenuForEditMenu", 1, maximumLevel + 1));
+				renderer.receiveBuffer(buffer.sendBuffer());
+				renderer.output();
+				buffer.clear();
+				buffer.fetchDrawRequest(layout.getLayout("Title"), layout.getLayout("EditMenu", maximumLevel, 1, maximumLevel + 1));
+				renderer.receiveBuffer(buffer.sendBuffer());
+				renderer.output();
+				command = readIntInputWithExit(level, 1, maximumLevel + 1);
+			}
+			if (command == "Exit")
+				return false;
+
+			ss << level;
+			ss >> levelString;
+			ssW << level;
+			ssW >> levelStringW;
+
+			fileRW.linkToFile("../Levels/" + levelString + "/Maze.txt");
+			if (fileRW.exist()) {
+				buffer.clear();
+				buffer.fetchDrawRequest(layout.getLayout("Title"), layout.getLayout("EditOrDeleteHint", level));
+				renderer.receiveBuffer(buffer.sendBuffer());
+				renderer.output();
+
+				command = readStringInput(true, "Edit");
+				while (command != "Exit" && command != "Delete" && command != "Edit") {
+					buffer.fetchDrawRequest(layout.getLayout("RetryEditOrDeleteHint"));
+					renderer.receiveBuffer(buffer.sendBuffer());
+					renderer.output();
+					buffer.clear();
+					buffer.fetchDrawRequest(layout.getLayout("Title"), layout.getLayout("EditOrDeleteHint", level));
+					renderer.receiveBuffer(buffer.sendBuffer());
+					renderer.output();
+					command = readStringInput(true);
+				}
+				if (command == "Delete")
+					deleteLevel(level, maximumLevel, levelString, layout, translator, buffer, renderer, fileRW, exp);
+				else
+					if (command == "Edit")
+						if (!editLevel(level, levelString, levelStringW, layout, translator, buffer, renderer, fileRW, exp))
+							return false;
+			}
+			else {
+				buffer.clear();
+				buffer.fetchDrawRequest(layout.getLayout("Title"), layout.getLayout("CreateHint", level));
+				renderer.receiveBuffer(buffer.sendBuffer());
+				renderer.output();
+
+				command = readStringInput(true, "Create");
+				while (command != "Exit" && command != "Create") {
+					buffer.fetchDrawRequest(layout.getLayout("RetryCreateHint"));
+					renderer.receiveBuffer(buffer.sendBuffer());
+					renderer.output();
+					buffer.clear();
+					buffer.fetchDrawRequest(layout.getLayout("Title"), layout.getLayout("CreateHint", level));
+					renderer.receiveBuffer(buffer.sendBuffer());
+					renderer.output();
+					command = readStringInput(true, "Create");
+				}
+				if (command == "Create")
+					if (!createLevel(level, maximumLevel, levelString, levelStringW, layout, translator, buffer, renderer, fileRW, exp))
+						return false;
+			}
 		}
 
 		return true;

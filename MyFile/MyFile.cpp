@@ -90,14 +90,14 @@ namespace Xiaoxuan4096 {
 
 		content.clear();
 		std::string tmp;
-		while (std::getline(fileProcess, tmp))
-			content.append(tmp).push_back('\n') ;
-
-		if (fileProcess.bad()) {
-			content.clear();
-			fileProcess.close();
-			newestContent = false;
-			return content;
+		while (std::getline(fileProcess, tmp)) {
+			content.append(tmp).push_back('\n');
+			if (fileProcess.bad()) {
+				content.clear();
+				fileProcess.close();
+				newestContent = false;
+				return content;
+			}
 		}
 
 		fileProcess.close();
