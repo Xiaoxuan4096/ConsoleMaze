@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_0DB942D5CBF2477DAC6A36D7B914ACAD"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_0DD7B32DFA2F4FB7BA7318EDB84BB604"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -29,6 +35,12 @@
         {
         "MsmKey" = "8:_143EA7A6FC6FB191E2A2498DAE641C31"
         "OwnerKey" = "8:_7FD82D4570D14419B0BF90BEACE6BAAB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_25F3A838A82B4AE29ED0FCE060D777BF"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -87,6 +99,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_5D5C25BC1ADE44058E1C7C23B8A224CC"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_76FF534F9C2942668FF33F1EF1794D70"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_7F1046BF4DC44A4F9A927A919EBAF82C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -141,8 +165,20 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_C42DFF98E3604E3DB48278FDE941F2A4"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_CD1CEF466C374252A94CF12A170E5E04"
         "OwnerKey" = "8:_7FD82D4570D14419B0BF90BEACE6BAAB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DB3DED4C185E4543AE34547B2D1C28FF"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -161,6 +197,12 @@
         {
         "MsmKey" = "8:_E27F452628D80BC21892E570CEF4F37E"
         "OwnerKey" = "8:_7FD82D4570D14419B0BF90BEACE6BAAB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EE751A92B0BE42E4B7085A279DB56978"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -251,6 +293,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0DB942D5CBF2477DAC6A36D7B914ACAD"
+            {
+            "SourcePath" = "8:..\\Layouts\\zh-cn\\Dark.layout"
+            "TargetName" = "8:Dark.layout"
+            "Tag" = "8:"
+            "Folder" = "8:_0C4CF6E8BDC9410DA8C8EB6283E60EEE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0DD7B32DFA2F4FB7BA7318EDB84BB604"
             {
             "SourcePath" = "8:..\\Configs\\CurrentLanguage.dat"
@@ -309,6 +371,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_25F3A838A82B4AE29ED0FCE060D777BF"
+            {
+            "SourcePath" = "8:..\\Layouts\\zh-cn\\ThemeHints.dat"
+            "TargetName" = "8:ThemeHints.dat"
+            "Tag" = "8:"
+            "Folder" = "8:_0C4CF6E8BDC9410DA8C8EB6283E60EEE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3330FC8AF52456265E6BB171F885EAC9"
@@ -491,6 +573,46 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5D5C25BC1ADE44058E1C7C23B8A224CC"
+            {
+            "SourcePath" = "8:..\\Layouts\\zh-cn\\DefaultTheme.dat"
+            "TargetName" = "8:DefaultTheme.dat"
+            "Tag" = "8:"
+            "Folder" = "8:_0C4CF6E8BDC9410DA8C8EB6283E60EEE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_76FF534F9C2942668FF33F1EF1794D70"
+            {
+            "SourcePath" = "8:..\\Layouts\\DefaultLanguage.dat"
+            "TargetName" = "8:DefaultLanguage.dat"
+            "Tag" = "8:"
+            "Folder" = "8:_A89B08B0D35B4806A273FFD9BA5FC910"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7F1046BF4DC44A4F9A927A919EBAF82C"
             {
             "SourcePath" = "8:..\\Translations\\zh-tw.lang"
@@ -651,6 +773,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C42DFF98E3604E3DB48278FDE941F2A4"
+            {
+            "SourcePath" = "8:..\\Layouts\\SupportLanguageList.dat"
+            "TargetName" = "8:SupportLanguageList.dat"
+            "Tag" = "8:"
+            "Folder" = "8:_A89B08B0D35B4806A273FFD9BA5FC910"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CD1CEF466C374252A94CF12A170E5E04"
             {
             "SourcePath" = "8:VCRUNTIME140_1.dll"
@@ -669,6 +811,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DB3DED4C185E4543AE34547B2D1C28FF"
+            {
+            "SourcePath" = "8:..\\Layouts\\zh-cn\\ThemeLists.dat"
+            "TargetName" = "8:ThemeLists.dat"
+            "Tag" = "8:"
+            "Folder" = "8:_0C4CF6E8BDC9410DA8C8EB6283E60EEE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E127FBAEFA8B4429AD0865CBD66A9955"
@@ -731,6 +893,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EE751A92B0BE42E4B7085A279DB56978"
+            {
+            "SourcePath" = "8:..\\Layouts\\LanguageHints.dat"
+            "TargetName" = "8:LanguageHints.dat"
+            "Tag" = "8:"
+            "Folder" = "8:_A89B08B0D35B4806A273FFD9BA5FC910"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F13B73531DE54389AFC4AFFB8E4DBB8B"
             {
             "SourcePath" = "8:..\\Translations\\zh-cn.lang"
@@ -776,6 +958,28 @@
                     "Property" = "8:_66F3FCFE78384D88B8390CAA4448BCDE"
                         "Folders"
                         {
+                        }
+                    }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_A89B08B0D35B4806A273FFD9BA5FC910"
+                    {
+                    "Name" = "8:Layouts"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_95FCDFFD7F04472DBE3FDD8BA43E48BC"
+                        "Folders"
+                        {
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_0C4CF6E8BDC9410DA8C8EB6283E60EEE"
+                            {
+                            "Name" = "8:zh-cn"
+                            "AlwaysCreate" = "11:FALSE"
+                            "Condition" = "8:"
+                            "Transitive" = "11:FALSE"
+                            "Property" = "8:_334D410AD50649A9B4F337A1C92A3279"
+                                "Folders"
+                                {
+                                }
+                            }
                         }
                     }
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_A8A236BBE5CE4910AF48FE4AE8C2276D"

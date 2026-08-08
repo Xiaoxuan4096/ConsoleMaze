@@ -161,12 +161,14 @@ namespace Xiaoxuan4096 {
 		std::vector<std::string> layoutList;
 		std::string tmp;
 		for (size_t i = 0; i < fileContent.size(); i++) { // Split multiple lines.
-			if (!tmp.empty() && fileContent[i] == '\n' && tmp[0] != '#') {
-				layoutList.push_back(tmp);
+			if (!tmp.empty() && fileContent[i] == '\n') {
+				if (tmp[0] != '#')
+					layoutList.push_back(tmp);
 				tmp.clear();
 				continue;
 			}
-			tmp += fileContent[i];
+			if (fileContent[i] != '\n')
+				tmp += fileContent[i];
 		}
 
 		for (std::string str : layoutList)

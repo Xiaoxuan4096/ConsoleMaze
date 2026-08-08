@@ -17,6 +17,8 @@
 # 如果需要在 Value 中插入双引号，请使用转义字符 \"。
 # 同理，Value 中支持常见的转义字符，也支持使用 \033 和 \x1b 进行 ANSI 转义。
 
+# Value 中出现的 "{}" 在输出的时候，程序会将其替换为实际的变量值。
+
 Title = 0, 0, 0, "ConsoleMaze：简单的控制台走迷宫程序。\n-------------------------------------"
 MainMenu = 2, 0, 0, "输入 1 开始游戏。\n输入 2 编辑关卡。\n输入 3 更改语言。\n输入 4 退出游戏。\n>>> "
 RetryIntForMainMenu = 7, 0, 1, "\x1b[91m错误：请输入从 {} 到 {} 内的一个整数。\x1b[37m\s3"
@@ -33,9 +35,9 @@ CreateAcception = 2, 0, 0, "已创建第 {} 关。"
 CreateRejection = 6, 0, 0, "\x1b[91m错误：您只能创建最大关卡后面的 1 个关卡。\x1b[37m\s3"
 EditHintForCreate = 3, 0, 0, "当前选择的关卡是第 {} 关。\n程序即将打开一个文本编辑器窗口。\x1b[93m继续操作前，请关闭文本编辑器窗口。\x1b[37m\n强烈建议您使用等宽字体进行编辑。\s3"
 RetryEditOrDeleteHint = 6, 0, 0, "\x1b[91m错误：请输入 delete，输入 edit，按下 Enter，或者输入 exit。\x1b[37m\s3"
-EditOrDeleteHint = 2, 0, 0, "当前选择的关卡是第 {} 关。\n按下 Enter 键或者输入 edit 以编辑关卡。\n输入 delete 以删除关卡。注意：此操作不可撤销！\n输入 exit 以返回主菜单。\n>>> "
+EditOrDeleteHint = 2, 0, 0, "当前选择的关卡是第 {} 关。\n按下 Enter 键或者输入 edit 以编辑关卡。\n\x1b[91m输入 delete 以删除关卡。注意：此操作不可撤销！\x1b[37m\n输入 exit 以返回主菜单。\n>>> "
 DeleteRejection = 2, 0, 0, "\x1b[91m错误：您只能删除关卡列表中的最后一关。\x1b[37m\s3"
 DeleteAcception = 2, 0, 0, "已删除第 {} 关。\s2"
-EditHint = 2, 0, 0, "当前选择的关卡是第 {} 关。\n程序即将打开一个文本编辑器窗口。\x1b[93m继续操作前，请关闭文本编辑器窗口。\x1b[37m\n强烈建议您使用等宽字体进行编辑。\s3"
+EditHintForEdit = 2, 0, 0, "当前选择的关卡是第 {} 关。\n程序即将打开一个文本编辑器窗口。\x1b[93m继续操作前，请关闭文本编辑器窗口。\x1b[37m\n强烈建议您使用等宽字体进行编辑。\s3"
 LanguageNotAvailable = 2, 0, 0, "\x1b[91m错误：您输入的语言不可用。\x1b[37m\s3"
 Exit = 6, 0, 0, "感谢游玩 ConsoleMaze！\s3"
