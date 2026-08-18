@@ -1236,6 +1236,20 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_7F97273F22454A538B0447AB05992E7D"
+            {
+            "Name" = "8:ConsoleMaze (Legacy)"
+            "Arguments" = "8:--Legacy"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_EAA0862B34B14EDF90484931D8CD9B05"
+            "Folder" = "8:_22E93426B2E84DA9A831D7201CE0E9E0"
+            "WorkingFolder" = "8:_9DF83B4987E7436A8410BE4925045720"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_8BBC43365CE94468A5BB10CEB48156F7"
             {
             "Name" = "8:ConsoleMaze"
@@ -1254,6 +1268,20 @@
             {
             "Name" = "8:ConsoleMaze"
             "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_EAA0862B34B14EDF90484931D8CD9B05"
+            "Folder" = "8:_F16640CAF5964040AF84DC2264CDE8CF"
+            "WorkingFolder" = "8:_9DF83B4987E7436A8410BE4925045720"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_D7736E11E0E84BC39081DEAEC7F9793C"
+            {
+            "Name" = "8:ConsoleMaze (Legacy)"
+            "Arguments" = "8:--Legacy"
             "Description" = "8:"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"

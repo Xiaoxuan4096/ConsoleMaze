@@ -17,31 +17,95 @@
 # 如果需要在 Value 中插入双引号，请使用转义字符 \"。
 # 同理，Value 中支持常见的转义字符，也支持使用 \033 和 \x1b 进行 ANSI 转义。
 
+# Value 支持一种 DSL：通过 \sd 实现输出过程中暂停。
+# d 是一个在 [0,9] 区间范围的整数，决定程序输出时暂停的秒数。
+# 例：\s3 表示在该处暂停 3s。
+
 # Value 中出现的 "{}" 在输出的时候，程序会将其替换为实际的变量值。
+# 具体实现通过 std::vformat 完成，有兴趣请自行查阅。
+
+# 以下是标题栏相关布局。
 
 # 下面 Title 字段中的 \033[2J\033[H 是利用清屏来更新主题。
+# Title 条目作为标题，会显示在绝大多数界面的最上方。
 Title = 0, 0, 0, "\x1b[40m\x1b[37m\033[2J\033[HConsoleMaze：简单的控制台走迷宫程序。\n-------------------------------------"
+
+# 标题栏相关布局结束。
+
+# 以下是主菜单的相关布局。
+
+# MainMenu 条目是游戏主菜单的内容。
+# RetryIntForMainMenu 条目会出现在主菜单，在用户输入不符合条件的时候出现，具体请参考原文。
 MainMenu = 2, 0, 0, "输入 1 开始游戏。\n输入 2 编辑关卡。\n输入 3 更改语言和主题。\n输入 4 退出游戏。\n>>> "
 RetryIntForMainMenu = 6, 0, 1, "\x1b[91m错误：请输入从 {} 到 {} 内的一个整数。\x1b[37m\s3"
+
+# 主菜单相关布局结束。
+
+# 以下是 "开始游戏" 相关布局。
+
+# SelectLevel 条目出现在开始游戏之前，负责选关逻辑的用户界面展示。
+# RetryMenuForSelectLevel 条目会出现在选关菜单，在用户输入不符合条件的时候出现，具体请参考原文。
 SelectLevel = 2, 0, 0, "当前处于第 {} 关。按下 Enter 以开始当前关卡，或者输入从 {} 到 {} 的数字来选择关卡。\n输入 exit 以返回主菜单。\n>>> "
 RetryMenuForSelectLevel = 4, 0, 1, "\x1b[91m错误：请输入从 {} 到 {} 内的一个整数，或者输入 exit。\x1b[37m\s3"
+
+# CurrentLevel 条目是游戏过程中的标题。
+# WinWithoutRecord 条目会在玩家成功通关，但并未打破纪录的时候出现。
+# WinWithRecord 条目会在玩家成功通关，并且打破纪录的时候出现。
 CurrentLevel = 0, 0, 0, "当前处于第 {} 关。按下 q 可以退出当前关卡。\n------------------------------------------"
 WinWithoutRecord = 2, 0, 0, "恭喜完成第 {} 关！\n用时 {} 秒 {} 毫秒。\s3"
 WinWithRecord = 2, 0, 0, "恭喜完成第 {} 关！\n用时 {} 秒 {} 毫秒。\n\x1b[96m新纪录！\x1b[37m\s3"
+
+# "开始游戏" 相关布局结束。
+
+# 以下是 "编辑关卡" 相关布局。
+
+# EditMenu 条目是选择关卡来编辑的界面。
+# RetryMenuForEditMenu 条目会出现在选择菜单，在用户输入不符合条件的时候出现，具体请参考原文。
 EditMenu = 2, 0, 0, "当前可用关卡共 {} 关。输入从 {} 到 {} 的数字来选择编辑的关卡。\n输入 exit 以返回主菜单。\n>>> "
 RetryMenuForEditMenu = 4, 0, 1, "\x1b[91m错误：请输入从 {} 到 {} 内的一个整数，或者输入 exit。\x1b[37m\s3"
-RetryCreateHint = 6, 0, 0, "\x1b[91m错误：请输入 create，按下 Enter，或者输入 exit。\x1b[37m\s3"
+
+# CreateHint 条目是创建新关卡之前显示的界面。
+# RetryCreateHint 条目会出现在创建新关卡菜单，在用户输入不符合条件的时候出现，具体请参考原文。
+# CreateAcception 条目会在成功创建新关卡后出现。
+# CreateRejection 条目会告知用户无法创建新关卡，具体请参考原文。
+# EditHintForCreate 条目会告知用户如何进行关卡编辑，具体请参考原文。
 CreateHint = 2, 0, 0, "当前选择的关卡是第 {} 关，该关卡目前并不存在。\n按下 Enter 键或者输入 create 以创建并编辑关卡。\n输入 exit 以返回主菜单。\n>>> "
+RetryCreateHint = 6, 0, 0, "\x1b[91m错误：请输入 create，按下 Enter，或者输入 exit。\x1b[37m\s3"
 CreateAcception = 2, 0, 0, "已创建第 {} 关。"
 CreateRejection = 6, 0, 0, "\x1b[91m错误：您只能创建最大关卡后面的 1 个关卡。\x1b[37m\s3"
 EditHintForCreate = 3, 0, 0, "当前选择的关卡是第 {} 关。\n程序即将打开一个文本编辑器窗口。\x1b[93m继续操作前，请关闭文本编辑器窗口。\x1b[37m\n强烈建议您使用等宽字体进行编辑。\s3"
-RetryEditOrDeleteHint = 6, 0, 0, "\x1b[91m错误：请输入 delete，输入 edit，按下 Enter，或者输入 exit。\x1b[37m\s3"
+
+# EditOrDeleteHint 条目是编辑已有关卡之前显示的界面。
+# RetryEditOrDeleteHint 条目会出现在编辑已有关卡菜单，在用户输入不符合条件的时候出现，具体请参考原文。
 EditOrDeleteHint = 2, 0, 0, "当前选择的关卡是第 {} 关。\n按下 Enter 键或者输入 edit 以编辑关卡。\n\x1b[91m输入 delete 以删除关卡。注意：此操作不可撤销！\x1b[37m\n输入 exit 以返回主菜单。\n>>> "
-DeleteRejection = 2, 0, 0, "\x1b[91m错误：您只能删除关卡列表中的最后一关。\x1b[37m\s3"
+RetryEditOrDeleteHint = 6, 0, 0, "\x1b[91m错误：请输入 delete，输入 edit，按下 Enter，或者输入 exit。\x1b[37m\s3"
+
+# DeleteAcception 条目会在成功删除新关卡后出现。
+# DeleteRejection 条目会告知用户无法删除关卡，具体请参考原文。
 DeleteAcception = 2, 0, 0, "已删除第 {} 关。\s2"
+DeleteRejection = 2, 0, 0, "\x1b[91m错误：您只能删除关卡列表中的最后一关。\x1b[37m\s3"
+
+# EditHintForEdit 条目会告知用户如何进行关卡编辑，具体请参考原文。
 EditHintForEdit = 2, 0, 0, "当前选择的关卡是第 {} 关。\n程序即将打开一个文本编辑器窗口。\x1b[93m继续操作前，请关闭文本编辑器窗口。\x1b[37m\n强烈建议您使用等宽字体进行编辑。\s3"
-LanguageNotAvailable = 2, 0, 0, "\x1b[91m错误：您输入的语言不可用。\x1b[37m\s3"
-ThemeNotAvailable = 2, 0, 0, "\x1b[91m错误：您输入的主题不可用。请检查大小写和全半角字符等。\x1b[37m\s3"
+
+# "编辑关卡" 相关布局结束。
+
+# 以下是 "更改语言和主题" 相关布局。
+
+# LanguageOrThemeMenu 条目是选择更换语言和主题的菜单。
+# RetryMenuForLanguageOrTheme 条目会出现在选择菜单，在用户输入不符合条件的时候出现，具体请参考原文。
+# LanguageNotAvailable 条目在输入的语言不可用的时候出现。
+# ThemeNotAvailable 条目在输入的主题不可用的时候出现。
 LanguageOrThemeMenu = 2, 0, 0, "输入 1 更换语言。\n输入 2 更换主题。\n输入 exit 以返回主菜单。\n>>> "
 RetryMenuForLanguageOrTheme = 6, 0, 1, "\x1b[91m错误：请输入从 {} 到 {} 内的一个整数，或者输入 exit。\x1b[37m\s3"
+LanguageNotAvailable = 2, 0, 0, "\x1b[91m错误：您输入的语言不可用。\x1b[37m\s3"
+ThemeNotAvailable = 2, 0, 0, "\x1b[91m错误：您输入的主题不可用。请检查大小写和全半角字符等。\x1b[37m\s3"
+
+# "更改语言和主题" 相关布局结束。
+
+# 以下是 "退出游戏" 相关布局。
+
+# Exit 条目是程序退出前显示的最后一个条目。
 Exit = 6, 0, 0, "感谢游玩 ConsoleMaze！\s3"
+
+# "退出游戏" 相关布局结束。
