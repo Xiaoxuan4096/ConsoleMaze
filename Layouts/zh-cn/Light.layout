@@ -46,7 +46,7 @@ RetryIntForMainMenu = 6, 0, 1, "\x1b[31m错误：请输入从 {} 到 {} 内的一个整数。\x
 # SelectLevel 条目出现在开始游戏之前，负责选关逻辑的用户界面展示。
 # RetryMenuForSelectLevel 条目会出现在选关菜单，在用户输入不符合条件的时候出现，具体请参考原文。
 SelectLevel = 2, 0, 0, "当前处于第 {} 关。按下 Enter 以开始当前关卡，或者输入从 {} 到 {} 的数字来选择关卡。\n输入 exit 以返回主菜单。\n>>> "
-RetryMenuForSelectLevel = 4, 0, 1, "\x1b[31m错误：请输入从 {} 到 {} 内的一个整数，或者输入 exit。\x1b[30m\s3"
+RetryMenuForSelectLevel = 4, 0, 1, "\x1b[31m错误：请输入从 {} 到 {} 内的一个整数，按下 Enter，或者输入 exit。\x1b[30m\s3"
 
 # CurrentLevel 条目是游戏过程中的标题。
 # WinWithoutRecord 条目会在玩家成功通关，但并未打破纪录的时候出现。

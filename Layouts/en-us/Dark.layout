@@ -46,7 +46,7 @@ RetryIntForMainMenu = 6, 0, 1, "\x1b[91mError: Please enter an integer from {} t
 # The "SelectLevel" entry appears before starting the game and is responsible for displaying the user interface for level selection logic.
 # The "RetryMenuForSelectLevel" entry appears in the level selection menu when the user input does not meet the required conditions; please refer to the original text for details.
 SelectLevel = 2, 0, 0, "Currently at level {}. Press Enter to start the current level, or enter a number from {} to {} to select a level.\nEnter \"exit\" to return to the main menu.\n>>> "
-RetryMenuForSelectLevel = 4, 0, 1, "\x1b[91mError: Please enter an integer from {} to {}, or enter \"exit\".\x1b[37m\s3"
+RetryMenuForSelectLevel = 4, 0, 1, "\x1b[91mError: Please enter an integer from {} to {}, press Enter, or enter \"exit\".\x1b[37m\s3"
 
 # The "CurrentLevel" entry is the title during the game session.
 # The "WinWithoutRecord" entry appears when the player successfully clears the level but does not break the record.
