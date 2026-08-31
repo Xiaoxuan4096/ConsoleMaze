@@ -137,6 +137,8 @@
     <ClCompile Include="GameLogic.cpp" />
     <ClCompile Include="Game\Game.cpp" />
     <ClCompile Include="Layout\Layout.cpp" />
+    <ClCompile Include="MazeGenerator\MazeGenerator.cpp" />
+    <ClCompile Include="UniversalLevelSelector\UniversalLevelSelector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyBuffer\MyBuffer.vcxproj">
@@ -160,7 +162,9 @@
     <ClInclude Include="Edit\Edit.h" />
     <ClInclude Include="Game\Game.h" />
     <ClInclude Include="Layout\Layout.h" />
+    <ClInclude Include="MazeGenerator\MazeGenerator.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="UniversalLevelSelector\UniversalLevelSelector.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GameLogic.rc" />

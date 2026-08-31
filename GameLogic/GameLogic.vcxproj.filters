@@ -37,6 +37,18 @@
     <Filter Include="源文件\Layout">
       <UniqueIdentifier>{fe30ea89-1a2d-462e-8a62-59ff980fc8f2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\MazeGenerator">
+      <UniqueIdentifier>{34dbf30c-71bc-4ba4-95ba-7ed1652664fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\MazeGenerator">
+      <UniqueIdentifier>{1dd4a2b6-6def-469f-a846-2727ddb0f42d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\UniversalLevelSelector">
+      <UniqueIdentifier>{561d35a0-cb70-4a6a-8746-951cee2d3d18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\UniversalLevelSelector">
+      <UniqueIdentifier>{41244977-faa6-4070-b3a7-59f6e613156a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameLogic.cpp">
@@ -54,6 +66,12 @@
     <ClCompile Include="Layout\Layout.cpp">
       <Filter>源文件\Layout</Filter>
     </ClCompile>
+    <ClCompile Include="MazeGenerator\MazeGenerator.cpp">
+      <Filter>源文件\MazeGenerator</Filter>
+    </ClCompile>
+    <ClCompile Include="UniversalLevelSelector\UniversalLevelSelector.cpp">
+      <Filter>源文件\UniversalLevelSelector</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -70,6 +88,12 @@
     </ClInclude>
     <ClInclude Include="Layout\Layout.h">
       <Filter>头文件\Layout</Filter>
+    </ClInclude>
+    <ClInclude Include="MazeGenerator\MazeGenerator.h">
+      <Filter>头文件\MazeGenerator</Filter>
+    </ClInclude>
+    <ClInclude Include="UniversalLevelSelector\UniversalLevelSelector.h">
+      <Filter>头文件\UniversalLevelSelector</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
