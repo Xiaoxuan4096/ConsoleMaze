@@ -77,7 +77,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)MyLayout;$(SolutionDir)MyFile;$(SolutionDir)MyBuffer;$(SolutionDir)MyRenderer;$(SolutionDir)MyMatrix2D;$(SolutionDir)MyMatrix2DWithDepth;$(SolutionDir)MyTranslator;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)MyLayout;$(SolutionDir)MyFile;$(SolutionDir)MyBuffer;$(SolutionDir)MyRenderer;$(SolutionDir)MyMatrix2D;$(SolutionDir)MyMatrix2DWithDepth;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -93,7 +93,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)MyLayout;$(SolutionDir)MyFile;$(SolutionDir)MyBuffer;$(SolutionDir)MyRenderer;$(SolutionDir)MyMatrix2D;$(SolutionDir)MyMatrix2DWithDepth;$(SolutionDir)MyTranslator;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)MyLayout;$(SolutionDir)MyFile;$(SolutionDir)MyBuffer;$(SolutionDir)MyRenderer;$(SolutionDir)MyMatrix2D;$(SolutionDir)MyMatrix2DWithDepth;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -108,7 +108,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)MyLayout;$(SolutionDir)MyFile;$(SolutionDir)MyBuffer;$(SolutionDir)MyRenderer;$(SolutionDir)MyMatrix2D;$(SolutionDir)MyMatrix2DWithDepth;$(SolutionDir)MyTranslator;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)MyLayout;$(SolutionDir)MyFile;$(SolutionDir)MyBuffer;$(SolutionDir)MyRenderer;$(SolutionDir)MyMatrix2D;$(SolutionDir)MyMatrix2DWithDepth;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -124,7 +124,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)MyLayout;$(SolutionDir)MyFile;$(SolutionDir)MyBuffer;$(SolutionDir)MyRenderer;$(SolutionDir)MyMatrix2D;$(SolutionDir)MyMatrix2DWithDepth;$(SolutionDir)MyTranslator;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)MyLayout;$(SolutionDir)MyFile;$(SolutionDir)MyBuffer;$(SolutionDir)MyRenderer;$(SolutionDir)MyMatrix2D;$(SolutionDir)MyMatrix2DWithDepth;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -136,9 +136,9 @@
     <ClCompile Include="Edit\Edit.cpp" />
     <ClCompile Include="GameLogic.cpp" />
     <ClCompile Include="Game\Game.cpp" />
-    <ClCompile Include="GenerateDrawRequestData\GenerateDrawRequestData.cpp" />
-    <ClCompile Include="Language\Language.cpp" />
     <ClCompile Include="Layout\Layout.cpp" />
+    <ClCompile Include="MazeGenerator\MazeGenerator.cpp" />
+    <ClCompile Include="UniversalLevelSelector\UniversalLevelSelector.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyBuffer\MyBuffer.vcxproj">
@@ -156,18 +156,15 @@
     <ProjectReference Include="..\MyRenderer\MyRenderer.vcxproj">
       <Project>{9a7f0c70-373a-42fe-82ff-588e1b79cd27}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\MyTranslator\MyTranslator.vcxproj">
-      <Project>{7e13073c-f5d2-4123-889a-ad60cf810b07}</Project>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DataRW\DataRW.h" />
     <ClInclude Include="Edit\Edit.h" />
     <ClInclude Include="Game\Game.h" />
-    <ClInclude Include="GenerateDrawRequestData\GenerateDrawRequestData.h" />
-    <ClInclude Include="Language\Language.h" />
     <ClInclude Include="Layout\Layout.h" />
+    <ClInclude Include="MazeGenerator\MazeGenerator.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="UniversalLevelSelector\UniversalLevelSelector.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GameLogic.rc" />

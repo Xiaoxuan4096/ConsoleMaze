@@ -75,12 +75,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_3FF75239E02F4627939CDA2FE4B0BE3D"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_41143065507447DC9E8A99D46E55B38F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -99,12 +93,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_667118F4DEA94A75B5AF6B0B3EB8832D"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_7376618D39C5469596BD0B6BEFE21FCD"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -112,12 +100,6 @@
         "Entry"
         {
         "MsmKey" = "8:_870376EC5BD748FDAF927ADB0A644A70"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_9377044CB1444C39AF864EBD30811D54"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -141,19 +123,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_A5C2575053D2448D8563CE93DD7F1631"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_AF7122F275C5450998B1263AFB9140B5"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_B3FB68FB22C3400889B3B2B35EE0FCBF"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -498,26 +468,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3FF75239E02F4627939CDA2FE4B0BE3D"
-            {
-            "SourcePath" = "8:..\\Translations\\LanguageHints.dat"
-            "TargetName" = "8:LanguageHints.dat"
-            "Tag" = "8:"
-            "Folder" = "8:_3762AC512F1E4F43AD7C5D7582A9A9AF"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_41143065507447DC9E8A99D46E55B38F"
             {
             "SourcePath" = "8:..\\Layouts\\zh-tw\\ThemeLists.dat"
@@ -578,26 +528,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_667118F4DEA94A75B5AF6B0B3EB8832D"
-            {
-            "SourcePath" = "8:..\\Translations\\en-us.lang"
-            "TargetName" = "8:en-us.lang"
-            "Tag" = "8:"
-            "Folder" = "8:_3762AC512F1E4F43AD7C5D7582A9A9AF"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7376618D39C5469596BD0B6BEFE21FCD"
             {
             "SourcePath" = "8:..\\Layouts\\en-us\\Dark.layout"
@@ -624,26 +554,6 @@
             "TargetName" = "8:DefaultTheme.dat"
             "Tag" = "8:"
             "Folder" = "8:_F54644D1343343048B51E7F893E69A71"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9377044CB1444C39AF864EBD30811D54"
-            {
-            "SourcePath" = "8:..\\Translations\\zh-tw.lang"
-            "TargetName" = "8:zh-tw.lang"
-            "Tag" = "8:"
-            "Folder" = "8:_3762AC512F1E4F43AD7C5D7582A9A9AF"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -718,52 +628,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A5C2575053D2448D8563CE93DD7F1631"
-            {
-            "SourcePath" = "8:..\\Translations\\zh-cn.lang"
-            "TargetName" = "8:zh-cn.lang"
-            "Tag" = "8:"
-            "Folder" = "8:_3762AC512F1E4F43AD7C5D7582A9A9AF"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AF7122F275C5450998B1263AFB9140B5"
             {
             "SourcePath" = "8:..\\Layouts\\SupportLanguageList.dat"
             "TargetName" = "8:SupportLanguageList.dat"
             "Tag" = "8:"
             "Folder" = "8:_69281A8506314B69834E0F2232B3F780"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B3FB68FB22C3400889B3B2B35EE0FCBF"
-            {
-            "SourcePath" = "8:..\\Translations\\SupportLanguageList.dat"
-            "TargetName" = "8:SupportLanguageList.dat"
-            "Tag" = "8:"
-            "Folder" = "8:_3762AC512F1E4F43AD7C5D7582A9A9AF"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -976,17 +846,6 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_3762AC512F1E4F43AD7C5D7582A9A9AF"
-                    {
-                    "Name" = "8:Translations"
-                    "AlwaysCreate" = "11:FALSE"
-                    "Condition" = "8:"
-                    "Transitive" = "11:FALSE"
-                    "Property" = "8:_BBD8891486D04A9E885E973897A54312"
-                        "Folders"
-                        {
-                        }
-                    }
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_62D250B993D84D3490EDCC6AD3959278"
                     {
                     "Name" = "8:Levels"
@@ -1236,20 +1095,6 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_7F97273F22454A538B0447AB05992E7D"
-            {
-            "Name" = "8:ConsoleMaze (Legacy)"
-            "Arguments" = "8:--Legacy"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_EAA0862B34B14EDF90484931D8CD9B05"
-            "Folder" = "8:_22E93426B2E84DA9A831D7201CE0E9E0"
-            "WorkingFolder" = "8:_9DF83B4987E7436A8410BE4925045720"
-            "Icon" = "8:"
-            "Feature" = "8:"
-            }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_8BBC43365CE94468A5BB10CEB48156F7"
             {
             "Name" = "8:ConsoleMaze"
@@ -1268,20 +1113,6 @@
             {
             "Name" = "8:ConsoleMaze"
             "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_EAA0862B34B14EDF90484931D8CD9B05"
-            "Folder" = "8:_F16640CAF5964040AF84DC2264CDE8CF"
-            "WorkingFolder" = "8:_9DF83B4987E7436A8410BE4925045720"
-            "Icon" = "8:"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_D7736E11E0E84BC39081DEAEC7F9793C"
-            {
-            "Name" = "8:ConsoleMaze (Legacy)"
-            "Arguments" = "8:--Legacy"
             "Description" = "8:"
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
