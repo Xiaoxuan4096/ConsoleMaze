@@ -6,18 +6,15 @@
 
 #include <string>
 
-#include "MyLayout.h"
 #include "MyBuffer.h"
 #include "MyRenderer.h"
-#include "MyFile.h"
 
 #include "UnifiedLevelSelector.h"
 
 #include "../DataRW/DataRW.h"
 
 namespace Xiaoxuan4096 {
-	// TODO: Migrate level selecting logic to here.
-	std::string unifiedLevelSelector(MyBuffer& commonPrompt, MyBuffer& outOfRangePrompt, int& level, int minimumLevel, int maximumLevel, MyLayout& layout, MyRenderer& renderer, MyFile& reader) {
+	bool unifiedLevelSelector(MyBuffer& commonPrompt, MyBuffer& outOfRangePrompt, int& level, int minimumLevel, int maximumLevel, MyRenderer& renderer) {
 		renderer.receiveBuffer(commonPrompt.sendBuffer());
 		renderer.output();
 
@@ -30,6 +27,6 @@ namespace Xiaoxuan4096 {
 			command = readIntInputWithExit(level, minimumLevel, maximumLevel, true);
 		}
 
-		return command;
+		return command != "Exit";
 	}
 }

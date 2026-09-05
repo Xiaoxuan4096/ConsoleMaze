@@ -6,6 +6,9 @@
 
 #pragma once
 
+#include "MyBuffer.h"
+#include "MyRenderer.h"
+
 namespace Xiaoxuan4096 {
-	// TODO: Migrate level selecting logic to here.
+	bool unifiedLevelSelector(MyBuffer& commonPrompt, MyBuffer& outOfRangePrompt, int& level, int minimumLevel, int maximumLevel, MyRenderer& renderer); // True for progressing and false for exit.
 }

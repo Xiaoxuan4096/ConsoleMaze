@@ -20,6 +20,7 @@
 #include "Game.h"
 
 #include "../DataRW/DataRW.h"
+#include "../UnifiedLevelSelector/UnifiedLevelSelector.h"
 
 namespace Xiaoxuan4096 {
 	static DrawRequestData generateDrawRequestDataFromMyMatrix2D(MyMatrix2D matrix, size_t startRow, size_t startCol, int defaultDepth = 0) {
@@ -124,27 +125,14 @@ namespace Xiaoxuan4096 {
 	bool game(MyLayout& layout, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW) {
 		int currentLevel = readCurrentLevel(fileRW), maximumLevel = readMaximumLevel(fileRW);
 		int level = currentLevel;
-		MyMatrix2D maze;
 		long long recordMilliseconds;
 		size_t endx = 0, endy = 0, currentx = 0, currenty = 0;
+		MyBuffer commonBuffer, outOfRangeBuffer;
+		MyMatrix2D maze;
 
-		buffer.clear();
-		buffer.fetchDrawRequest(layout.getLayout("Title"), layout.getLayout("SelectLevel", currentLevel, 1, currentLevel));
-		renderer.receiveBuffer(buffer.sendBuffer());
-		renderer.output();
-
-		std::string command = readIntInputWithExit(level, 1, currentLevel, true);
-		while (command == "Fail") {
-			buffer.fetchDrawRequest(layout.getLayout("RetryMenuForSelectLevel", 1, currentLevel));
-			renderer.receiveBuffer(buffer.sendBuffer());
-			renderer.output();
-			buffer.clear();
-			buffer.fetchDrawRequest(layout.getLayout("Title"), layout.getLayout("SelectLevel", currentLevel, 1, currentLevel));
-			renderer.receiveBuffer(buffer.sendBuffer());
-			renderer.output();
-			command = readIntInputWithExit(level, 1, currentLevel, true);
-		}
-		if (command == "Exit")
+		commonBuffer.fetchDrawRequest(layout.getLayout("Title"), layout.getLayout("SelectLevel", currentLevel, 1, currentLevel));
+		outOfRangeBuffer.fetchDrawRequest(layout.getLayout("RetryMenuForSelectLevel", 1, currentLevel));
+		if (!unifiedLevelSelector(commonBuffer, outOfRangeBuffer, level, 1, currentLevel, renderer))
 			return false;
 
 		maze = readLevelMaze(level, fileRW);

@@ -19,6 +19,7 @@
 #include "Edit.h"
 
 #include "../DataRW/DataRW.h"
+#include "../UnifiedLevelSelector/UnifiedLevelSelector.h"
 
 namespace Xiaoxuan4096 {
 	static bool openNotepad(std::wstring levelStringW) {
@@ -110,24 +111,11 @@ namespace Xiaoxuan4096 {
 		std::wstringstream ssW;
 		std::string levelString, command;
 		std::wstring levelStringW;
+		MyBuffer commonBuffer, outOfRangeBuffer;
 
-		buffer.clear();
-		buffer.fetchDrawRequest(layout.getLayout("Title"), layout.getLayout("EditMenu", maximumLevel, 1, maximumLevel + 1));
-		renderer.receiveBuffer(buffer.sendBuffer());
-		renderer.output();
-
-		command = readIntInputWithExit(level, 1, maximumLevel + 1);
-		while (command == "Fail") {
-			buffer.fetchDrawRequest(layout.getLayout("RetryMenuForEditMenu", 1, maximumLevel + 1));
-			renderer.receiveBuffer(buffer.sendBuffer());
-			renderer.output();
-			buffer.clear();
-			buffer.fetchDrawRequest(layout.getLayout("Title"), layout.getLayout("EditMenu", maximumLevel, 1, maximumLevel + 1));
-			renderer.receiveBuffer(buffer.sendBuffer());
-			renderer.output();
-			command = readIntInputWithExit(level, 1, maximumLevel + 1);
-		}
-		if (command == "Exit")
+		commonBuffer.fetchDrawRequest(layout.getLayout("Title"), layout.getLayout("EditMenu", maximumLevel, 1, maximumLevel + 1));
+		outOfRangeBuffer.fetchDrawRequest(layout.getLayout("Title"), layout.getLayout("EditMenu", maximumLevel, 1, maximumLevel + 1));
+		if (!unifiedLevelSelector(commonBuffer, outOfRangeBuffer, level, 1, maximumLevel + 1, renderer))
 			return false;
 
 		ss << level;

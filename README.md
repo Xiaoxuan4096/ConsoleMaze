@@ -13,7 +13,7 @@
 
 ### 使用方法
 请您按照菜单上的提示操作。  
-如果您需要切换语言，请输入 `3`，然后根据菜单提示操作。
+如果您需要切换语言，请输入 `3`，接着输入 `1`，然后根据菜单提示操作。
 
 ---
 <a id="zh-tw"></a>
@@ -27,7 +27,7 @@
 
 ### 使用方法
 請依照選單上的提示操作。  
-如果您需要切換語言，請輸入 `3`，然後根據選單提示操作。
+如果您需要切換語言，請輸入 `3`，接著輸入 `1`，然後根據選單提示操作。
 
 ---
 <a id="en-us"></a>
@@ -41,4 +41,4 @@ Try to beat your best time on every level!
 
 ### How to Use
 Please follow the on-screen menu prompts.  
-To switch languages, enter `3` and follow the menu instructions.
+To switch languages, enter `3`, then enter `1`, and follow the menu instructions.
