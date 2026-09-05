@@ -43,10 +43,10 @@
     <Filter Include="头文件\MazeGenerator">
       <UniqueIdentifier>{1dd4a2b6-6def-469f-a846-2727ddb0f42d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="源文件\UniversalLevelSelector">
+    <Filter Include="源文件\UnifiedLevelSelector">
       <UniqueIdentifier>{561d35a0-cb70-4a6a-8746-951cee2d3d18}</UniqueIdentifier>
     </Filter>
-    <Filter Include="头文件\UniversalLevelSelector">
+    <Filter Include="头文件\UnifiedLevelSelector">
       <UniqueIdentifier>{41244977-faa6-4070-b3a7-59f6e613156a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -69,8 +69,8 @@
     <ClCompile Include="MazeGenerator\MazeGenerator.cpp">
       <Filter>源文件\MazeGenerator</Filter>
     </ClCompile>
-    <ClCompile Include="UniversalLevelSelector\UniversalLevelSelector.cpp">
-      <Filter>源文件\UniversalLevelSelector</Filter>
+    <ClCompile Include="UnifiedLevelSelector\UnifiedLevelSelector.cpp">
+      <Filter>源文件\UnifiedLevelSelector</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -92,8 +92,8 @@
     <ClInclude Include="MazeGenerator\MazeGenerator.h">
       <Filter>头文件\MazeGenerator</Filter>
     </ClInclude>
-    <ClInclude Include="UniversalLevelSelector\UniversalLevelSelector.h">
-      <Filter>头文件\UniversalLevelSelector</Filter>
+    <ClInclude Include="UnifiedLevelSelector\UnifiedLevelSelector.h">
+      <Filter>头文件\UnifiedLevelSelector</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,4 @@
-// UniversalLevelSelector.h - A unified level selector for gaming and editing.
+// UnifiedLevelSelector.h - A unified level selector for gaming and editing.
 // Written by Xiaoxuan4096.
 
 // This program is distributed under MIT License.
