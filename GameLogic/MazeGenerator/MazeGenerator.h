@@ -6,6 +6,8 @@
 
 #pragma once
 
+#include "MyMatrix2D.h"
+
 namespace Xiaoxuan4096 {
-	// TODO: Add maze generation logic.
+	MyMatrix2D generateRandomMaze(size_t rows, size_t cols);
 }
