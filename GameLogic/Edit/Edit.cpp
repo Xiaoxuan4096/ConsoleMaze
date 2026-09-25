@@ -8,9 +8,11 @@
 #include <string>
 #include <system_error>
 #include <filesystem>
+#include <random>
 
 #include <Windows.h>
 
+#include "MyMatrix2D.h"
 #include "MyBuffer.h"
 #include "MyRenderer.h"
 #include "MyFile.h"
@@ -20,6 +22,7 @@
 
 #include "../DataRW/DataRW.h"
 #include "../UnifiedLevelSelector/UnifiedLevelSelector.h"
+#include "../MazeGenerator/MazeGenerator.h"
 
 namespace Xiaoxuan4096 {
 	static bool openNotepad(std::wstring levelStringW) {
@@ -44,11 +47,22 @@ namespace Xiaoxuan4096 {
 		}
 		return true;
 	}
+	static std::string generateStringFromMyMatrix2D(MyMatrix2D matrix) {
+		std::string result;
+		for (size_t i = 0; i < matrix.getRowCount(); i++)
+			result += matrix[i] + '\n';
+		return result;
+	}
 
 	static bool createLevel(int level, int maximumLevel, std::string levelString, std::wstring levelStringW, MyLayout& layout, MyBuffer& buffer, MyRenderer& renderer, MyFile& fileRW) {
 		if (level == maximumLevel + 1) {
 			std::error_code ec;
 			std::filesystem::create_directory("../Levels/" + levelString, ec);
+
+			//static std::mt19937 gen(std::random_device{}());
+			//std::uniform_int_distribution<size_t> dist(10, 30);
+
+			//fileRW.rewrite(generateStringFromMyMatrix2D(generateRandomMaze(dist(gen), dist(gen))));
 			fileRW.rewrite("");
 			fileRW.unlinkFile();
 

@@ -88,6 +88,8 @@ namespace Xiaoxuan4096 {
 				return worm.currentCol == 0;
 			case Directions::Right:
 				return worm.currentCol == cols - 1;
+			default:
+				return false;
 		}
 	}
 	static size_t generateRandomSize_t(size_t min, size_t max) {
@@ -144,7 +146,7 @@ namespace Xiaoxuan4096 {
 					break;
 				}
 				size_t random = generateRandomSize_t(0, 100);
-				if (random < 25)
+				if (random < 5)
 					x.die();
 				else if (random < 50)
 					x.changeDirection(maze);
