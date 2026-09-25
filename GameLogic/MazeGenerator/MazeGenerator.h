@@ -9,5 +9,5 @@
 #include "MyMatrix2D.h"
 
 namespace Xiaoxuan4096 {
-	MyMatrix2D generateRandomMaze(size_t rows, size_t cols);
+	MyMatrix2D generateRandomMaze(size_t rows, size_t cols); // Note that when rows/cols equals to 0, the behavior is undefined.
 }
